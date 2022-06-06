@@ -1,0 +1,12 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	background-color: #2F2F2F;
+	
+}
+
+.navbar-vertical{
+	background-color: #606060;
+	width: 20em;
+}
