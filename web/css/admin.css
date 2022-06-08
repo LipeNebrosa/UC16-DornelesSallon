@@ -2,16 +2,16 @@
 /* CSS Document */
 
 body{
-	background-color: #2F2F2F;
+    background-color: #2F2F2F;
 }
 
 .navbar-vertical{
-	background-color: #606060;
-	width: 14rem;
-        position: relative;
-        color:#ececf6;
-        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-        height: 100vh;
+    background-color: #606060;
+    width: 14rem;
+    position: relative;
+    color:#ececf6;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    height: 100vh;
 }
 
 .logo-adm{

@@ -68,7 +68,7 @@ public class UsuarioServlet extends HttpServlet {
 
         if (user.getEh_adm() != null) {
             if (user.getEh_adm().equals("S")) {
-                redirecionamentoAdm = "listar.jsp";
+                redirecionamentoAdm = "adm.jsp";
             }
         }
 
@@ -105,7 +105,7 @@ public class UsuarioServlet extends HttpServlet {
             request.setAttribute("idcliente", novoId);
             request.getRequestDispatcher("listar.jsp").forward(request, response);
 
-            response.sendRedirect("listar.jsp");
+            response.sendRedirect("homecliente.jsp");
 
         } else {
             String mensagem

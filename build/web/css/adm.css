@@ -1,0 +1,50 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+    background-color: #2F2F2F;
+}
+
+.navbar-vertical{
+    background-color: #606060;
+    width: 14rem;
+    position: relative;
+    color:#ececf6;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    height: 100vh;
+}
+
+.logo-adm{
+    width: 10rem;
+    height: 10rem;
+    margin: 2rem;   
+}
+
+.titulo-adm-adm{
+    padding-left:1rem;
+}
+
+.categoria-navbar{
+    font-size: 20px;
+    margin-bottom: 0.3rem;
+    padding-left:1rem;
+}
+
+.nav-link{
+    color:#ececf6;
+    padding-left:2rem;
+    transition: background-color 0.3s ease-out 0s;
+}
+.nav-link:hover{
+    background-color: #858585;
+    color: #ececf6;
+}
+.active{
+    background-color:#959595;
+}
+.footer-nav{
+    position:absolute; 
+    top:95%;
+    left:50%;
+    transform: translate(-50%, -50%);
+}
