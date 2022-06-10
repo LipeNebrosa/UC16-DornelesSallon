@@ -165,7 +165,7 @@ if(request.getAttribute("idlogado") != null){
 
                 <li class="nav-item dropdown">
                     
-                <img   style="margin-left:105%;padding-top: 5% "src="img/iconeUser.png" width="8%" height="8%" alt="">
+                <img style="margin-left:105%;padding-top: 5% "src="img/iconeUser.png" width="8%" height="8%" alt="">
                     
                 </li>
                 </ul>

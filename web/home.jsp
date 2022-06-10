@@ -28,7 +28,7 @@
          
         </div>
 
-        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:transparent;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <ul class="navbar-nav">
