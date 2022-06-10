@@ -37,10 +37,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Sobre</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
-                    </li>
+                    </li>                    
                     <li class="nav-item">
                         <a class="nav-link" href="servicos.jsp">Serviços</a>
                     </li>
@@ -48,34 +45,35 @@
                 </ul>
 
             </div>
+            <div>
+            <ul >
 
-            <!--      hsfghsfgb    <ul style="list-style: none;">
+                <li class="nav-item dropdown">
+                    
+                <img style="margin-left:100%; margin-top: 5% "src="img/iconeUser.png" width="8%" height="8%" alt="">
+                    
+                </li>
+                </ul>
+            </div>  
+            <div>
             
-                            <li class="nav-item dropdown">
-                                
-                            <img   style="margin-left:105%;padding-top: 5% "src="img/iconeUser.png" width="8%" height="8%" alt="">
-                                
-                            </li>
-                            </ul>
-                        </div>
-                        <div>
-                            
-                            <ul style="list-style: none;">
-            
-                            <li class="nav-item dropdown">
-                               
-                                <a style="margin-left:65%; color: white; font-size: 110%; margin-left: 1%; padding-top: 20%" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                  Felipe
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Configurações</a>
-                                    <a class="dropdown-item" href="#">Histórico</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Cancelamento</a>
-                                </div>
-                            </li>
-                            </ul>
-                        </div>-->
+                
+                <ul style="list-style: none;">
+
+                <li class="nav-item dropdown">
+                   
+                    <a style="margin-left:1%; color: white; font-size: 110%; margin-top: 18%" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                       Felipe
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Configurações</a>
+                        <a class="dropdown-item" href="#">Histórico</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Cancelamento</a>
+                    </div>
+                </li>
+                </ul>
+            </div>
 
             <div>
                 <button id="bt" type="button" class="btn btn-light float-right btn-lg" style="margin-right: 15%" data-toggle="modal" 

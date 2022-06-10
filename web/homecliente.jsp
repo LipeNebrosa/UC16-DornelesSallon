@@ -43,6 +43,10 @@ if(request.getAttribute("idlogado") != null){
             z-index: 10;
             height: 100px;
             border-radius:25px;
+            margin-left: 1rem;
+            margin-right: 1rem;
+            margin-top: 3rem;
+            
 
         }
         body{
@@ -52,9 +56,9 @@ if(request.getAttribute("idlogado") != null){
             background-size: 100%;
             background-repeat: no-repeat;
             color:white;
-            margin-top: 50px;
-            margin-left: 50px;
-            margin-right: 50px;
+            margin-top: 0;
+            margin-left: 0;
+            margin-right: 0;
 
         }
         .logoleao{
@@ -149,15 +153,11 @@ if(request.getAttribute("idlogado") != null){
                     <li class="nav-item">
                         <a class="nav-link" href="#">Sobre</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link">Serviços</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link">Contato</a>
-                    </li>
+                   
                 </ul>
 
             </div>
