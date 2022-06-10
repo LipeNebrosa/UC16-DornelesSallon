@@ -190,15 +190,11 @@ if(request.getAttribute("idlogado") != null){
       out.write("                    <li class=\"nav-item\">\r\n");
       out.write("                        <a class=\"nav-link\" href=\"#\">Sobre</a>\r\n");
       out.write("                    </li>\r\n");
-      out.write("                    <li class=\"nav-item\">\r\n");
-      out.write("                        <a class=\"nav-link\" href=\"#\">Blog</a>\r\n");
-      out.write("                    </li>\r\n");
+      out.write("                    \r\n");
       out.write("                    <li class=\"nav-item\">\r\n");
       out.write("                        <a class=\"nav-link\">Serviços</a>\r\n");
       out.write("                    </li>\r\n");
-      out.write("                    <li class=\"nav-item\">\r\n");
-      out.write("                        <a class=\"nav-link\">Contato</a>\r\n");
-      out.write("                    </li>\r\n");
+      out.write("                   \r\n");
       out.write("                </ul>\r\n");
       out.write("\r\n");
       out.write("            </div>\r\n");
@@ -206,7 +202,7 @@ if(request.getAttribute("idlogado") != null){
       out.write("\r\n");
       out.write("                <li class=\"nav-item dropdown\">\r\n");
       out.write("                    \r\n");
-      out.write("                <img   style=\"margin-left:105%;padding-top: 5% \"src=\"img/iconeUser.png\" width=\"8%\" height=\"8%\" alt=\"\">\r\n");
+      out.write("                <img style=\"margin-left:105%;padding-top: 5% \"src=\"img/iconeUser.png\" width=\"8%\" height=\"8%\" alt=\"\">\r\n");
       out.write("                    \r\n");
       out.write("                </li>\r\n");
       out.write("                </ul>\r\n");
