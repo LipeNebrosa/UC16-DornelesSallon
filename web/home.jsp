@@ -5,6 +5,12 @@
 --%>
 
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+    String nomeUser = "Login";
+    
+
+
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -58,12 +64,12 @@
             <div>
             
                 
-                <ul style="list-style: none;">
+                <ul style="list-style: none; margin-right: 0;">
 
                 <li class="nav-item dropdown">
                    
-                    <a style="margin-left:1%; color: white; font-size: 110%; margin-top: 18%" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                       Felipe
+                    <a style="color: white; font-size: 110%; margin-top: 18%" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                       <%=nomeUser%>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Configurações</a>
@@ -246,7 +252,7 @@
                 </div>
             </div>
         </div>
-        <!---------------------------------------------------MODAL DO REGISTRO---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!--------------------------------------------------- FIM MODAL DO REGISTRO---------------------------------------------------------------------------------------------------------------------------------------------------------------->
      <footer id="myFooter">
         <div class="container-fluid">
             <div class="row">                                
