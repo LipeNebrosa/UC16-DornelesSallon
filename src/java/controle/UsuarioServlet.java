@@ -80,18 +80,19 @@ public class UsuarioServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("usuario", user);
             
-            request.setAttribute("statusLogin", true);
+            session.setAttribute("statusLogin", true);
+            //substituir variavel de redirecionamento quando tela de falha estiverem prontas.
             response.sendRedirect(redirecionamento);
             
         } else {
             //falta implementar tela na home.jsp indicando falha no login. Fazer com if/else lendo este atributo.
-            request.setAttribute("statusLogin", false);
+            request.setAttribute("erroLogin", true);
             response.sendRedirect("home.jsp");
         }
     }
 
     private void cadastrarUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        String nome = request.getParameter("nome");
+        String nome = request.getParameter("nome").trim();
         String cpf = request.getParameter("CPF").replace(".","").replace("-", "").replace(" ","");
         Date dataNascimento = Date.valueOf(request.getParameter("dataNascimento"));
         String email = request.getParameter("email");
