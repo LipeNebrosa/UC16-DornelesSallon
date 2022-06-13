@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modelo.Usuario;
 
 /**
@@ -58,7 +59,7 @@ public class UsuarioServlet extends HttpServlet {
     private void logarUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String login = request.getParameter("username");
         String senha = request.getParameter("senha");
-        String redirecionamentoAdm = "homecliente.jsp";
+        String redirecionamento = "home.jsp";
 
         Usuario user = new Usuario();
         user.setEmail(login);
@@ -68,20 +69,30 @@ public class UsuarioServlet extends HttpServlet {
 
         if (user.getEh_adm() != null) {
             if (user.getEh_adm().equals("S")) {
-                redirecionamentoAdm = "adm.jsp";
+                redirecionamento = "adm.jsp";
             }
         }
 
         if (logou) {
-            request.setAttribute(String.valueOf(user.getId()),"idlogado");
-            response.sendRedirect(redirecionamentoAdm);
+            //retirando senha do dados do usuario pra evitar facil acesso/visualização.
+            user.setSenha(" ");
+            
+            HttpSession session = request.getSession();
+            session.setAttribute("usuario", user);
+            
+            session.setAttribute("statusLogin", true);
+            //substituir variavel de redirecionamento quando tela de falha estiverem prontas.
+            response.sendRedirect(redirecionamento);
+            
         } else {
+            //falta implementar tela na home.jsp indicando falha no login. Fazer com if/else lendo este atributo.
+            request.setAttribute("erroLogin", true);
             response.sendRedirect("home.jsp");
         }
     }
 
     private void cadastrarUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        String nome = request.getParameter("nome");
+        String nome = request.getParameter("nome").trim();
         String cpf = request.getParameter("CPF").replace(".","").replace("-", "").replace(" ","");
         Date dataNascimento = Date.valueOf(request.getParameter("dataNascimento"));
         String email = request.getParameter("email");
