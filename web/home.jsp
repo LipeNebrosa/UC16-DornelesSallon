@@ -8,22 +8,22 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
     String nomeUser = "Login", 
-           mnUser = "data-toggle='modal' data-target='#modal-login'";
-
+           userMenu = "data-toggle='modal' data-target='#modal-login'",
+           redirectAdm = "<a class='dropdown-item' href='adm.jsp'>Administração</a>";
+           
     //obs: tentar verificar o "null" no Usuario.
     if ((Boolean) session.getAttribute("statusLogin") != null) {
         if ((Boolean) session.getAttribute("statusLogin")) {
             Usuario userLog = (Usuario) session.getAttribute("usuario");
             String[] primNome = userLog.getNome().split(" ");
             nomeUser = primNome[0];
-            mnUser = "data-toggle='dropdown' aria-expanded='false'";
+            userMenu = "data-toggle='dropdown' aria-expanded='false'";
         }
     }
     
     if (request.getParameter("exitsession") != null) {
         session.invalidate();
         response.sendRedirect("home.jsp");
-        //  request.setAttribute("exitsession",null);
     }
 %>
 <!DOCTYPE html>
@@ -83,12 +83,13 @@
                         <li class="nav-item dropdown">
                                 
                           
-                            <a style="color: white; font-size: 110%; margin-top: 18%" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" <%=mnUser%>>
+                            <a style="color: white; font-size: 110%; margin-top: 18%" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" <%=userMenu%>>
                                 <%=nomeUser%>
                             </a>    
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">Meus agendamentos</a>
-                                <a class="dropdown-item" href="#">Histórico</a>
+                                <a class="dropdown-item" href="#">Meu perfil</a>
+                                <%%>
                                 <a class="dropdown-item" href="home.jsp?exitsession=true">Sair</a>
                             </div>
                         </li>
