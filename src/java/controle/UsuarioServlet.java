@@ -59,19 +59,13 @@ public class UsuarioServlet extends HttpServlet {
     private void logarUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String login = request.getParameter("username");
         String senha = request.getParameter("senha");
-        String redirecionamento = "home.jsp";
+       // String redirecionamento = "home.jsp";
 
         Usuario user = new Usuario();
         user.setEmail(login);
         user.setCpf(login.replace(".","").replace("-", "").replace(" ",""));
         user.setSenha(senha);
         boolean logou = user.Login();
-
-        if (user.getEh_adm() != null) {
-            if (user.getEh_adm().equals("S")) {
-                redirecionamento = "adm.jsp";
-            }
-        }
 
         if (logou) {
             //retirando senha do dados do usuario pra evitar facil acesso/visualização.
@@ -82,7 +76,7 @@ public class UsuarioServlet extends HttpServlet {
             
             session.setAttribute("statusLogin", true);
             //substituir variavel de redirecionamento quando tela de falha estiverem prontas.
-            response.sendRedirect(redirecionamento);
+            response.sendRedirect("home.jsp");
             
         } else {
             //falta implementar tela na home.jsp indicando falha no login. Fazer com if/else lendo este atributo.

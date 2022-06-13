@@ -7,20 +7,24 @@
 <%@page import="modelo.Usuario"%>
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-    String nomeUser = "Login", 
-           userMenu = "data-toggle='modal' data-target='#modal-login'",
-           redirectAdm = "<a class='dropdown-item' href='adm.jsp'>Administração</a>";
-           
+    String nomeUser = "Login",
+            userMenu = "data-toggle='modal' data-target='#modal-login'",
+            redirectAdm = "";
+
     //obs: tentar verificar o "null" no Usuario.
     if ((Boolean) session.getAttribute("statusLogin") != null) {
         if ((Boolean) session.getAttribute("statusLogin")) {
-            Usuario userLog = (Usuario) session.getAttribute("usuario");
-            String[] primNome = userLog.getNome().split(" ");
+            Usuario userLogado = (Usuario) session.getAttribute("usuario");
+            String[] primNome = userLogado.getNome().split(" ");
             nomeUser = primNome[0];
             userMenu = "data-toggle='dropdown' aria-expanded='false'";
+
+            if (userLogado.getEh_adm().equals("S")){
+                redirectAdm = "<a class='dropdown-item' href='adm.jsp'>Administração</a>";
+            }
         }
     }
-    
+
     if (request.getParameter("exitsession") != null) {
         session.invalidate();
         response.sendRedirect("home.jsp");
@@ -76,20 +80,20 @@
                         </li>
                     </ul>
                 </div>  
-                
+
                 <div>
                     <ul style="list-style: none; margin-right: 0;">
 
                         <li class="nav-item dropdown">
-                                
-                          
+
+
                             <a style="color: white; font-size: 110%; margin-top: 18%" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" <%=userMenu%>>
                                 <%=nomeUser%>
                             </a>    
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">Meus agendamentos</a>
                                 <a class="dropdown-item" href="#">Meu perfil</a>
-                                <%%>
+                                <%=redirectAdm%>
                                 <a class="dropdown-item" href="home.jsp?exitsession=true">Sair</a>
                             </div>
                         </li>
@@ -110,7 +114,7 @@
                         <img id="imgctr" src="img/barbearia.jpg">
                     </div>-->
             <!--fim carrosel-->
-
+            <!----------------------------------------------------MODAL DE LOGIN----------------------------------------------------------------------------------------------------------------------------------->
             <div class="modal fade" id="modal-login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <form action="UsuarioServlet" method="POST">
                     <div class="modal-dialog">
@@ -121,7 +125,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body ajuste-body">
 
                                 <input type="hidden" name="acao" value="login">
                                 <div class="container">
@@ -134,17 +138,14 @@
 
                                     <div class="row">
                                         <div class="col">
-                                            <input  class="form-control" type="password" id="txtpassword" name="senha" placeholder="Password">
+                                            <input  class="form-control" type="password" id="txtpassword" name="senha" placeholder="Senha">
                                         </div>
                                     </div >
                                     <div class="row">
-                                        <div class="col">
-                                            <input type="checkbox" name="remember" id="chkremember"/>
-                                            <label style=" color: black; font-size: 12px;"for="chkremember">Lembrar-se</label>
-                                        </div>
-                                        <div class="col">
-                                            <label class="text-muted">Esqueceu a senha?</label>
-                                        </div>
+
+                                        <!-- BOTAR PRA FUNCIONAR SE DER TEMPO   <div class="col">
+                                                                                    <label class="text-muted">Esqueceu a senha?</label>
+                                                                                </div>-->
                                     </div >
                                     <div class="row">
                                         <div class="d-flex col justify-content-center ">
@@ -170,6 +171,7 @@
                     </div>
                 </form> 
             </div>
+            <!----------------------------------------------------FIM DO MODAL DE LOGIN----------------------------------------------------------------------------------------------------------------------------------->
             <!----------------------------------------------------MODAL DO REGISTRO---------------------------------------------------------------------------------------------------------------------------------------------------------------->
             <div class="modal fade" id="modal-registro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
