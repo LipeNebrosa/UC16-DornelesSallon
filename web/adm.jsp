@@ -62,7 +62,7 @@
 
                 <ul class="nav flex-column mb-0">
                     <li class="nav-item">
-                        <a class="nav-link " href="listar.jsp">Listar</a>
+                        <a class="nav-link " href="adm-listar.jsp">Listar</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " href="#">Cadastrar</a>

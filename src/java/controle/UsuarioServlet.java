@@ -156,7 +156,7 @@ public class UsuarioServlet extends HttpServlet {
     private void deletarUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException {
         boolean apagou = Usuario.Excluir(Long.parseLong(request.getParameter("id")));
         if (apagou) {
-            response.sendRedirect("listar.jsp");
+            response.sendRedirect("adm-listar.jsp");
         } else {
             String mensagem
                     = "<h1>EXCLUSÃO NÃO CONCLUIDA</h1>";

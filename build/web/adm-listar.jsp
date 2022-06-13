@@ -3,6 +3,7 @@
     Created on : 08/06/2022, 11:17:10
     Author     : sala303b
 --%>
+<%@page import="java.util.List"%>
 <%@page import="modelo.Usuario"%>
 <%
     String nomeUser = "Usuario";
@@ -12,7 +13,7 @@
     if (userLogado.getEh_adm().equals("S")) {
         String[] primNome = userLogado.getNome().split(" ");
         nomeUser = primNome[0];
-    }else{
+    } else {
         response.sendRedirect("home.jsp");
     }
 
@@ -34,7 +35,7 @@
     <body>
 
         <div class="principal-adm">
-            <!--	INICIO NAVBAR-->
+            <!-----------------------------------------------INICIO NAVBAR----------------------------------------------------------------->
             <div class="navbar-vertical">
 
                 <div class="div-logo-adm">
@@ -49,8 +50,7 @@
 
                 <ul class="nav flex-column  mb-0">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">
-                            Agendamentos<span class="sr-only">(Página atual)</span></a>
+                        <a class="nav-link" href="adm.jsp">Agendamentos</a>
                     </li>
 
                     <li class="nav-item">
@@ -62,7 +62,7 @@
 
                 <ul class="nav flex-column mb-0">
                     <li class="nav-item">
-                        <a class="nav-link " href="listar.jsp">Listar</a>
+                        <a class="nav-link active" href="#">Lista</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " href="#">Cadastrar</a>
@@ -82,17 +82,17 @@
 
 
             </div>
-            <!--	FIM NAVBAR-->
+            <!------------------------------------------FIM NAVBAR-------------------------------------------------------------------->
 
-            <!-- INICIO HEADER-->
+            <!------------------------------------------ INICIO HEADER----------------------------------------------------------------->
             <div class="header-pag-adm">
 
-                <h1 class="titulo-pagina text-light">Agendamentos</h1>
+                <h1 class="titulo-pagina text-light">Lista de Clientes</h1>
 
                 <div class="icone-user">
                     <div class="dropdown">
-                    <img for="dropdownMenuButton" src="img/iconeUser.png" width="8%" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    
+                        <img for="dropdownMenuButton" src="img/iconeUser.png" width="8%" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
                         <a class="nav-link dropdown-toggle bt-menu-user" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
                             <%=nomeUser%>
                         </a>
@@ -105,13 +105,90 @@
                 </div>
 
             </div>
-            <!-- FIM HEADER-->
+            <!------------------------------------------------------FIM HEADER---------------------------------------------------->
 
-            <!-- INICIO CONTEUDO DA PAGINA-->
+            <!------------------------------------------------ INICIO CONTEUDO DA PAGINA------------------------------------------>
             <div class="conteudo-pag-adm">
-                <h1>abluebleubdzfgfxgcznfgnfxcfghmxghmgxchmgdxhmxgdhmgxhdchgchghm</h1>
+                <%List<Usuario> usuario = new Usuario().ListarTodos();%>
+
+                <table class="table table-striped table-dark">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th>Sexo</th>
+                            <th>Data Nascimento</th>               
+                            <th>Telefone</th>
+                            <th>Email</th>
+                            <th>Data Cadastro</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%
+
+                            for (Usuario u : usuario) {
+
+                                String dtNascimento = u.getDataNascimento().toString();
+                                String dtNasc[] = dtNascimento.split("-");
+                                String dtNascBR = dtNasc[2] + "/" + dtNasc[1] + "/" + dtNasc[0];
+
+                                String dtCadastro = u.getDataCadastro().toString();
+                                String dtCad[] = dtCadastro.split("-");
+                                String dtCadBR = dtCad[2] + "/" + dtCad[1] + "/" + dtCad[0];
+
+                                out.print("<tr>"
+                                        + "<th scope='row'>" + u.getId() + "</th>"
+                                        + "<td>" + u.getNome() + "</td>"
+                                        + "<td>" + u.getCpf() + "</td>"
+                                        + "<td>" + u.getSexo() + "</td>"
+                                        + "<td>" + dtNascBR + "</td>"
+                                        + "<td>" + u.getTelefone() + "</td>"
+                                        + "<td>" + u.getEmail() + "</td>"
+                                        + "<td>" + dtCadBR + "</td>"
+                                        + "<td>"
+                                        + "<div style='display:inline-block'>"
+                                        + "<form action='cadastro.jsp' method='POST'>"
+                                        + "<input name='acao' type='hidden' value='editar' />"
+                                        + "<input name='idPessoa' type='hidden' value='" + u.getId() + "' />"
+                                        + "<button type='submit' class='btn btn-info align-middle'>Editar</button>"
+                                        + "</form>"
+                                        + "</div>"
+                                        + "&nbsp;"
+                                        + "&nbsp;"
+                                        + "<div style='display:inline-block'>"
+                                        + "<button type='button' class='btn btn-danger align-middle' data-toggle='modal' data-target='#Modal" + u.getId() + "'>Excluir</button>"
+                                        + "<div class='modal fade' id='Modal" + u.getId() + "' role='dialog'>"
+                                        + "<div class='modal-dialog modal-md'>"
+                                        + "  <div class='modal-content'>"
+                                        + "  <div class='modal-header'>"
+                                        + "<h5 class='modal-title'>Atenção!</h5>"
+                                        + "  </div>"
+                                        + "  <div class='modal-body'>"
+                                        + "      <p> Deseja excluir TODOS os dados do(a) " + u.getNome() + "?</p>"
+                                        + "   </div>"
+                                        + "  <div class='modal-footer'>"
+                                        + "<form action='UsuarioServlet' method='POST'>"
+                                        + "<input name='acao' type='hidden' value='apagar' />"
+                                        + "<input name='id' type='hidden' value='" + u.getId() + "' />"
+                                        + "<button type='submit' class='btn btn-danger align-middle'>Deletar</button>"
+                                        + "       <button type='button' data-dismiss='modal' class='btn btn-default'>Cancelar</button>"
+                                        + " </div>"
+                                        + " </div>"
+                                        + " </div>"
+                                        + "</div>"
+                                        + "</form>"
+                                        + "</div>"
+                                        + "</td>"
+                                        + "</tr>");
+                            }
+                        %>
+                    </tbody>
+                </table>
             </div>
-            <!-- FIM CONTEUDO DA PAGINA-->
+
+            <!------------------------------------------------- FIM CONTEUDO DA PAGINA-------------------------------------------->
         </div>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
