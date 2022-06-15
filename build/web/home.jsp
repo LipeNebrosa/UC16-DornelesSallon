@@ -9,7 +9,8 @@
 <%
     String nomeUser = "Login",
             userMenu = "data-toggle='modal' data-target='#modal-login'",
-            redirectAdm = "";
+            redirectAdm = "",
+            btModal = "'#modal-login'";
 
     //obs: tentar verificar o "null" no Usuario.
     if ((Boolean) session.getAttribute("statusLogin") != null) {
@@ -18,8 +19,8 @@
             String[] primNome = userLogado.getNome().split(" ");
             nomeUser = primNome[0];
             userMenu = "data-toggle='dropdown' aria-expanded='false'";
-
-            if (userLogado.getEh_adm().equals("S")){
+            btModal = "'#modal-agendamento'";
+            if (userLogado.getEh_adm().equals("S")) {
                 redirectAdm = "<a class='dropdown-item' href='adm.jsp'>Administração</a>";
             }
         }
@@ -43,6 +44,22 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/estilo.css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.38.0/js/tempusdominus-bootstrap-4.min.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.38.0/css/tempusdominus-bootstrap-4.min.css" crossorigin="anonymous" />
+
+        <script>
+            function validarSenha() {
+                NovaSenha = document.getElementById('txtSenha').value;
+                CNovaSenha = document.getElementById('txconfrimasenhat').value;
+                if (NovaSenha !== CNovaSenha) {
+                    alert("SENHAS DIFERENTES!\\nFAVOR DIGITAR SENHAS IGUAIS");
+//                    innerhtml na class com :  border-danger
+                    return false;
+                }
+                return true;
+            }
+        </script>
     </head>
 
     <body>
@@ -92,7 +109,7 @@
                             </a>    
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">Meus agendamentos</a>
-                                <a class="dropdown-item" href="#">Meu perfil</a>
+                                <a class="dropdown-item" href="#">Editar Perfil</a>
                                 <%=redirectAdm%>
                                 <a class="dropdown-item" href="home.jsp?exitsession=true">Sair</a>
                             </div>
@@ -102,7 +119,7 @@
 
                 <div>
                     <button id="bt" type="button" class="btn btn-light float-right btn-lg" style="margin-right: 15%" data-toggle="modal" 
-                            data-target="#modal-login">
+                            data-target=<%=btModal%>>
                         Agendar
                     </button>
                 </div>
@@ -114,6 +131,7 @@
                         <img id="imgctr" src="img/barbearia.jpg">
                     </div>-->
             <!--fim carrosel-->
+
             <!----------------------------------------------------MODAL DE LOGIN----------------------------------------------------------------------------------------------------------------------------------->
             <div class="modal fade" id="modal-login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <form action="UsuarioServlet" method="POST">
@@ -144,8 +162,8 @@
                                     <div class="row">
 
                                         <!-- BOTAR PRA FUNCIONAR SE DER TEMPO   <div class="col">
-                                                                                    <label class="text-muted">Esqueceu a senha?</label>
-                                                                                </div>-->
+                                        <label class="text-muted">Esqueceu a senha?</label>
+                                        </div>-->
                                     </div >
                                     <div class="row">
                                         <div class="d-flex col justify-content-center ">
@@ -172,8 +190,9 @@
                 </form> 
             </div>
             <!----------------------------------------------------FIM DO MODAL DE LOGIN----------------------------------------------------------------------------------------------------------------------------------->
+
             <!----------------------------------------------------MODAL DO REGISTRO---------------------------------------------------------------------------------------------------------------------------------------------------------------->
-            <div class="modal fade" id="modal-registro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal" id="modal-registro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -190,7 +209,7 @@
                             </div>
                         </div>
                         <div class="modal-body">
-                            <form action="UsuarioServlet" method="POST">
+                            <form action="UsuarioServlet" id="formRegistrar" method="POST" onsubmit="return validarSenha();">
                                 <input type="hidden" name="acao" value="cadastrar" >
                                 <div class="container">    
                                     <div class="row">
@@ -260,16 +279,17 @@
                                         <div class="d-flex col justify-content-center">
 
                                             <input type="hidden" name="id" >
-                                            <button class="btn btn-dark " type="submit">Registrar</button>
+                                            <button class="btn btn-dark" type="submit">Registrar</button>
                                         </div>
                                     </div>
                                 </div>
+                            </form>
                         </div>
-                        </form>
                     </div>
                 </div>
             </div>
             <!--------------------------------------------------- FIM MODAL DO REGISTRO---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+            
             <footer id="myFooter">
                 <div class="container-fluid">
                     <div class="row">                                
@@ -292,6 +312,30 @@
                 </div>        
             </footer>
 
+
+
+            <!-- Modal -->
+            <div class="modal fade bd-example-modal-xl" id="modal-agendamento" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Agendamento</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary">Salvar mudanças</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
 
 
@@ -302,12 +346,14 @@
         <script type="text/javascript" src="js/jquery.mask.js"></script>
         <script type="text/javascript">
 
-            jQuery(document).ready(function ($) {
+                                jQuery(document).ready(function ($) {
 
-                $("#txtCPF").mask("000.000.000-00");
-                $("#txtTelefone").mask("(00) 00000-0000");
+                                    $("#txtCPF").mask("000.000.000-00");
+                                    $("#txtTelefone").mask("(00) 00000-0000");
 
-            });
+                                });
+
+
         </script>
 
     </body>

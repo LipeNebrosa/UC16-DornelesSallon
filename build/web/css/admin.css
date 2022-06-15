@@ -97,4 +97,12 @@ html, body{
     width:88.2%;
     height:84.8vh;
     margin-left: 14rem;
+    padding: 3rem;
 }
+
+    .modal{
+        color:#000000;
+       }
+       .table{
+           border-radius: 15px; 
+       }
