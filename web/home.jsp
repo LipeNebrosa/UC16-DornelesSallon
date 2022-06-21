@@ -44,26 +44,6 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/estilo.css">
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.38.0/js/tempusdominus-bootstrap-4.min.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.38.0/css/tempusdominus-bootstrap-4.min.css" crossorigin="anonymous" />
-
-        <script>
-            function validarSenha() {
-                NovaSenha = document.getElementById('txtSenha').value;
-                CNovaSenha = document.getElementById('txconfrimasenhat').value;
-                if (NovaSenha !== CNovaSenha) {
-                    document.getElementById('txtSenha').style.borderColor = "red";
-                    document.getElementById('txconfrimasenhat').style.borderColor = "red";
-                    document.getElementById('btRegistrar').disabled = true;
-
-                } else {
-                    document.getElementById('txtSenha').style.borderColor = "greenyellow";
-                    document.getElementById('txconfrimasenhat').style.borderColor = "greenyellow";
-                    document.getElementById('btRegistrar').disabled = false;
-                }
-            }
-        </script>
     </head>
 
     <body>
@@ -329,6 +309,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
+                            <input id="datetimepicker" type="text">
 
                         </div>
                         <div class="modal-footer">
@@ -345,19 +326,44 @@
 
 
 
+        <link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.css"/>                
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/bootstrap.js"></script>
         <script type="text/javascript" src="js/jquery.mask.js"></script>
+        <script type="text/javascript" src="js/jquery.datetimepicker.full.min.js"></script>
         <script type="text/javascript">
+                                                function validarSenha() {
+                                                    NovaSenha = document.getElementById('txtSenha').value;
+                                                    CNovaSenha = document.getElementById('txconfrimasenhat').value;
+                                                    if (NovaSenha !== CNovaSenha) {
+                                                        document.getElementById('txtSenha').style.borderColor = "red";
+                                                        document.getElementById('txconfrimasenhat').style.borderColor = "red";
+                                                        document.getElementById('btRegistrar').disabled = true;
+
+                                                    } else {
+                                                        document.getElementById('txtSenha').style.borderColor = "greenyellow";
+                                                        document.getElementById('txconfrimasenhat').style.borderColor = "greenyellow";
+                                                        document.getElementById('btRegistrar').disabled = false;
+                                                    }
+                                                }
 
                                                 jQuery(document).ready(function ($) {
-
                                                     $("#txtCPF").mask("000.000.000-00");
                                                     $("#txtTelefone").mask("(00) 00000-0000");
-
                                                 });
 
+                                                $.datetimepicker.setLocale('pt-BR');
 
+                                                jQuery('#datetimepicker').datetimepicker({
+                                                    format: 'd.m.Y H:i',
+                                                    minDate: '0',
+                                                    inline: true,
+                                                    allowTimes: [
+                                                        '09:00',
+                                                        '11:00',
+                                                        '12:00',
+                                                        '21:00'],
+                                                });
         </script>
 
     </body>
