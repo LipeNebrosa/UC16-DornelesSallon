@@ -1,40 +1,36 @@
 <%-- 
-    Document   : servicos
-    Created on : 03/06/2022, 08:46:16
+    Document   : sobre
+    Created on : 13/06/2022, 11:25:35
     Author     : sala303b
 --%>
+
 <%@page import="modelo.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     String nomeUser = "Login",
-            userMenu = "data-toggle='modal' data-target='#modal-login'",
-            redirectAdm = "",
-            btModal = "'#modal-login'";
+            mnUser = "data-toggle='modal' data-target='#modal-login'";
 
     //obs: tentar verificar o "null" no Usuario.
     if ((Boolean) session.getAttribute("statusLogin") != null) {
         if ((Boolean) session.getAttribute("statusLogin")) {
-            Usuario userLogado = (Usuario) session.getAttribute("usuario");
-            String[] primNome = userLogado.getNome().split(" ");
+            Usuario userLog = (Usuario) session.getAttribute("usuario");
+            String[] primNome = userLog.getNome().split(" ");
             nomeUser = primNome[0];
-            userMenu = "data-toggle='dropdown' aria-expanded='false'";
-            btModal = "'#modal-agendamento'";
-            if (userLogado.getEh_adm().equals("S")) {
-                redirectAdm = "<a class='dropdown-item' href='adm.jsp'>Administração</a>";
-            }
+            mnUser = "data-toggle='dropdown' aria-expanded='false'";
         }
     }
 
     if (request.getParameter("exitsession") != null) {
         session.invalidate();
         response.sendRedirect("home.jsp");
+        //  request.setAttribute("exitsession",null);
     }
 %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Serviços</title>
+        <title>Dornelles Salon</title>
 
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -43,13 +39,8 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/estilo.css">
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.38.0/js/tempusdominus-bootstrap-4.min.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.38.0/css/tempusdominus-bootstrap-4.min.css" crossorigin="anonymous" />
-
     </head>
     <body>
-
         <div id="principal">
             <div>
 
@@ -91,13 +82,12 @@
                         <li class="nav-item dropdown">
 
 
-                            <a style="color: white; font-size: 110%; margin-top: 18%" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" <%=userMenu%>>
+                            <a style="color: white; font-size: 110%; margin-top: 18%" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" <%=mnUser%>>
                                 <%=nomeUser%>
                             </a>    
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">Meus agendamentos</a>
-                                <a class="dropdown-item" href="#">Editar Perfil</a>
-                                <%=redirectAdm%>
+                                <a class="dropdown-item" href="#">Histórico</a>
                                 <a class="dropdown-item" href="home.jsp?exitsession=true">Sair</a>
                             </div>
                         </li>
@@ -106,12 +96,18 @@
 
                 <div>
                     <button id="bt" type="button" class="btn btn-light float-right btn-lg" style="margin-right: 15%" data-toggle="modal" 
-                            data-target=<%=btModal%>>
+                            data-target="#modal-login">
                         Agendar
                     </button>
                 </div>
 
             </nav>
+
+            <!--carrosel-->
+            <!--        <div id="meio" >
+                        <img id="imgctr" src="img/barbearia.jpg">
+                    </div>-->
+            <!--fim carrosel-->
 
             <div class="modal fade" id="modal-login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <form action="UsuarioServlet" method="POST">
@@ -123,7 +119,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body ajuste-body">
+                            <div class="modal-body">
 
                                 <input type="hidden" name="acao" value="login">
                                 <div class="container">
@@ -136,14 +132,17 @@
 
                                     <div class="row">
                                         <div class="col">
-                                            <input  class="form-control" type="password" id="txtpassword" name="senha" placeholder="Senha">
+                                            <input  class="form-control" type="password" id="txtpassword" name="senha" placeholder="Password">
                                         </div>
                                     </div >
                                     <div class="row">
-
-                                        <!-- BOTAR PRA FUNCIONAR SE DER TEMPO   <div class="col">
-                                        <label class="text-muted">Esqueceu a senha?</label>
-                                        </div>-->
+                                        <div class="col">
+                                            <input type="checkbox" name="remember" id="chkremember"/>
+                                            <label style=" color: black; font-size: 12px;"for="chkremember">Lembrar-se</label>
+                                        </div>
+                                        <div class="col">
+                                            <label class="text-muted">Esqueceu a senha?</label>
+                                        </div>
                                     </div >
                                     <div class="row">
                                         <div class="d-flex col justify-content-center ">
@@ -169,10 +168,8 @@
                     </div>
                 </form> 
             </div>
-            <!----------------------------------------------------FIM DO MODAL DE LOGIN----------------------------------------------------------------------------------------------------------------------------------->
-
             <!----------------------------------------------------MODAL DO REGISTRO---------------------------------------------------------------------------------------------------------------------------------------------------------------->
-            <div class="modal" id="modal-registro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modal-registro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -189,7 +186,7 @@
                             </div>
                         </div>
                         <div class="modal-body">
-                            <form action="UsuarioServlet" id="formRegistrar" method="POST" onsubmit="return validarSenha();">
+                            <form action="UsuarioServlet" method="POST">
                                 <input type="hidden" name="acao" value="cadastrar" >
                                 <div class="container">    
                                     <div class="row">
@@ -259,79 +256,25 @@
                                         <div class="d-flex col justify-content-center">
 
                                             <input type="hidden" name="id" >
-                                            <button class="btn btn-dark" type="submit">Registrar</button>
+                                            <button class="btn btn-dark " type="submit">Registrar</button>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
             <!--------------------------------------------------- FIM MODAL DO REGISTRO---------------------------------------------------------------------------------------------------------------------------------------------------------------->
-            <!--------------------------------------------------- INICIO DE SERVIÇOS---------------------------------------------------------------------------------------------------------------------------------------------------------------->
-           
-            <div class="servicos">
-            <table>
+            <!--------------------------------------------------- INICIO DO SOBRE---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+            <div id="sobre">
 
-                <th>SERVIÇOS</th>
-                <tr>
-                    <td class="t1">CORTE DE CABELO</td>
-                    <td class="t2">R$40</td>
-                </tr>
-                <tr>
-                    <td class="t1">CORTE DE BARBA</td>
-                    <td class="t2">R$35</td>
-                </tr>
-                <tr>
-                    <td class="t1">BARBOTERAPIA</td>
-                    <td class="t2">R$50</td>
-                </tr>
-                <tr>
-                    <td class="t1">SOMBRANCELHA</td>
-                    <td class="t2">R$15</td>
-                </tr>
-                <tr>
-                    <td class="t1">ACABAMENTO DE CORTE</td>
-                    <td class="t2">R$15</td>
-                </tr>
-                <tr>
-                    <td class="t1">ACABAMENTO DE BARBA</td>
-                    <td class="t2">R$15</td>
-                </tr>
-                <tr>
-                    <td class="t1">MÁSCARA BLACK (LIMPEZA DE PELE)</td>
-                    <td class="t2">R$30</td>
-                </tr>
-                <tr>
-                    <td class="t1">SELAGEM</td>
-                    <td class="t2"> A PARTIR DE R$100</td>
-                </tr>
-                <tr>
-                    <td class="t1">PINTURA DE CABELO</td>
-                    <td class="t2">A PARTIR DE R$40</td></tr>
-                <tr>
-                    <td class="t1">PINTURA DE BARBA</td>
-                    <td class="t2">A PARTIR DE R$30</td></tr>
-                <tr>
-                    <td class="t1">HIDRATAÇÃO</td>
-                    <td class="t2">A PARTIR DE R$30</td></tr>
-                <tr>
-                    <td class="t1">RELAXAMENTO</td>
-                    <td class="t2">A PARTIR DE R$60</td></tr>
-                <tr>
-                    <td class="t1">PINTURA DE BARBA</td>
-                    <td class="t2">A PARTIR DE R$30</td></tr>
-            </table>
+                <h1 id="ttlsobre">Sobre</h1>
+
+                <img id="ftsobre" src="img/ftsobre.jpg"/>
+
             </div>
-            <!--------------------------------------------------- FIM DE SERVIÇOS---------------------------------------------------------------------------------------------------------------------------------------------------------------->
-
-
-
-
-
-
-
+            <!--------------------------------------------------- FIM SOBRE---------------------------------------------------------------------------------------------------------------------------------------------------------------->
             <footer id="myFooter">
                 <div class="container-fluid">
                     <div class="row">                                
@@ -354,40 +297,22 @@
                 </div>        
             </footer>
 
-            <!-- Modal -->
-            <div class="modal fade bd-example-modal-xl" id="modal-agendamento" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-xl" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Agendamento</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                            <button type="button" class="btn btn-primary">Salvar mudanças</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <script type="text/javascript" src="js/jquery.js"></script>
-            <script type="text/javascript" src="js/bootstrap.js"></script>
-            <script type="text/javascript" src="js/jquery.mask.js"></script>
-            <script type="text/javascript">
-
-                                jQuery(document).ready(function ($) {
-
-                                    $("#txtCPF").mask("000.000.000-00");
-                                    $("#txtTelefone").mask("(00) 00000-0000");
-
-                                });
+        </div>
 
 
-            </script>
+
+
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/jquery.mask.js"></script>
+        <script type="text/javascript">
+
+            jQuery(document).ready(function ($) {
+
+                $("#txtCPF").mask("000.000.000-00");
+                $("#txtTelefone").mask("(00) 00000-0000");
+
+            });
+        </script>
     </body>
 </html>
