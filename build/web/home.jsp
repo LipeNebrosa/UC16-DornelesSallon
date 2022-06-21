@@ -26,7 +26,7 @@
         }
     }
 
-    if (request.getParameter("exitsession") != null) {
+    if (request.getParameter("exit") != null) {
         session.invalidate();
         response.sendRedirect("home.jsp");
     }
@@ -53,11 +53,15 @@
                 NovaSenha = document.getElementById('txtSenha').value;
                 CNovaSenha = document.getElementById('txconfrimasenhat').value;
                 if (NovaSenha !== CNovaSenha) {
-                    alert("SENHAS DIFERENTES!\\nFAVOR DIGITAR SENHAS IGUAIS");
-//                    innerhtml na class com :  border-danger
-                    return false;
+                    document.getElementById('txtSenha').style.borderColor = "red";
+                    document.getElementById('txconfrimasenhat').style.borderColor = "red";
+                    document.getElementById('btRegistrar').disabled = true;
+
+                } else {
+                    document.getElementById('txtSenha').style.borderColor = "greenyellow";
+                    document.getElementById('txconfrimasenhat').style.borderColor = "greenyellow";
+                    document.getElementById('btRegistrar').disabled = false;
                 }
-                return true;
             }
         </script>
     </head>
@@ -111,7 +115,7 @@
                                 <a class="dropdown-item" href="#">Meus agendamentos</a>
                                 <a class="dropdown-item" href="#">Editar Perfil</a>
                                 <%=redirectAdm%>
-                                <a class="dropdown-item" href="home.jsp?exitsession=true">Sair</a>
+                                <a class="dropdown-item" href="home.jsp?exit=exit">Sair</a>
                             </div>
                         </li>
                     </ul>
@@ -209,7 +213,7 @@
                             </div>
                         </div>
                         <div class="modal-body">
-                            <form action="UsuarioServlet" id="formRegistrar" method="POST" onsubmit="return validarSenha();">
+                            <form action="UsuarioServlet" id="formRegistrar" method="POST">
                                 <input type="hidden" name="acao" value="cadastrar" >
                                 <div class="container">    
                                     <div class="row">
@@ -264,14 +268,14 @@
                                         <div class="col">
                                             <label for="txtSenha">Senha: </label></br>
 
-                                            <input required class="form-control R" type ="password" id="txtSenha" name="senha" />
+                                            <input required class="form-control R" type ="password" id="txtSenha" name="senha" onkeyup="validarSenha();" />
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col">
                                             <label for="txtconfirmasenha">Confirma senha: </label>
                                             </br>
-                                            <input required class="form-control R"  type ="password" id="txconfrimasenhat" name="confirmasenha" />
+                                            <input required class="form-control R"  type ="password" id="txconfrimasenhat" name="confirmasenha" onkeyup="validarSenha();"/>
                                         </div>
                                     </div>
                                     </br>
@@ -279,7 +283,7 @@
                                         <div class="d-flex col justify-content-center">
 
                                             <input type="hidden" name="id" >
-                                            <button class="btn btn-dark" type="submit">Registrar</button>
+                                            <button class="btn btn-dark" disabled id="btRegistrar" type="submit">Registrar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -289,7 +293,7 @@
                 </div>
             </div>
             <!--------------------------------------------------- FIM MODAL DO REGISTRO---------------------------------------------------------------------------------------------------------------------------------------------------------------->
-            
+
             <footer id="myFooter">
                 <div class="container-fluid">
                     <div class="row">                                
@@ -346,12 +350,12 @@
         <script type="text/javascript" src="js/jquery.mask.js"></script>
         <script type="text/javascript">
 
-                                jQuery(document).ready(function ($) {
+                                                jQuery(document).ready(function ($) {
 
-                                    $("#txtCPF").mask("000.000.000-00");
-                                    $("#txtTelefone").mask("(00) 00000-0000");
+                                                    $("#txtCPF").mask("000.000.000-00");
+                                                    $("#txtTelefone").mask("(00) 00000-0000");
 
-                                });
+                                                });
 
 
         </script>
