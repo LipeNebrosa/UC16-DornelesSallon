@@ -268,14 +268,14 @@
                                         <div class="col">
                                             <label for="txtSenha">Senha: </label></br>
 
-                                            <input required class="form-control R" type ="password" id="txtSenha" name="senha" />
+                                            <input required class="form-control R" type ="password" id="txtSenha" name="senha" onkeyup="validarSenha();" />
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col">
                                             <label for="txtconfirmasenha">Confirma senha: </label>
                                             </br>
-                                            <input required class="form-control R"  type ="password" id="txconfrimasenhat" name="confirmasenha" onblur="validarSenha();"/>
+                                            <input required class="form-control R"  type ="password" id="txconfrimasenhat" name="confirmasenha" onkeyup="validarSenha();"/>
                                         </div>
                                     </div>
                                     </br>
@@ -283,7 +283,7 @@
                                         <div class="d-flex col justify-content-center">
 
                                             <input type="hidden" name="id" >
-                                            <button class="btn btn-dark" id="btRegistrar" type="submit">Registrar</button>
+                                            <button class="btn btn-dark" disabled id="btRegistrar" type="submit">Registrar</button>
                                         </div>
                                     </div>
                                 </div>
