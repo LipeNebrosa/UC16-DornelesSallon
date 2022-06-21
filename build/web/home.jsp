@@ -26,7 +26,7 @@
         }
     }
 
-    if (request.getParameter("exitsession") != null) {
+    if (request.getParameter("exit") != null) {
         session.invalidate();
         response.sendRedirect("home.jsp");
     }
@@ -115,7 +115,7 @@
                                 <a class="dropdown-item" href="#">Meus agendamentos</a>
                                 <a class="dropdown-item" href="#">Editar Perfil</a>
                                 <%=redirectAdm%>
-                                <a class="dropdown-item" href="home.jsp?exitsession=true">Sair</a>
+                                <a class="dropdown-item" href="home.jsp?exit=exit">Sair</a>
                             </div>
                         </li>
                     </ul>
