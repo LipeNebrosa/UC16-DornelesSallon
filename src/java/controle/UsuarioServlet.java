@@ -51,7 +51,7 @@ public class UsuarioServlet extends HttpServlet {
                 logarUsuario(request, response);
                 break;
             default:
-                response.sendRedirect("home.jsp");
+                response.sendRedirect("home.jsp?msg=erro");
 
         }
     }
