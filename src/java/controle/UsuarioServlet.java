@@ -59,25 +59,21 @@ public class UsuarioServlet extends HttpServlet {
     private void logarUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String login = request.getParameter("username");
         String senha = request.getParameter("senha");
-       // String redirecionamento = "home.jsp";
+        // String redirecionamento = "home.jsp";
 
         Usuario user = new Usuario();
         user.setEmail(login);
-        user.setCpf(login.replace(".","").replace("-", "").replace(" ",""));
+        user.setCpf(login.replace(".", "").replace("-", "").replace(" ", ""));
         user.setSenha(senha);
         boolean logou = user.Login();
 
         if (logou) {
-            //retirando senha do dados do usuario pra evitar facil acesso/visualização.
-            user.setSenha(" ");
-            
             HttpSession session = request.getSession();
             session.setAttribute("usuario", user);
-            
+
             session.setAttribute("statusLogin", true);
-            //substituir variavel de redirecionamento quando tela de falha estiverem prontas.
             response.sendRedirect("home.jsp");
-            
+
         } else {
             //falta implementar tela na home.jsp indicando falha no login. Fazer com if/else lendo este atributo.
             request.setAttribute("erroLogin", true);
@@ -87,14 +83,12 @@ public class UsuarioServlet extends HttpServlet {
 
     private void cadastrarUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String nome = request.getParameter("nome").trim();
-        String cpf = request.getParameter("CPF").replace(".","").replace("-", "").replace(" ","");
+        String cpf = request.getParameter("CPF").replace(".", "").replace("-", "").replace(" ", "");
         Date dataNascimento = Date.valueOf(request.getParameter("dataNascimento"));
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
         String dddtelefone = request.getParameter("dddTelefone");
         String sexo = request.getParameter("sexo");
-        
-        
 
         Usuario user = new Usuario();
         user.setNome(nome);
@@ -121,35 +115,47 @@ public class UsuarioServlet extends HttpServlet {
     }
 
     private void editarUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String id = request.getParameter("id");
-        String nome = request.getParameter("nome");
-        String cpf = request.getParameter("CPF");
-        Date dataNascimento = Date.valueOf(request.getParameter("dataNascimento"));
-        String email = request.getParameter("email");
+
         String senha = request.getParameter("senha");
-        String dddtelefone = request.getParameter("dddTelefone");
-        String sexo = request.getParameter("sexo");
+        String novaSenha = request.getParameter("novasenha");
 
         Usuario user = new Usuario();
-        user.setId(Long.parseLong(id));
-        user.setNome(nome);
-        user.setCpf(cpf);
-        user.setDataNascimento(dataNascimento);
-        user.setEmail(email);
-        user.setSenha(senha);
+        Usuario loginUser = new Usuario();
 
-        user.setTelefone(dddtelefone);
-        user.setSexo(sexo);
-        boolean atualizou = user.Atualizar();
-        if (atualizou) {
+        loginUser.setCpf(request.getParameter("CPF").replace(".", "").replace("-", "").replace(" ", ""));
+        loginUser.setSenha(senha);
 
-            response.sendRedirect("listar.jsp");
+        boolean loginVerificador = loginUser.Login();
 
+        if (loginVerificador) {
+            user.setId(Long.parseLong(request.getParameter("id")));
+            user.setNome(request.getParameter("nome"));
+            user.setCpf(request.getParameter("CPF").replace(".", "").replace("-", "").replace(" ", ""));
+            user.setDataNascimento(Date.valueOf(request.getParameter("dataNascimento")));
+            user.setTelefone(request.getParameter("dddTelefone"));
+            user.setEmail(request.getParameter("email"));
+            user.setSexo(request.getParameter("sexo"));
+
+            if (novaSenha == null || novaSenha.equals("")) {
+                user.setSenha(senha);
+            } else {
+                user.setSenha(novaSenha);
+            }
+
+            boolean atualizou = user.Atualizar();
+
+            if (atualizou) {
+
+                response.sendRedirect("home.jsp?msg=ATUALIZOU");
+
+            } else {
+                String mensagem
+                        = "<h1>ATUALIZAÇÃO NÃO CONCLUIDA</h1>";
+                response.getWriter().print(mensagem);
+
+            }
         } else {
-            String mensagem
-                    = "<h1>ATUALIZAÇÃO NÃO CONCLUIDA</h1>";
-            response.getWriter().print(mensagem);
-
+                response.sendRedirect("home.jsp?msg=ERRO_LOGIN_DA_ATUALIZAÇÃO");
         }
     }
 

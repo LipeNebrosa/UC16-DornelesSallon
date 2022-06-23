@@ -80,13 +80,15 @@
                 }
             }
             function validarSenhaATT() {
-                Senha = document.getElementById('txtSenhaAtual').value;
+                if (document.getElementById('txtSenhaAtual').value == "") {
+                    document.getElementById('btRegistrarATT').disabled = true;
+                } else {
+                    document.getElementById('btRegistrarATT').disabled = false;
+                }
+            }
+            function validarNovaSenhaATT() {
                 NovaSenha = document.getElementById('txtSenhaATT').value;
                 CNovaSenha = document.getElementById('txconfrimasenhatATT').value;
-                if (Senha !== null) {
-                    document.getElementById('btRegistrarATT').disabled = true;
-                    document.getElementById('txtSenhaAtual').style.borderColor = "red";
-                }else(//terminar de mexer AQUI!!!!!!!!!)
                 if (NovaSenha !== CNovaSenha) {
                     document.getElementById('txtSenhaATT').style.borderColor = "red";
                     document.getElementById('txconfrimasenhatATT').style.borderColor = "red";
@@ -95,7 +97,9 @@
                 } else {
                     document.getElementById('txtSenhaATT').style.borderColor = "greenyellow";
                     document.getElementById('txconfrimasenhatATT').style.borderColor = "greenyellow";
-                    document.getElementById('btRegistrarATT').disabled = false;
+                    if (document.getElementById('txtSenhaAtual').value !== "") {
+                        document.getElementById('btRegistrarATT').disabled = false;
+                    }
                 }
             }
         </script>
@@ -377,10 +381,10 @@
                                             <label for="sltEscolaridade">Sexo: </label>
                                             </br>
                                             <select required class="form-control R" id="sltSexo" name="sexo">
-                                                <option value= "X" ></option>
-                                                <option value="M" >Masculino</option>
-                                                <option value="F">Feminino</option>
-                                                <option value="O">Outro</option>
+                                                <option value= "X"></option>
+                                                <option value="M" <%=sexo.equals("M") ? "selected" : ""%>>Masculino</option>
+                                                <option value="F" <%=sexo.equals("F") ? "selected" : ""%>>Feminino</option>
+                                                <option value="O" <%=sexo.equals("O") ? "selected" : ""%>>Outro</option>
                                             </select>
                                         </div>                   
                                     </div>
@@ -402,21 +406,21 @@
                                         <div class="col">
                                             <label for="txtSenha">Senha atual: </label></br>
 
-                                            <input required class="form-control R" type ="password" id="txtSenhaAtual" name="senha" autocomplete="off"/>
+                                            <input required class="form-control R" type ="password" id="txtSenhaAtual" name="senha" autocomplete="off" onkeyup="validarSenhaATT();"/>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <label for="txtSenha">Nova senha: </label></br>
+                                            <label for="txtSenha">Nova senha (opcional): </label></br>
 
-                                            <input required class="form-control R" type ="password" id="txtSenhaATT" name="senha" onkeyup="validarSenhaATT();" autocomplete="off"/>
+                                            <input class="form-control R" type ="password" id="txtSenhaATT" name="novasenha" onkeyup="validarNovaSenhaATT();" autocomplete="off"/>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <label for="txtconfirmasenha">Confirma nova senha: </label>
+                                            <label for="txtconfirmasenha">Confirmar nova senha (opcional): </label>
                                             </br>
-                                            <input required class="form-control R"  type ="password" id="txconfrimasenhatATT" name="confirmasenha" onkeyup="validarSenhaATT();" autocomplete="off"/>
+                                            <input class="form-control R"  type ="password" id="txconfrimasenhatATT" name="confirmasenha" onkeyup="validarNovaSenhaATT();" autocomplete="off"/>
                                         </div>
                                     </div>
                                     </br>

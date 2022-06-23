@@ -117,7 +117,7 @@ public class Usuario {
     public boolean Login() {
         try {
             Connection conn = BancoDados.getConexao();
-            String sql = "SELECT id, nome, cpf, dataNascimento, email, telefone, eh_adm FROM usuario WHERE (cpf = ? OR email = ?) AND senha = ? ; ";
+            String sql = "SELECT id, nome, cpf, dataNascimento, email, telefone, sexo, eh_adm FROM usuario WHERE (cpf = ? OR email = ?) AND senha = ? ; ";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, this.getCpf());
             ps.setString(2, this.getEmail());
@@ -130,6 +130,7 @@ public class Usuario {
                 this.setDataNascimento(rs.getDate("dataNascimento"));
                 this.setEmail(rs.getString("email"));
                 this.setTelefone(rs.getString("telefone"));
+                this.setSexo(rs.getString("sexo"));
                 this.setEh_adm(rs.getString("eh_adm"));
                 return true;
 
