@@ -118,11 +118,11 @@ public class UsuarioServlet extends HttpServlet {
 
         String senha = request.getParameter("senha");
         String novaSenha = request.getParameter("novasenha");
-
+        String cpf = request.getParameter("CPF").replace(".", "").replace("-", "").replace(" ", "");
         Usuario user = new Usuario();
         Usuario loginUser = new Usuario();
-
-        loginUser.setCpf(request.getParameter("CPF").replace(".", "").replace("-", "").replace(" ", ""));
+        
+        loginUser.setCpf(cpf);
         loginUser.setSenha(senha);
 
         boolean loginVerificador = loginUser.Login();
@@ -130,7 +130,7 @@ public class UsuarioServlet extends HttpServlet {
         if (loginVerificador) {
             user.setId(Long.parseLong(request.getParameter("id")));
             user.setNome(request.getParameter("nome"));
-            user.setCpf(request.getParameter("CPF").replace(".", "").replace("-", "").replace(" ", ""));
+            user.setCpf(cpf);
             user.setDataNascimento(Date.valueOf(request.getParameter("dataNascimento")));
             user.setTelefone(request.getParameter("dddTelefone"));
             user.setEmail(request.getParameter("email"));
