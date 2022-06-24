@@ -53,10 +53,10 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="home.jsp">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Sobre</a>
+                            <a class="nav-link" href="sobre.jsp">Sobre</a>
                         </li>                    
                         <li class="nav-item">
                             <a class="nav-link" href="servicos.jsp">Serviços</a>
@@ -268,16 +268,16 @@
             <!--------------------------------------------------- FIM MODAL DO REGISTRO---------------------------------------------------------------------------------------------------------------------------------------------------------------->
             <!--------------------------------------------------- INICIO DO SOBRE---------------------------------------------------------------------------------------------------------------------------------------------------------------->
             <div id="sobre-galeria">
-                <!-- Carousel wrapper -->
+<!--                 Carousel wrapper -->
 <div
   id="carouselMultiItemExample"
   class="carousel slide carousel-dark text-center"
   data-mdb-ride="carousel"
 >
-  <!-- Controls -->
-  <div class="d-flex justify-content-center mb-4">
+<!--   Controls -->
+<!--  <div class="d-flex justify-content-center mb-4">
     <button
-      class="carousel-control-prev position-relative"
+      class="carousel-control-prev position-relative btn-dark "
       type="button"
       data-mdb-target="#carouselMultiItemExample"
       data-mdb-slide="prev"
@@ -286,7 +286,7 @@
       <span class="visually-hidden">Previous</span>
     </button>
     <button
-      class="carousel-control-next position-relative"
+      class="carousel-control-next position-relative btn-dark"
       type="button"
       data-mdb-target="#carouselMultiItemExample"
       data-mdb-slide="next"
@@ -294,61 +294,64 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
-  </div>
-  <!-- Inner -->
+  </div>-->
+<!--   Inner -->
   <div class="carousel-inner py-4">
-    <!-- Single item -->
+<!--     Single item -->
     <div class="carousel-item active">
       <div class="container">
         <div class="row">
           <div class="col-lg-4">
-            <div class="card">
+            <div class="card" style=" border: none">
               <img
-                <img src="img/ftsobre.jpg"
+                <img src="img/dornelles.jpg" 
                 class="card-img-top"
                 alt="Waterfall"
               />
-              <div class="card-body">
-                <h5 class="card-title">UM GRUPO COM CENTENAS DE QUALIDADES</h5>
+              <div class="card-body badge-dark">
+                <h5 class="card-title">RAZÃO SOCIAL</h5>
                 <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk
-                  of the card's content.
+                Espaço Dornelles Salon, salão de beleza Unissex e espaço de 
+                estética corporal e facial. Desde 13/02/2014 esbanjando 
+                profissionalismo visando sempre, a melhor experiencia já tida por qualquer cliente.
+                No mercado, a empresa está localizada na Avenida Copacabana, Nº 530 - Loja 07 
+                no bairro Morada De Laranjeiras em Serra - ES, CEP 29166-820.
+                A empresa Dornelles Salon está cadastrada na Receita Federal 
+                sob o CNAE 9602-5/01 com atividade fim de Cabeleireiros, Manicure 
+                E Pedicure. 
                 </p>
-                <a href="#!" class="btn btn-primary">Button</a>
               </div>
             </div>
           </div>
 
           <div class="col-lg-4 d-none d-lg-block">
-            <div class="card">
+            <div class="card" style=" border: none">
               <img src="img/carrosel.jpg"
                 class="card-img-top"
                 alt="Sunset Over the Sea"
               />
-              <div class="card-body">
+              <div class="card-body badge-dark">
                 <h5 class="card-title">ATENDIMENTO INFANTIL</h5>
                 <p class="card-text">
                   Some quick example text to build on the card title and make up the bulk
                   of the card's content.
                 </p>
-                <a href="#!" class="btn btn-primary">Button</a>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-4 d-none d-lg-block">
-            <div class="card">
+            <div class="col-lg-4 d-none d-lg-block" width: >
+              <div class="card" style=" border: none">
               <img src="img/dorneles.jpg"
                 class="card-img-top"
                 alt="Sunset over the Sea"
               />
-              <div class="card-body">
+              <div class="card-body badge-dark ">
                 <h5 class="card-title">O NOSSO FOCO É A LEALDADE</h5>
                 <p class="card-text">
                   Some quick example text to build on the card title and make up the bulk
                   of the card's content.
                 </p>
-                <a href="#!" class="btn btn-primary">Button</a>
               </div>
             </div>
           </div>
@@ -356,24 +359,22 @@
       </div>
     </div>
 
-    <!-- Single item -->
+<!--     Single item -->
     <div class="carousel-item">
       <div class="container">
         <div class="row">
           <div class="col-lg-4 col-md-12">
             <div class="card">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
+              <img src="img/ftsobre.jpg"
                 class="card-img-top"
                 alt="Fissure in Sandstone"
               />
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">UM GRUPO COM CENTENAS DE QUALIDADES</h5>
                 <p class="card-text">
                   Some quick example text to build on the card title and make up the bulk
                   of the card's content.
                 </p>
-                <a href="#!" class="btn btn-primary">Button</a>
               </div>
             </div>
           </div>
@@ -381,7 +382,7 @@
           <div class="col-lg-4 d-none d-lg-block">
             <div class="card">
               <img
-                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/185.webp"
+                  src="img/dorneles.jpg"
                 class="card-img-top"
                 alt="Storm Clouds"
               />
@@ -417,7 +418,7 @@
       </div>
     </div>
 
-    <!-- Single item -->
+     Single item 
     <div class="carousel-item">
       <div class="container">
         <div class="row">
@@ -478,12 +479,11 @@
       </div>
     </div>
   </div>
-  <!-- Inner -->
+<!--   Inner -->
 </div>
-<!-- Carousel wrapper -->
+ <!--Carousel wrapper--> 
                 
 
-                
 
             </div>
             <!--------------------------------------------------- FIM SOBRE---------------------------------------------------------------------------------------------------------------------------------------------------------------->

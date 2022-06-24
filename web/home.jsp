@@ -82,7 +82,7 @@
                             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Sobre</a>
+                            <a class="nav-link" href="sobre.jsp">Sobre</a>
                         </li>                    
                         <li class="nav-item">
                             <a class="nav-link" href="servicos.jsp">Serviços</a>

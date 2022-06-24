@@ -159,24 +159,39 @@ body{
     margin-right: 15%;
     margin-top: 5%;
     margin-bottom: -50px;
-}
-.sobre-galeria{
-    color:#555;
-    padding: 20px 100px 50px 100px;
-    overflow: auto;			
+}			
     
-    
-}
 .ftsobre{
     width: 10%;
     float: left;
     text-align: center; 
+    
 }
-#btn btn-primary{
-    margin-top: 0.5rem;
 
-    border-top-left-radius:  6%;
-    border-top-right-radius: 6% ;
-    border-bottom-left-radius: 6%;
-    border-bottom-right-radius: 6%;
+.card{
+    height: 100%;
+    float: right;
+    background-color: #343a40;
+}
+.card-text{
+        letter-spacing: 2px;
+	font-size: 10px; 
+}
+.card-title{
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	font-size: 16px;
+	font-weight: bold;
+}
+.card-body{
+   opacity: 0.9;
+   	
+}
+.carousel-inner{
+    width: 50%;
+    float: none;
+    margin-right: 20px;
+    position: absolute;
+    left: 25%;
+    top: 50%;
 }
