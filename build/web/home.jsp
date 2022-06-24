@@ -457,20 +457,6 @@
         <script type="text/javascript" src="js/jquery.mask.js"></script>
         <script type="text/javascript" src="js/jquery.datetimepicker.full.min.js"></script>
         <script type="text/javascript">
-                                                function validarSenha() {
-                                                    NovaSenha = document.getElementById('txtSenha').value;
-                                                    CNovaSenha = document.getElementById('txconfrimasenhat').value;
-                                                    if (NovaSenha !== CNovaSenha) {
-                                                        document.getElementById('txtSenha').style.borderColor = "red";
-                                                        document.getElementById('txconfrimasenhat').style.borderColor = "red";
-                                                        document.getElementById('btRegistrar').disabled = true;
-
-                                                    } else {
-                                                        document.getElementById('txtSenha').style.borderColor = "greenyellow";
-                                                        document.getElementById('txconfrimasenhat').style.borderColor = "greenyellow";
-                                                        document.getElementById('btRegistrar').disabled = false;
-                                                    }
-                                                }
 
                                                 jQuery(document).ready(function ($) {
                                                     $("#txtCPF").mask("000.000.000-00");
@@ -478,10 +464,7 @@
                                                     $("#txtTelefone").mask("(00) 00000-0000");
                                                     $("#txtTelefoneATT").mask("(00) 00000-0000");
                                                 });
-                                                    
-
-                                                });
-
+                                                
                                                 function validarSenha() {
                                                     NovaSenha = document.getElementById('txtSenha').value;
                                                     CNovaSenha = document.getElementById('txconfrimasenhat').value;
@@ -489,13 +472,13 @@
                                                         document.getElementById('txtSenha').style.borderColor = "red";
                                                         document.getElementById('txconfrimasenhat').style.borderColor = "red";
                                                         document.getElementById('btRegistrar').disabled = true;
-
                                                     } else {
                                                         document.getElementById('txtSenha').style.borderColor = "greenyellow";
                                                         document.getElementById('txconfrimasenhat').style.borderColor = "greenyellow";
                                                         document.getElementById('btRegistrar').disabled = false;
                                                     }
                                                 }
+                                                
                                                 function validarSenhaATT() {
                                                     if (document.getElementById('txtSenhaAtual').value == "") {
                                                         document.getElementById('btRegistrarATT').disabled = true;
@@ -503,6 +486,7 @@
                                                         document.getElementById('btRegistrarATT').disabled = false;
                                                     }
                                                 }
+                                                
                                                 function validarNovaSenhaATT() {
                                                     NovaSenha = document.getElementById('txtSenhaATT').value;
                                                     CNovaSenha = document.getElementById('txconfrimasenhatATT').value;
@@ -510,7 +494,6 @@
                                                         document.getElementById('txtSenhaATT').style.borderColor = "red";
                                                         document.getElementById('txconfrimasenhatATT').style.borderColor = "red";
                                                         document.getElementById('btRegistrarATT').disabled = true;
-
                                                     } else {
                                                         document.getElementById('txtSenhaATT').style.borderColor = "greenyellow";
                                                         document.getElementById('txconfrimasenhatATT').style.borderColor = "greenyellow";
@@ -519,6 +502,7 @@
                                                         }
                                                     }
                                                 }
+
                                                 $.datetimepicker.setLocale('pt-BR');
                                                 jQuery('#datetimepicker').datetimepicker({
                                                     format: 'd.m.Y H:i',
@@ -528,7 +512,7 @@
                                                         '09:00',
                                                         '11:00',
                                                         '12:00',
-                                                        '21:00'],
+                                                        '21:00']
                                                 });
         </script>
 
