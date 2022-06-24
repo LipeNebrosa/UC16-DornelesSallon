@@ -272,41 +272,41 @@
             <!--------------------------------------------------- INICIO DE SERVIÇOS---------------------------------------------------------------------------------------------------------------------------------------------------------------->
            
             <div class="servicos">
-            <table>
+                <div class="container">
 
-                <th>SERVIÇOS</th>
-                <tr>
-                    <td class="t1">CORTE DE CABELO</td>
-                    <td class="t2">R$40</td>
-                </tr>
-                <tr>
-                    <td class="t1">CORTE DE BARBA</td>
-                    <td class="t2">R$35</td>
-                </tr>
-                <tr>
-                    <td class="t1">BARBOTERAPIA</td>
-                    <td class="t2">R$50</td>
-                </tr>
-                <tr>
-                    <td class="t1">SOMBRANCELHA</td>
-                    <td class="t2">R$15</td>
-                </tr>
-                <tr>
-                    <td class="t1">ACABAMENTO DE CORTE</td>
-                    <td class="t2">R$15</td>
-                </tr>
-                <tr>
-                    <td class="t1">ACABAMENTO DE BARBA</td>
-                    <td class="t2">R$15</td>
-                </tr>
-                <tr>
-                    <td class="t1">MÁSCARA BLACK (LIMPEZA DE PELE)</td>
-                    <td class="t2">R$30</td>
-                </tr>
-                <tr>
-                    <td class="t1">SELAGEM</td>
-                    <td class="t2"> A PARTIR DE R$100</td>
-                </tr>
+                <h3>SERVIÇOS</h3>
+                <div class="row">
+                    <div class="t1">CORTE DE CABELO</div>
+                    <div class="t2">R$40</div>
+                </div>
+                <div>
+                    <div class="t1">CORTE DE BARBA</div>
+                    <div class="t2">R$35</div>
+                </div>
+                <div>
+                    <div class="t1">BARBOTERAPIA</div>
+                    <div class="t2">R$50</div>
+                </div>
+                <div>
+                    <div class="t1">SOMBRANCELHA</div>
+                    <div class="t2">R$15</div>
+                </div>
+                <div>
+                    <div class="t1">ACABAMENTO DE CORTE</div>
+                    <div class="t2">R$15</td>
+                </div>
+                <div>
+                    <div class="t1">ACABAMENTO DE BARBA</div>
+                    <div class="t2">R$15</div>
+                </div>
+                <div>
+                    <div class="t1">MÁSCARA BLACK (LIMPEZA DE PELE)</div>
+                    <div class="t2">R$30</div>
+                </div>
+                <div>
+                    <div class="t1">SELAGEM</div>
+                    <div class="t2"> A PARTIR DE R$100</div>
+                </div>
                 <tr>
                     <td class="t1">PINTURA DE CABELO</td>
                     <td class="t2">A PARTIR DE R$40</td></tr>
