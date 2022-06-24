@@ -50,7 +50,7 @@
     </head>
     <body>
 
-        <div id="principal">
+        <div  id="principal">
             <div>
 
                 <img class="logoleao" src="img/Logoo.png" width="47%" height="47%" alt="">
@@ -62,7 +62,7 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="home.jsp">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Sobre</a>
@@ -270,60 +270,71 @@
             </div>
             <!--------------------------------------------------- FIM MODAL DO REGISTRO---------------------------------------------------------------------------------------------------------------------------------------------------------------->
             <!--------------------------------------------------- INICIO DE SERVIÇOS---------------------------------------------------------------------------------------------------------------------------------------------------------------->
-           
-            <div class="servicos">
-                <div class="container">
+          
+            <div class="container">
+                <div class="ttlserv">
+            <h3 >SERVIÇOS</h3>
+           </div>
 
-                <h3>SERVIÇOS</h3>
-                <div class="row">
-                    <div class="t1">CORTE DE CABELO</div>
-                    <div class="t2">R$40</div>
+                    <div class="row">
+                        <div class="col">CORTE DE CABELO</div>
+                        <div class="col">R$40</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">CORTE DE BARBA</div>
+                        <div class="col">R$35</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">BARBOTERAPIA</div>
+                        <div class="col">R$50</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">SOMBRANCELHA</div>
+                        <div class="col">R$15</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">ACABAMENTO DE CORTE</div>
+                        <div class="col">R$15</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">ACABAMENTO DE BARBA</div>
+                        <div class="col">R$15</div>
+                    </div>
+                <div class="row" >
+                        <div class="col" >MÁSCARA BLACK (LIMPEZA DE PELE)</div>
+                        <div class="col">R$30</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">SELAGEM</div>
+                        <div class="col"> A PARTIR DE R$100</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">PINTURA DE CABELO</div>
+                        <div class="col">A PARTIR DE R$40</div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col">PINTURA DE BARBA</div>
+                        <div class="col">A PARTIR DE R$30</div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col">HIDRATAÇÃO</div>
+                        <div class="col">A PARTIR DE R$30</div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col">RELAXAMENTO</div>
+                        <div class="col">A PARTIR DE R$60</div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col">PINTURA DE BARBA</div>
+                        <div class="col">A PARTIR DE R$30</div>
+
+                    </div>
                 </div>
-                <div>
-                    <div class="t1">CORTE DE BARBA</div>
-                    <div class="t2">R$35</div>
-                </div>
-                <div>
-                    <div class="t1">BARBOTERAPIA</div>
-                    <div class="t2">R$50</div>
-                </div>
-                <div>
-                    <div class="t1">SOMBRANCELHA</div>
-                    <div class="t2">R$15</div>
-                </div>
-                <div>
-                    <div class="t1">ACABAMENTO DE CORTE</div>
-                    <div class="t2">R$15</td>
-                </div>
-                <div>
-                    <div class="t1">ACABAMENTO DE BARBA</div>
-                    <div class="t2">R$15</div>
-                </div>
-                <div>
-                    <div class="t1">MÁSCARA BLACK (LIMPEZA DE PELE)</div>
-                    <div class="t2">R$30</div>
-                </div>
-                <div>
-                    <div class="t1">SELAGEM</div>
-                    <div class="t2"> A PARTIR DE R$100</div>
-                </div>
-                <tr>
-                    <td class="t1">PINTURA DE CABELO</td>
-                    <td class="t2">A PARTIR DE R$40</td></tr>
-                <tr>
-                    <td class="t1">PINTURA DE BARBA</td>
-                    <td class="t2">A PARTIR DE R$30</td></tr>
-                <tr>
-                    <td class="t1">HIDRATAÇÃO</td>
-                    <td class="t2">A PARTIR DE R$30</td></tr>
-                <tr>
-                    <td class="t1">RELAXAMENTO</td>
-                    <td class="t2">A PARTIR DE R$60</td></tr>
-                <tr>
-                    <td class="t1">PINTURA DE BARBA</td>
-                    <td class="t2">A PARTIR DE R$30</td></tr>
-            </table>
-            </div>
+           
             <!--------------------------------------------------- FIM DE SERVIÇOS---------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 
@@ -332,7 +343,7 @@
 
 
 
-            <footer id="myFooter">
+            <footer style="margin-top: 8.4%; " id="myFooter">
                 <div class="container-fluid">
                     <div class="row">                                
 

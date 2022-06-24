@@ -197,6 +197,85 @@ if(request.getAttribute("idlogado") != null){
 
         </nav>
 
+        <!--------------------------------------------------- MODAL DO SERVIÇOS---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+            <div class="modal fade bd-example-modal-lg" id="modalServicos" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Serviços</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                           <div class="row">
+                        <div class="col-11">CORTE DE CABELO</div>
+                        <div class="col-1">R$40</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-11">CORTE DE BARBA</div>
+                        <div class="col-1">R$35</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-11">BARBOTERAPIA</div>
+                        <div class="col-1">R$50</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-11">SOMBRANCELHA</div>
+                        <div class="col-1">R$15</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-11">ACABAMENTO DE CORTE</div>
+                        <div class="col-1">R$15</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-11">ACABAMENTO DE BARBA</div>
+                        <div class="col-1">R$15</div>
+                    </div>
+                <div class="row" >
+                        <div class="col-11" >MÁSCARA BLACK (LIMPEZA DE PELE)</div>
+                        <div class="col-1">R$30</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-9">SELAGEM</div>
+                        <div class="col-3"> A PARTIR DE R$100</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-9">PINTURA DE CABELO</div>
+                        <div class="col-3">A PARTIR DE R$40</div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-9">PINTURA DE BARBA</div>
+                        <div class="col-3">A PARTIR DE R$30</div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-9">HIDRATAÇÃO</div>
+                        <div class="col-3">A PARTIR DE R$30</div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-9">RELAXAMENTO</div>
+                        <div class="col-3">A PARTIR DE R$60</div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-9">PINTURA DE BARBA</div>
+                        <div class="col-3">A PARTIR DE R$30</div>
+
+                    </div>
+                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--------------------------------------------------- FIM MODAL DO SERVIÇOS---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
 <!--        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <form action="UsuarioServlet" method="POST">
                 <div class="modal-dialog">
