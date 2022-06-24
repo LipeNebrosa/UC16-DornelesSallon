@@ -423,7 +423,7 @@
 
 
 
-            <!-- Modal -->
+            <!----------------------------------------------------- INICIO MODAL AGENDAMENTO------------------------------------------------------------------------------>
             <div class="modal fade bd-example-modal-xl" id="modal-agendamento" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl" role="document">
                     <div class="modal-content">
@@ -433,17 +433,21 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
-                            <input id="datetimepicker" type="text">
+                        <form action="UsuarioServlet" method="POST">
+                            <div class="modal-body">
 
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                            <button type="button" class="btn btn-primary">Salvar mudanças</button>
-                        </div>
+                                <input id="datetimepicker" type="text">
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                <button type="button" class="btn btn-primary">Salvar mudanças</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
+            <!----------------------------------------------------- FIM MODAL AGENDAMENTO------------------------------------------------------------------------------>
 
 
         </div>
@@ -464,7 +468,6 @@
                                                     $("#txtTelefone").mask("(00) 00000-0000");
                                                     $("#txtTelefoneATT").mask("(00) 00000-0000");
                                                 });
-                                                
                                                 function validarSenha() {
                                                     NovaSenha = document.getElementById('txtSenha').value;
                                                     CNovaSenha = document.getElementById('txconfrimasenhat').value;
@@ -478,7 +481,7 @@
                                                         document.getElementById('btRegistrar').disabled = false;
                                                     }
                                                 }
-                                                
+
                                                 function validarSenhaATT() {
                                                     if (document.getElementById('txtSenhaAtual').value == "") {
                                                         document.getElementById('btRegistrarATT').disabled = true;
@@ -486,7 +489,7 @@
                                                         document.getElementById('btRegistrarATT').disabled = false;
                                                     }
                                                 }
-                                                
+
                                                 function validarNovaSenhaATT() {
                                                     NovaSenha = document.getElementById('txtSenhaATT').value;
                                                     CNovaSenha = document.getElementById('txconfrimasenhatATT').value;
@@ -504,15 +507,40 @@
                                                 }
 
                                                 $.datetimepicker.setLocale('pt-BR');
+                                                var logic = function (currentDateTime) {
+                                                    // 'this' is jquery object datetimepicker
+                                                    if (currentDateTime.getDay() == 6) {
+                                                        this.setOptions({
+                                                            allowTimes: [
+                                                                '09:00',
+                                                                '11:00',
+                                                                '12:00',
+                                                                '21:00']
+                                                        });
+                                                    } else
+                                                        this.setOptions({
+                                                            allowTimes: [
+                                                                '10:00',
+                                                                '11:00',
+                                                                '12:00',
+                                                                '18:00']
+                                                        });
+                                                };
                                                 jQuery('#datetimepicker').datetimepicker({
+                                                    onChangeDateTime: logic,
+                                                    onShow: logic,
+                                                    allowTimes: [
+                                                        '10:00',
+                                                        '11:00',
+                                                        '12:00',
+                                                        '18:00'],
                                                     format: 'd.m.Y H:i',
                                                     minDate: '0',
                                                     inline: true,
-                                                    allowTimes: [
-                                                        '09:00',
-                                                        '11:00',
-                                                        '12:00',
-                                                        '21:00']
+                                                    //Horarios permitos
+
+                                                    //Datas desativadas
+                                                    disabledDates: [],
                                                 });
         </script>
 
