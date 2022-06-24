@@ -118,7 +118,7 @@ public class UsuarioServlet extends HttpServlet {
 
         String senha = request.getParameter("senha");
         String novaSenha = request.getParameter("novasenha");
-        String cpf = request.getParameter("CPF").replace(".", "").replace("-", "").replace(" ", "");
+        String cpf = request.getParameter("attCPF").replace(".", "").replace("-", "").replace(" ", "");
         Usuario user = new Usuario();
         Usuario loginUser = new Usuario();
         
@@ -131,7 +131,7 @@ public class UsuarioServlet extends HttpServlet {
             user.setId(Long.parseLong(request.getParameter("id")));
             user.setNome(request.getParameter("nome"));
             user.setCpf(cpf);
-            user.setDataNascimento(Date.valueOf(request.getParameter("dataNascimento")));
+            user.setDataNascimento(Date.valueOf(request.getParameter("attNascimento")));
             user.setTelefone(request.getParameter("dddTelefone"));
             user.setEmail(request.getParameter("email"));
             user.setSexo(request.getParameter("sexo"));

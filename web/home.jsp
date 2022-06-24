@@ -428,6 +428,8 @@
                                         <div class="d-flex col justify-content-center">
 
                                             <input type="hidden" name="id" value="<%=id%>" >
+                                            <input type="hidden" name="attCPF" value="<%=cpf%>" >
+                                            <input type="hidden" name="attNascimento" value="<%=nascimento%>" >
                                             <button class="btn btn-dark" disabled id="btRegistrarATT" type="submit">Atualizar</button>
                                         </div>
                                     </div>
