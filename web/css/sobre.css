@@ -160,16 +160,23 @@ body{
     margin-top: 5%;
     margin-bottom: -50px;
 }
+.sobre-galeria{
+    color:#555;
+    padding: 20px 100px 50px 100px;
+    overflow: auto;			
+    
+    
+}
+.ftsobre{
+    width: 10%;
+    float: left;
+    text-align: center; 
+}
+#btn btn-primary{
+    margin-top: 0.5rem;
 
-table, tr, td {
-  border: 1px solid black;
+    border-top-left-radius:  6%;
+    border-top-right-radius: 6% ;
+    border-bottom-left-radius: 6%;
+    border-bottom-right-radius: 6%;
 }
-		table {
-  width: 100%;
-  border: 1px solid;
-}
-		th {
-  
-  color: black;
-  
-		}
