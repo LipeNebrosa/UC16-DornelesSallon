@@ -1,40 +1,36 @@
 <%-- 
-    Document   : servicos
-    Created on : 03/06/2022, 08:46:16
+    Document   : sobre
+    Created on : 13/06/2022, 11:25:35
     Author     : sala303b
 --%>
+
 <%@page import="modelo.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     String nomeUser = "Login",
-            userMenu = "data-toggle='modal' data-target='#modal-login'",
-            redirectAdm = "",
-            btModal = "'#modal-login'";
+            mnUser = "data-toggle='modal' data-target='#modal-login'";
 
     //obs: tentar verificar o "null" no Usuario.
     if ((Boolean) session.getAttribute("statusLogin") != null) {
         if ((Boolean) session.getAttribute("statusLogin")) {
-            Usuario userLogado = (Usuario) session.getAttribute("usuario");
-            String[] primNome = userLogado.getNome().split(" ");
+            Usuario userLog = (Usuario) session.getAttribute("usuario");
+            String[] primNome = userLog.getNome().split(" ");
             nomeUser = primNome[0];
-            userMenu = "data-toggle='dropdown' aria-expanded='false'";
-            btModal = "'#modal-agendamento'";
-            if (userLogado.getEh_adm().equals("S")) {
-                redirectAdm = "<a class='dropdown-item' href='adm.jsp'>Administração</a>";
-            }
+            mnUser = "data-toggle='dropdown' aria-expanded='false'";
         }
     }
 
     if (request.getParameter("exitsession") != null) {
         session.invalidate();
         response.sendRedirect("home.jsp");
+        //  request.setAttribute("exitsession",null);
     }
 %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Serviços</title>
+        <title>Dornelles Salon</title>
 
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -42,14 +38,9 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.css">
-        <link rel="stylesheet" href="css/estilo.css">
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.38.0/js/tempusdominus-bootstrap-4.min.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.38.0/css/tempusdominus-bootstrap-4.min.css" crossorigin="anonymous" />
-
+        <link rel="stylesheet" href="css/sobre.css">
     </head>
     <body>
-
         <div id="principal">
             <div>
 
@@ -91,13 +82,12 @@
                         <li class="nav-item dropdown">
 
 
-                            <a style="color: white; font-size: 110%; margin-top: 18%" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" <%=userMenu%>>
+                            <a style="color: white; font-size: 110%; margin-top: 18%" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" <%=mnUser%>>
                                 <%=nomeUser%>
                             </a>    
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">Meus agendamentos</a>
-                                <a class="dropdown-item" href="#">Editar Perfil</a>
-                                <%=redirectAdm%>
+                                <a class="dropdown-item" href="#">Histórico</a>
                                 <a class="dropdown-item" href="home.jsp?exitsession=true">Sair</a>
                             </div>
                         </li>
@@ -106,12 +96,18 @@
 
                 <div>
                     <button id="bt" type="button" class="btn btn-light float-right btn-lg" style="margin-right: 15%" data-toggle="modal" 
-                            data-target=<%=btModal%>>
+                            data-target="#modal-login">
                         Agendar
                     </button>
                 </div>
 
             </nav>
+
+            <!--carrosel-->
+            <!--        <div id="meio" >
+                        <img id="imgctr" src="img/barbearia.jpg">
+                    </div>-->
+            <!--fim carrosel-->
 
             <div class="modal fade" id="modal-login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <form action="UsuarioServlet" method="POST">
@@ -123,7 +119,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body ajuste-body">
+                            <div class="modal-body">
 
                                 <input type="hidden" name="acao" value="login">
                                 <div class="container">
@@ -136,14 +132,17 @@
 
                                     <div class="row">
                                         <div class="col">
-                                            <input  class="form-control" type="password" id="txtpassword" name="senha" placeholder="Senha">
+                                            <input  class="form-control" type="password" id="txtpassword" name="senha" placeholder="Password">
                                         </div>
                                     </div >
                                     <div class="row">
-
-                                        <!-- BOTAR PRA FUNCIONAR SE DER TEMPO   <div class="col">
-                                        <label class="text-muted">Esqueceu a senha?</label>
-                                        </div>-->
+                                        <div class="col">
+                                            <input type="checkbox" name="remember" id="chkremember"/>
+                                            <label style=" color: black; font-size: 12px;"for="chkremember">Lembrar-se</label>
+                                        </div>
+                                        <div class="col">
+                                            <label class="text-muted">Esqueceu a senha?</label>
+                                        </div>
                                     </div >
                                     <div class="row">
                                         <div class="d-flex col justify-content-center ">
@@ -169,10 +168,8 @@
                     </div>
                 </form> 
             </div>
-            <!----------------------------------------------------FIM DO MODAL DE LOGIN----------------------------------------------------------------------------------------------------------------------------------->
-
             <!----------------------------------------------------MODAL DO REGISTRO---------------------------------------------------------------------------------------------------------------------------------------------------------------->
-            <div class="modal" id="modal-registro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modal-registro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -189,7 +186,7 @@
                             </div>
                         </div>
                         <div class="modal-body">
-                            <form action="UsuarioServlet" id="formRegistrar" method="POST" onsubmit="return validarSenha();">
+                            <form action="UsuarioServlet" method="POST">
                                 <input type="hidden" name="acao" value="cadastrar" >
                                 <div class="container">    
                                     <div class="row">
@@ -259,79 +256,237 @@
                                         <div class="d-flex col justify-content-center">
 
                                             <input type="hidden" name="id" >
-                                            <button class="btn btn-dark" type="submit">Registrar</button>
+                                            <button class="btn btn-dark " type="submit">Registrar</button>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
             <!--------------------------------------------------- FIM MODAL DO REGISTRO---------------------------------------------------------------------------------------------------------------------------------------------------------------->
-            <!--------------------------------------------------- INICIO DE SERVIÇOS---------------------------------------------------------------------------------------------------------------------------------------------------------------->
-           
-            <div class="servicos">
-                <div class="container">
-
-                <h3>SERVIÇOS</h3>
-                <div class="row">
-                    <div class="t1">CORTE DE CABELO</div>
-                    <div class="t2">R$40</div>
-                </div>
-                <div>
-                    <div class="t1">CORTE DE BARBA</div>
-                    <div class="t2">R$35</div>
-                </div>
-                <div>
-                    <div class="t1">BARBOTERAPIA</div>
-                    <div class="t2">R$50</div>
-                </div>
-                <div>
-                    <div class="t1">SOMBRANCELHA</div>
-                    <div class="t2">R$15</div>
-                </div>
-                <div>
-                    <div class="t1">ACABAMENTO DE CORTE</div>
-                    <div class="t2">R$15</td>
-                </div>
-                <div>
-                    <div class="t1">ACABAMENTO DE BARBA</div>
-                    <div class="t2">R$15</div>
-                </div>
-                <div>
-                    <div class="t1">MÁSCARA BLACK (LIMPEZA DE PELE)</div>
-                    <div class="t2">R$30</div>
-                </div>
-                <div>
-                    <div class="t1">SELAGEM</div>
-                    <div class="t2"> A PARTIR DE R$100</div>
-                </div>
-                <tr>
-                    <td class="t1">PINTURA DE CABELO</td>
-                    <td class="t2">A PARTIR DE R$40</td></tr>
-                <tr>
-                    <td class="t1">PINTURA DE BARBA</td>
-                    <td class="t2">A PARTIR DE R$30</td></tr>
-                <tr>
-                    <td class="t1">HIDRATAÇÃO</td>
-                    <td class="t2">A PARTIR DE R$30</td></tr>
-                <tr>
-                    <td class="t1">RELAXAMENTO</td>
-                    <td class="t2">A PARTIR DE R$60</td></tr>
-                <tr>
-                    <td class="t1">PINTURA DE BARBA</td>
-                    <td class="t2">A PARTIR DE R$30</td></tr>
-            </table>
+            <!--------------------------------------------------- INICIO DO SOBRE---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+            <div id="sobre-galeria">
+                <!-- Carousel wrapper -->
+<div
+  id="carouselMultiItemExample"
+  class="carousel slide carousel-dark text-center"
+  data-mdb-ride="carousel"
+>
+  <!-- Controls -->
+  <div class="d-flex justify-content-center mb-4">
+    <button
+      class="carousel-control-prev position-relative"
+      type="button"
+      data-mdb-target="#carouselMultiItemExample"
+      data-mdb-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next position-relative"
+      type="button"
+      data-mdb-target="#carouselMultiItemExample"
+      data-mdb-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <!-- Inner -->
+  <div class="carousel-inner py-4">
+    <!-- Single item -->
+    <div class="carousel-item active">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card">
+              <img
+                <img src="img/ftsobre.jpg"
+                class="card-img-top"
+                alt="Waterfall"
+              />
+              <div class="card-body">
+                <h5 class="card-title">UM GRUPO COM CENTENAS DE QUALIDADES</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up the bulk
+                  of the card's content.
+                </p>
+                <a href="#!" class="btn btn-primary">Button</a>
+              </div>
             </div>
-            <!--------------------------------------------------- FIM DE SERVIÇOS---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+          </div>
 
+          <div class="col-lg-4 d-none d-lg-block">
+            <div class="card">
+              <img src="img/carrosel.jpg"
+                class="card-img-top"
+                alt="Sunset Over the Sea"
+              />
+              <div class="card-body">
+                <h5 class="card-title">ATENDIMENTO INFANTIL</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up the bulk
+                  of the card's content.
+                </p>
+                <a href="#!" class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
 
+          <div class="col-lg-4 d-none d-lg-block">
+            <div class="card">
+              <img src="img/dorneles.jpg"
+                class="card-img-top"
+                alt="Sunset over the Sea"
+              />
+              <div class="card-body">
+                <h5 class="card-title">O NOSSO FOCO É A LEALDADE</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up the bulk
+                  of the card's content.
+                </p>
+                <a href="#!" class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- Single item -->
+    <div class="carousel-item">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-12">
+            <div class="card">
+              <img
+                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
+                class="card-img-top"
+                alt="Fissure in Sandstone"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up the bulk
+                  of the card's content.
+                </p>
+                <a href="#!" class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
 
+          <div class="col-lg-4 d-none d-lg-block">
+            <div class="card">
+              <img
+                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/185.webp"
+                class="card-img-top"
+                alt="Storm Clouds"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up the bulk
+                  of the card's content.
+                </p>
+                <a href="#!" class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
 
+          <div class="col-lg-4 d-none d-lg-block">
+            <div class="card">
+              <img
+                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/186.webp"
+                class="card-img-top"
+                alt="Hot Air Balloons"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up the bulk
+                  of the card's content.
+                </p>
+                <a href="#!" class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- Single item -->
+    <div class="carousel-item">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+            <div class="card">
+              <img
+                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/187.webp"
+                class="card-img-top"
+                alt="Peaks Against the Starry Sky"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up the bulk
+                  of the card's content.
+                </p>
+                <a href="#!" class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
 
+          <div class="col-lg-4 mb-4 mb-lg-0 d-none d-lg-block">
+            <div class="card">
+              <img
+                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/188.webp"
+                class="card-img-top"
+                alt="Bridge Over Water"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up the bulk
+                  of the card's content.
+                </p>
+                <a href="#!" class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mb-4 mb-lg-0 d-none d-lg-block">
+            <div class="card">
+              <img
+                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/189.webp"
+                class="card-img-top"
+                alt="Purbeck Heritage Coast"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up the bulk
+                  of the card's content.
+                </p>
+                <a href="#!" class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Inner -->
+</div>
+<!-- Carousel wrapper -->
+                
+
+                
+
+            </div>
+            <!--------------------------------------------------- FIM SOBRE---------------------------------------------------------------------------------------------------------------------------------------------------------------->
             <footer id="myFooter">
                 <div class="container-fluid">
                     <div class="row">                                
@@ -354,40 +509,22 @@
                 </div>        
             </footer>
 
-            <!-- Modal -->
-            <div class="modal fade bd-example-modal-xl" id="modal-agendamento" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-xl" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Agendamento</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                            <button type="button" class="btn btn-primary">Salvar mudanças</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <script type="text/javascript" src="js/jquery.js"></script>
-            <script type="text/javascript" src="js/bootstrap.js"></script>
-            <script type="text/javascript" src="js/jquery.mask.js"></script>
-            <script type="text/javascript">
-
-                                jQuery(document).ready(function ($) {
-
-                                    $("#txtCPF").mask("000.000.000-00");
-                                    $("#txtTelefone").mask("(00) 00000-0000");
-
-                                });
+        </div>
 
 
-            </script>
+
+
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/jquery.mask.js"></script>
+        <script type="text/javascript">
+
+            jQuery(document).ready(function ($) {
+
+                $("#txtCPF").mask("000.000.000-00");
+                $("#txtTelefone").mask("(00) 00000-0000");
+
+            });
+        </script>
     </body>
 </html>

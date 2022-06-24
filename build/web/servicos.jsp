@@ -3,8 +3,33 @@
     Created on : 03/06/2022, 08:46:16
     Author     : sala303b
 --%>
-
+<%@page import="modelo.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    String nomeUser = "Login",
+            userMenu = "data-toggle='modal' data-target='#modal-login'",
+            redirectAdm = "",
+            btModal = "'#modal-login'";
+
+    //obs: tentar verificar o "null" no Usuario.
+    if ((Boolean) session.getAttribute("statusLogin") != null) {
+        if ((Boolean) session.getAttribute("statusLogin")) {
+            Usuario userLogado = (Usuario) session.getAttribute("usuario");
+            String[] primNome = userLogado.getNome().split(" ");
+            nomeUser = primNome[0];
+            userMenu = "data-toggle='dropdown' aria-expanded='false'";
+            btModal = "'#modal-agendamento'";
+            if (userLogado.getEh_adm().equals("S")) {
+                redirectAdm = "<a class='dropdown-item' href='adm.jsp'>Administração</a>";
+            }
+        }
+    }
+
+    if (request.getParameter("exitsession") != null) {
+        session.invalidate();
+        response.sendRedirect("home.jsp");
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,63 +43,351 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/estilo.css">
-          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.38.0/js/tempusdominus-bootstrap-4.min.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.38.0/css/tempusdominus-bootstrap-4.min.css" crossorigin="anonymous" />
+
     </head>
     <body>
-        
-        <div>
-            <a class="logoleao" href="home.jsp">
-                <img src="img/Logoo.png" width="47%" height="47%" alt="">
-            </a>
-        </div>
 
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color:transparent;">
+        <div id="principal">
+            <div>
 
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sobre</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="servicos.jsp">Serviços</a>
-                    </li>
-                </ul>
+                <img class="logoleao" src="img/Logoo.png" width="47%" height="47%" alt="">
+
             </div>
-      
-        
-       <div class="modal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Sobre</a>
+                        </li>                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="servicos.jsp">Serviços</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+                <div>
+                    <ul >
+
+                        <li class="nav-item dropdown">
+
+                            <img style="margin-left:100%; margin-top: 5% "src="img/iconeUser.png" width="8%" height="8%" alt="">
+
+                        </li>
+                    </ul>
+                </div>  
+
+                <div>
+                    <ul style="list-style: none; margin-right: 0;">
+
+                        <li class="nav-item dropdown">
+
+
+                            <a style="color: white; font-size: 110%; margin-top: 18%" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" <%=userMenu%>>
+                                <%=nomeUser%>
+                            </a>    
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Meus agendamentos</a>
+                                <a class="dropdown-item" href="#">Editar Perfil</a>
+                                <%=redirectAdm%>
+                                <a class="dropdown-item" href="home.jsp?exitsession=true">Sair</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <button id="bt" type="button" class="btn btn-light float-right btn-lg" style="margin-right: 15%" data-toggle="modal" 
+                            data-target=<%=btModal%>>
+                        Agendar
+                    </button>
+                </div>
+
+            </nav>
+
+            <div class="modal fade" id="modal-login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <form action="UsuarioServlet" method="POST">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel" style="color:black; ">Login</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body ajuste-body">
+
+                                <input type="hidden" name="acao" value="login">
+                                <div class="container">
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <input   class="form-control" type="text" id="txtusername" name="username" placeholder="CPF ou Email">
+                                        </div>
+                                    </div >
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <input  class="form-control" type="password" id="txtpassword" name="senha" placeholder="Senha">
+                                        </div>
+                                    </div >
+                                    <div class="row">
+
+                                        <!-- BOTAR PRA FUNCIONAR SE DER TEMPO   <div class="col">
+                                        <label class="text-muted">Esqueceu a senha?</label>
+                                        </div>-->
+                                    </div >
+                                    <div class="row">
+                                        <div class="d-flex col justify-content-center ">
+                                            <label id="novoCliente" href="cadastro.jsp" style=" padding: 0;font-size: 12px; color: black; font-family:'Arial'; ">Ainda não nosso cliente?</label>
+                                        </div>
+                                    </div >
+                                    <div class="row">
+                                        <div class="d-flex col justify-content-center ">
+                                            <button type="button" class="btn btn-secondary justify-content-center" data-toggle="modal" data-target="#modal-registro" data-dismiss="modal">
+                                                Registrar
+                                            </button>
+                                        </div>
+                                    </div >
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
+                                <button type="submit" class="btn btn-primary btn-dark">Login</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form> 
+            </div>
+            <!----------------------------------------------------FIM DO MODAL DE LOGIN----------------------------------------------------------------------------------------------------------------------------------->
+
+            <!----------------------------------------------------MODAL DO REGISTRO---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+            <div class="modal" id="modal-registro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="d-flex col-lg justify-content-center">
+                                <blockquote class="blockquote text-center">
+                                    <h3>Olá!</h3>
+                                    <label>Vamos fazer o seu cadastro!</label>           
+                                </blockquote>
+                            </div>
+                            <div class="d-flex col-md-1 justify-content-center">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <form action="UsuarioServlet" id="formRegistrar" method="POST" onsubmit="return validarSenha();">
+                                <input type="hidden" name="acao" value="cadastrar" >
+                                <div class="container">    
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="txtnome">Nome Completo: </label>
+                                            </br>
+                                            <input required class="form-control R" size="35" type ="text" id="txtnome" name="nome" />
+                                        </div>
+                                    </div>
+                                    <div class="row">                    
+                                        <div class="col">
+                                            <label for="txtCPF">CPF: </label>
+                                            </br>
+                                            <input required class="form-control R" size="20" type ="text" id="txtCPF" name="CPF"  />
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">            
+                                            <label for="txtDataNascimento">Data de Nascimento: </label>
+                                            </br>
+                                            <input required class="form-control R" size="20" type ="date" id="txtDataNascimento" name="dataNascimento" />                      
+                                        </div>                
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="sltEscolaridade">Sexo: </label>
+                                            </br>
+                                            <select required class="form-control R" id="sltSexo" name="sexo">
+                                                <option value= "X" ></option>
+                                                <option value="M" >Masculino</option>
+                                                <option value="F">Feminino</option>
+                                                <option value="O">Outro</option>
+                                            </select>
+                                        </div>                   
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="txtemail">E-mail: </label>
+                                            </br>
+                                            <input required  class="form-control R" type ="email" id="txtemail" name="email" placeholder="exemplo@123.com" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="txtTelefone">Telefone:  </label>
+                                            </br>
+                                            <input required class="form-control R" type="text" id="txtTelefone" name="dddTelefone"  />
+                                        </div>
+                                    </div>    
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="txtSenha">Senha: </label></br>
+
+                                            <input required class="form-control R" type ="password" id="txtSenha" name="senha" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="txtconfirmasenha">Confirma senha: </label>
+                                            </br>
+                                            <input required class="form-control R"  type ="password" id="txconfrimasenhat" name="confirmasenha" />
+                                        </div>
+                                    </div>
+                                    </br>
+                                    <div class="row">
+                                        <div class="d-flex col justify-content-center">
+
+                                            <input type="hidden" name="id" >
+                                            <button class="btn btn-dark" type="submit">Registrar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--------------------------------------------------- FIM MODAL DO REGISTRO---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+            <!--------------------------------------------------- INICIO DE SERVIÇOS---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+           
+            <div class="servicos">
+                <div class="container">
+
+                <h3>SERVIÇOS</h3>
+                <div class="row">
+                    <div class="t1">CORTE DE CABELO</div>
+                    <div class="t2">R$40</div>
+                </div>
+                <div>
+                    <div class="t1">CORTE DE BARBA</div>
+                    <div class="t2">R$35</div>
+                </div>
+                <div>
+                    <div class="t1">BARBOTERAPIA</div>
+                    <div class="t2">R$50</div>
+                </div>
+                <div>
+                    <div class="t1">SOMBRANCELHA</div>
+                    <div class="t2">R$15</div>
+                </div>
+                <div>
+                    <div class="t1">ACABAMENTO DE CORTE</div>
+                    <div class="t2">R$15</td>
+                </div>
+                <div>
+                    <div class="t1">ACABAMENTO DE BARBA</div>
+                    <div class="t2">R$15</div>
+                </div>
+                <div>
+                    <div class="t1">MÁSCARA BLACK (LIMPEZA DE PELE)</div>
+                    <div class="t2">R$30</div>
+                </div>
+                <div>
+                    <div class="t1">SELAGEM</div>
+                    <div class="t2"> A PARTIR DE R$100</div>
+                </div>
+                <tr>
+                    <td class="t1">PINTURA DE CABELO</td>
+                    <td class="t2">A PARTIR DE R$40</td></tr>
+                <tr>
+                    <td class="t1">PINTURA DE BARBA</td>
+                    <td class="t2">A PARTIR DE R$30</td></tr>
+                <tr>
+                    <td class="t1">HIDRATAÇÃO</td>
+                    <td class="t2">A PARTIR DE R$30</td></tr>
+                <tr>
+                    <td class="t1">RELAXAMENTO</td>
+                    <td class="t2">A PARTIR DE R$60</td></tr>
+                <tr>
+                    <td class="t1">PINTURA DE BARBA</td>
+                    <td class="t2">A PARTIR DE R$30</td></tr>
+            </table>
+            </div>
+            <!--------------------------------------------------- FIM DE SERVIÇOS---------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 
 
 
 
-  
-</body>
+
+
+            <footer id="myFooter">
+                <div class="container-fluid">
+                    <div class="row">                                
+
+                        <div class="col-sm-6">
+                            <h5>Contatos</h5>
+                            <ul>
+                                <li><a href="https://www.instagram.com/dornelles__salon/">Instagram</a></li>
+                                <li><a href="https://www.facebook.com/alievertonsouza">Facebook</a></li>
+                                <li><a>Telefones</a></li>
+                            </ul>
+                        </div> 
+                        <div class="col-sm-6">
+                            <h5>Localização</h5>
+
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3744.552094930679!2d-40.2366429703511!3d-20.194366508466654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb81f220927caaf%3A0xc526b40c635f6dbd!2sDornelles%20Salon!5e0!3m2!1spt-BR!2sbr!4v1654266203171!5m2!1spt-BR!2sbr" 
+                                    width="400" height="130" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>        
+            </footer>
+
+            <!-- Modal -->
+            <div class="modal fade bd-example-modal-xl" id="modal-agendamento" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Agendamento</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary">Salvar mudanças</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script type="text/javascript" src="js/jquery.js"></script>
+            <script type="text/javascript" src="js/bootstrap.js"></script>
+            <script type="text/javascript" src="js/jquery.mask.js"></script>
+            <script type="text/javascript">
+
+                                jQuery(document).ready(function ($) {
+
+                                    $("#txtCPF").mask("000.000.000-00");
+                                    $("#txtTelefone").mask("(00) 00000-0000");
+
+                                });
+
+
+            </script>
+    </body>
 </html>
