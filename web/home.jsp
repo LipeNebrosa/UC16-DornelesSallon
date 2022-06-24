@@ -61,48 +61,6 @@
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/estilo.css">
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.38.0/js/tempusdominus-bootstrap-4.min.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.38.0/css/tempusdominus-bootstrap-4.min.css" crossorigin="anonymous" />
-
-        <script>
-            function validarSenha() {
-                NovaSenha = document.getElementById('txtSenha').value;
-                CNovaSenha = document.getElementById('txconfrimasenhat').value;
-                if (NovaSenha !== CNovaSenha) {
-                    document.getElementById('txtSenha').style.borderColor = "red";
-                    document.getElementById('txconfrimasenhat').style.borderColor = "red";
-                    document.getElementById('btRegistrar').disabled = true;
-
-                } else {
-                    document.getElementById('txtSenha').style.borderColor = "greenyellow";
-                    document.getElementById('txconfrimasenhat').style.borderColor = "greenyellow";
-                    document.getElementById('btRegistrar').disabled = false;
-                }
-            }
-            function validarSenhaATT() {
-                if (document.getElementById('txtSenhaAtual').value == "") {
-                    document.getElementById('btRegistrarATT').disabled = true;
-                } else {
-                    document.getElementById('btRegistrarATT').disabled = false;
-                }
-            }
-            function validarNovaSenhaATT() {
-                NovaSenha = document.getElementById('txtSenhaATT').value;
-                CNovaSenha = document.getElementById('txconfrimasenhatATT').value;
-                if (NovaSenha !== CNovaSenha) {
-                    document.getElementById('txtSenhaATT').style.borderColor = "red";
-                    document.getElementById('txconfrimasenhatATT').style.borderColor = "red";
-                    document.getElementById('btRegistrarATT').disabled = true;
-
-                } else {
-                    document.getElementById('txtSenhaATT').style.borderColor = "greenyellow";
-                    document.getElementById('txconfrimasenhatATT').style.borderColor = "greenyellow";
-                    if (document.getElementById('txtSenhaAtual').value !== "") {
-                        document.getElementById('btRegistrarATT').disabled = false;
-                    }
-                }
-            }
-        </script>
     </head>
 
     <body>
@@ -506,6 +464,44 @@
                                                     $("#txtTelefoneATT").mask("(00) 00000-0000");
 
                                                 });
+
+                                                function validarSenha() {
+                                                    NovaSenha = document.getElementById('txtSenha').value;
+                                                    CNovaSenha = document.getElementById('txconfrimasenhat').value;
+                                                    if (NovaSenha !== CNovaSenha) {
+                                                        document.getElementById('txtSenha').style.borderColor = "red";
+                                                        document.getElementById('txconfrimasenhat').style.borderColor = "red";
+                                                        document.getElementById('btRegistrar').disabled = true;
+
+                                                    } else {
+                                                        document.getElementById('txtSenha').style.borderColor = "greenyellow";
+                                                        document.getElementById('txconfrimasenhat').style.borderColor = "greenyellow";
+                                                        document.getElementById('btRegistrar').disabled = false;
+                                                    }
+                                                }
+                                                function validarSenhaATT() {
+                                                    if (document.getElementById('txtSenhaAtual').value == "") {
+                                                        document.getElementById('btRegistrarATT').disabled = true;
+                                                    } else {
+                                                        document.getElementById('btRegistrarATT').disabled = false;
+                                                    }
+                                                }
+                                                function validarNovaSenhaATT() {
+                                                    NovaSenha = document.getElementById('txtSenhaATT').value;
+                                                    CNovaSenha = document.getElementById('txconfrimasenhatATT').value;
+                                                    if (NovaSenha !== CNovaSenha) {
+                                                        document.getElementById('txtSenhaATT').style.borderColor = "red";
+                                                        document.getElementById('txconfrimasenhatATT').style.borderColor = "red";
+                                                        document.getElementById('btRegistrarATT').disabled = true;
+
+                                                    } else {
+                                                        document.getElementById('txtSenhaATT').style.borderColor = "greenyellow";
+                                                        document.getElementById('txconfrimasenhatATT').style.borderColor = "greenyellow";
+                                                        if (document.getElementById('txtSenhaAtual').value !== "") {
+                                                            document.getElementById('btRegistrarATT').disabled = false;
+                                                        }
+                                                    }
+                                                }
 
 
         </script>
