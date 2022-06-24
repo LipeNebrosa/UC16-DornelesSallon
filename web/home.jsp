@@ -10,7 +10,14 @@
     String nomeUser = "Login",
             userMenu = "data-toggle='modal' data-target='#modal-login'",
             redirectAdm = "",
-            btModal = "'#modal-login'";
+            btModal = "'#modal-login'",
+            id = "",
+            nome = "",
+            cpf = "",
+            nascimento = "",
+            sexo = "",
+            email = "",
+            telefone = "";
 
     //obs: tentar verificar o "null" no Usuario.
     if ((Boolean) session.getAttribute("statusLogin") != null) {
@@ -20,6 +27,15 @@
             nomeUser = primNome[0];
             userMenu = "data-toggle='dropdown' aria-expanded='false'";
             btModal = "'#modal-agendamento'";
+
+            id = String.valueOf(userLogado.getId());
+            nome = userLogado.getNome();
+            cpf = userLogado.getCpf();
+            nascimento = String.valueOf(userLogado.getDataNascimento());
+            sexo = userLogado.getSexo();
+            email = userLogado.getEmail();
+            telefone = userLogado.getTelefone();
+
             if (userLogado.getEh_adm().equals("S")) {
                 redirectAdm = "<a class='dropdown-item' href='adm.jsp'>Administração</a>";
             }
@@ -45,25 +61,6 @@
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/estilo.css">
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.38.0/js/tempusdominus-bootstrap-4.min.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.38.0/css/tempusdominus-bootstrap-4.min.css" crossorigin="anonymous" />
-
-        <script>
-            function validarSenha() {
-                NovaSenha = document.getElementById('txtSenha').value;
-                CNovaSenha = document.getElementById('txconfrimasenhat').value;
-                if (NovaSenha !== CNovaSenha) {
-                    document.getElementById('txtSenha').style.borderColor = "red";
-                    document.getElementById('txconfrimasenhat').style.borderColor = "red";
-                    document.getElementById('btRegistrar').disabled = true;
-
-                } else {
-                    document.getElementById('txtSenha').style.borderColor = "greenyellow";
-                    document.getElementById('txconfrimasenhat').style.borderColor = "greenyellow";
-                    document.getElementById('btRegistrar').disabled = false;
-                }
-            }
-        </script>
     </head>
 
     <body>
@@ -113,7 +110,7 @@
                             </a>    
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">Meus agendamentos</a>
-                                <a class="dropdown-item" href="#">Editar Perfil</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-atualizacao">Editar Perfil</a>
                                 <%=redirectAdm%>
                                 <a class="dropdown-item" href="home.jsp?exit=exit">Sair</a>
                             </div>
@@ -213,7 +210,7 @@
                             </div>
                         </div>
                         <div class="modal-body">
-                            <form action="UsuarioServlet" id="formRegistrar" method="POST">
+                            <form action="UsuarioServlet" id="formRegistrar" method="POST" autocomplete="off">
                                 <input type="hidden" name="acao" value="cadastrar" >
                                 <div class="container">    
                                     <div class="row">
@@ -254,7 +251,7 @@
                                         <div class="col">
                                             <label for="txtemail">E-mail: </label>
                                             </br>
-                                            <input required  class="form-control R" type ="email" id="txtemail" name="email" placeholder="exemplo@123.com" />
+                                            <input required  class="form-control R" type ="email" id="txtemail" name="email" placeholder="exemplo@123.com" autocomplete="off"/>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -268,21 +265,21 @@
                                         <div class="col">
                                             <label for="txtSenha">Senha: </label></br>
 
-                                            <input required class="form-control R" type ="password" id="txtSenha" name="senha" onkeyup="validarSenha();" />
+                                            <input required class="form-control R" type ="password" id="txtSenha" name="senha" onkeyup="validarSenha();" autocomplete="off"/>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col">
                                             <label for="txtconfirmasenha">Confirma senha: </label>
                                             </br>
-                                            <input required class="form-control R"  type ="password" id="txconfrimasenhat" name="confirmasenha" onkeyup="validarSenha();"/>
+                                            <input required class="form-control R"  type ="password" id="txconfrimasenhat" name="confirmasenha" onkeyup="validarSenha();" autocomplete="off"/>
                                         </div>
                                     </div>
                                     </br>
                                     <div class="row">
                                         <div class="d-flex col justify-content-center">
 
-                                            <input type="hidden" name="id" >
+
                                             <button class="btn btn-dark" disabled id="btRegistrar" type="submit">Registrar</button>
                                         </div>
                                     </div>
@@ -293,6 +290,115 @@
                 </div>
             </div>
             <!--------------------------------------------------- FIM MODAL DO REGISTRO---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+            <!----------------------------------------------------MODAL DE ATUALIZAÇÃO---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+            <div class="modal" id="modal-atualizacao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="d-flex col-lg justify-content-center">
+                                <blockquote class="blockquote text-center">
+                                    <h3>Atualização do seu cadastro:</h3>           
+                                </blockquote>
+                            </div>
+                            <div class="d-flex col-md-1 justify-content-center">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <form action="UsuarioServlet" id="formRegistrar" method="POST" autocomplete="off">
+                                <input type="hidden" name="acao" value="editar" >
+                                <div class="container">    
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="txtnome">Nome Completo: </label>
+                                            </br>
+                                            <input required class="form-control R" size="35" type ="text" id="txtnome" name="nome" value="<%=nome%>"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">                    
+                                        <div class="col">
+                                            <label for="txtCPF">CPF: </label>
+                                            </br>
+                                            <input required class="form-control R" size="20" type ="text" id="txtCPFatt" name="CPF" value="<%=cpf%>" disabled/>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">            
+                                            <label for="txtDataNascimento">Data de Nascimento: </label>
+                                            </br>
+                                            <input required class="form-control R" size="20" type ="date" id="txtDataNascimento" name="dataNascimento" value="<%=nascimento%>" disabled/>                      
+                                        </div>                
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="sltEscolaridade">Sexo: </label>
+                                            </br>
+                                            <select required class="form-control R" id="sltSexo" name="sexo">
+                                                <option value= "X"></option>
+                                                <option value="M" <%=sexo.equals("M") ? "selected" : ""%>>Masculino</option>
+                                                <option value="F" <%=sexo.equals("F") ? "selected" : ""%>>Feminino</option>
+                                                <option value="O" <%=sexo.equals("O") ? "selected" : ""%>>Outro</option>
+                                            </select>
+                                        </div>                   
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="txtemail">E-mail: </label>
+                                            </br>
+                                            <input required  class="form-control R" type ="email" id="txtemail" name="email" placeholder="exemplo@123.com" value="<%=email%>" autocomplete="off"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="txtTelefone">Telefone:  </label>
+                                            </br>
+                                            <input required class="form-control R" type="text" id="txtTelefoneATT" name="dddTelefone" value="<%=telefone%>" />
+                                        </div>
+                                    </div>    
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="txtSenha">Senha atual: </label></br>
+
+                                            <input required class="form-control R" type ="password" id="txtSenhaAtual" name="senha" autocomplete="off" onkeyup="validarSenhaATT();"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="txtSenha">Nova senha (opcional): </label></br>
+
+                                            <input class="form-control R" type ="password" id="txtSenhaATT" name="novasenha" onkeyup="validarNovaSenhaATT();" autocomplete="off"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="txtconfirmasenha">Confirmar nova senha (opcional): </label>
+                                            </br>
+                                            <input class="form-control R"  type ="password" id="txconfrimasenhatATT" name="confirmasenha" onkeyup="validarNovaSenhaATT();" autocomplete="off"/>
+                                        </div>
+                                    </div>
+                                    </br>
+                                    <div class="row">
+                                        <div class="d-flex col justify-content-center">
+
+                                            <input type="hidden" name="id" value="<%=id%>" >
+                                            <input type="hidden" name="attCPF" value="<%=cpf%>" >
+                                            <input type="hidden" name="attNascimento" value="<%=nascimento%>" >
+                                            <button class="btn btn-dark" disabled id="btRegistrarATT" type="submit">Atualizar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--------------------------------------------------- FIM MODAL DE ATUALIZAÇÃO---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
 
             <footer id="myFooter">
                 <div class="container-fluid">
@@ -353,9 +459,49 @@
                                                 jQuery(document).ready(function ($) {
 
                                                     $("#txtCPF").mask("000.000.000-00");
+                                                    $("#txtCPFatt").mask("000.000.000-00");
                                                     $("#txtTelefone").mask("(00) 00000-0000");
+                                                    $("#txtTelefoneATT").mask("(00) 00000-0000");
 
                                                 });
+
+                                                function validarSenha() {
+                                                    NovaSenha = document.getElementById('txtSenha').value;
+                                                    CNovaSenha = document.getElementById('txconfrimasenhat').value;
+                                                    if (NovaSenha !== CNovaSenha) {
+                                                        document.getElementById('txtSenha').style.borderColor = "red";
+                                                        document.getElementById('txconfrimasenhat').style.borderColor = "red";
+                                                        document.getElementById('btRegistrar').disabled = true;
+
+                                                    } else {
+                                                        document.getElementById('txtSenha').style.borderColor = "greenyellow";
+                                                        document.getElementById('txconfrimasenhat').style.borderColor = "greenyellow";
+                                                        document.getElementById('btRegistrar').disabled = false;
+                                                    }
+                                                }
+                                                function validarSenhaATT() {
+                                                    if (document.getElementById('txtSenhaAtual').value == "") {
+                                                        document.getElementById('btRegistrarATT').disabled = true;
+                                                    } else {
+                                                        document.getElementById('btRegistrarATT').disabled = false;
+                                                    }
+                                                }
+                                                function validarNovaSenhaATT() {
+                                                    NovaSenha = document.getElementById('txtSenhaATT').value;
+                                                    CNovaSenha = document.getElementById('txconfrimasenhatATT').value;
+                                                    if (NovaSenha !== CNovaSenha) {
+                                                        document.getElementById('txtSenhaATT').style.borderColor = "red";
+                                                        document.getElementById('txconfrimasenhatATT').style.borderColor = "red";
+                                                        document.getElementById('btRegistrarATT').disabled = true;
+
+                                                    } else {
+                                                        document.getElementById('txtSenhaATT').style.borderColor = "greenyellow";
+                                                        document.getElementById('txconfrimasenhatATT').style.borderColor = "greenyellow";
+                                                        if (document.getElementById('txtSenhaAtual').value !== "") {
+                                                            document.getElementById('btRegistrarATT').disabled = false;
+                                                        }
+                                                    }
+                                                }
 
 
         </script>
