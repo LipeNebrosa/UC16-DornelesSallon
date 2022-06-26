@@ -5,6 +5,7 @@
  */
 package controle;
 
+import com.sun.xml.rpc.processor.modeler.j2ee.xml.homeType;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
@@ -59,7 +60,6 @@ public class UsuarioServlet extends HttpServlet {
     private void logarUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String login = request.getParameter("username");
         String senha = request.getParameter("senha");
-        // String redirecionamento = "home.jsp";
 
         Usuario user = new Usuario();
         user.setEmail(login);
@@ -75,9 +75,8 @@ public class UsuarioServlet extends HttpServlet {
             response.sendRedirect("home.jsp");
 
         } else {
-            //falta implementar tela na home.jsp indicando falha no login. Fazer com if/else lendo este atributo.
-            request.setAttribute("erroLogin", true);
-            response.sendRedirect("home.jsp");
+            //falta implementar tela na home.jsp indicando falha no login. Fazer com if/else lendo este atributo
+            response.sendRedirect("home.jsp?msg=erroLogin");
         }
     }
 
@@ -98,20 +97,34 @@ public class UsuarioServlet extends HttpServlet {
         user.setSenha(senha);
         user.setTelefone(dddtelefone);
         user.setSexo(sexo);
-        long novoId = user.Cadastrar();
-        if (novoId > 0) {
 
-            request.setAttribute("idcliente", novoId);
-            request.getRequestDispatcher("listar.jsp").forward(request, response);
+        boolean jaTemCadastro = user.BuscarPorCPF(cpf);
 
-            response.sendRedirect("homecliente.jsp");
-
+        if (jaTemCadastro) {
+            response.sendRedirect("home.jsp?msg=CPF-CADASTRADO");
         } else {
-            String mensagem
-                    = "<h1>CADASTRO NÃO CONCLUIDO</h1>";
-            response.getWriter().print(mensagem);
+            long novoId = user.Cadastrar();
+            if (novoId > 0) {
+                boolean logou = user.Login();
 
+                if (logou) {
+                    HttpSession session = request.getSession();
+                    session.setAttribute("usuario", user);
+
+                    session.setAttribute("statusLogin", true);
+                    response.sendRedirect("home.jsp");
+
+                } else {
+                    //falta implementar tela na home.jsp indicando falha no login. Fazer com if/else lendo este atributo
+                    response.sendRedirect("home.jsp?msg=erroLogin");
+                }
+
+            } else {
+                response.sendRedirect("home.jsp?msg=ERRO-CADASTRO");
+
+            }
         }
+
     }
 
     private void editarUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -121,7 +134,7 @@ public class UsuarioServlet extends HttpServlet {
         String cpf = request.getParameter("attCPF").replace(".", "").replace("-", "").replace(" ", "");
         Usuario user = new Usuario();
         Usuario loginUser = new Usuario();
-        
+
         loginUser.setCpf(cpf);
         loginUser.setSenha(senha);
 
@@ -155,7 +168,7 @@ public class UsuarioServlet extends HttpServlet {
 
             }
         } else {
-                response.sendRedirect("home.jsp?msg=ERRO_LOGIN_DA_ATUALIZAÇÃO");
+            response.sendRedirect("home.jsp?msg=ERRO_LOGIN_DA_ATUALIZAÇÃO");
         }
     }
 

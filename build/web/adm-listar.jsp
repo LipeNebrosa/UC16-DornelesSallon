@@ -99,7 +99,7 @@
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="#">Alguma ação</a>
                             <a class="dropdown-item" href="#">Outra ação</a>
-                            <a class="dropdown-item" href="home.jsp?exitsession=true">Sair</a>
+                            <a class="dropdown-item" href="home.jsp?exit=exit">Sair</a>
                         </div>
                     </div>
                 </div>
