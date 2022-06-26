@@ -155,21 +155,28 @@ body{
 }
 
 .servicos{
-    margin-left: 35%;
-    margin-right: 15%;
-    margin-top: 5%;
-    margin-bottom: -50px;
+     
+    width: 100%;
+    padding: 2%;
+
+    
+}       
+
+.servicos .col {
+    padding: 1.5%;
+    margin-left: 8%;
+    font-size: 102%;
 }
 
-table, tr, td {
-  border: 1px solid black;
+#ModalTtlServicos{
+    margin-left: 40%;
+    font-size: 180%;
 }
-		table {
-  width: 100%;
-  border: 1px solid;
+
+.ttlserv {
+
+    color: black;
+    padding: 2%;
+    margin-left: 20%;
+  
 }
-		th {
-  
-  color: black;
-  
-		}
