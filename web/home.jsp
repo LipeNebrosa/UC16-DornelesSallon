@@ -543,26 +543,26 @@
                                                     });
 
 
-                                                    $("#btnBuscar").on("click", function (e) {
-
-                                                        $.ajax({
-                                                            url: "",
-                                                            method: "POST",
-                                                            success: function (resp) {
-                                                                if (resp.erro) {
-                                                                    alert("Erro ao buscar o CEP!");
-                                                                    return;
-                                                                }
-
-                                                            },
-                                                            error: function (err) {
-                                                                alert("Erro ao buscar o CEP" + err.toString());
-                                                            }
-                                                        });
-
-
-
-                                                    })
+//                                                    $("#btnBuscar").on("click", function (e) {
+//
+//                                                        $.ajax({
+//                                                            url: "",
+//                                                            method: "POST",
+//                                                            success: function (resp) {
+//                                                                if (resp.erro) {
+//                                                                    alert("Erro ao buscar o CEP!");
+//                                                                    return;
+//                                                                }
+//
+//                                                            },
+//                                                            error: function (err) {
+//                                                                alert("Erro ao buscar o CEP" + err.toString());
+//                                                            }
+//                                                        });
+//
+//
+//
+//                                                    });
 
 
                                                 });
