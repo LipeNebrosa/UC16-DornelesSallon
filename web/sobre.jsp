@@ -39,6 +39,8 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/sobre.css">
+        <link rel="stylesheet" href="css/estilo.css">
+        
     </head>
     <body>
         <div id="principal">
@@ -59,7 +61,7 @@
                             <a class="nav-link" href="sobre.jsp">Sobre</a>
                         </li>                    
                         <li class="nav-item">
-                            <a class="nav-link" href="servicos.jsp">Serviços</a>
+                            <a class="nav-link" data-toggle="modal" data-target="#modalServicos">Serviços</a>
                         </li>
 
                     </ul>
@@ -274,27 +276,6 @@
   class="carousel slide carousel-dark text-center"
   data-mdb-ride="carousel"
 >
-<!--   Controls -->
-<!--  <div class="d-flex justify-content-center mb-4">
-    <button
-      class="carousel-control-prev position-relative btn-dark "
-      type="button"
-      data-mdb-target="#carouselMultiItemExample"
-      data-mdb-slide="prev"
-    >
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button
-      class="carousel-control-next position-relative btn-dark"
-      type="button"
-      data-mdb-target="#carouselMultiItemExample"
-      data-mdb-slide="next"
-    >
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>-->
 <!--   Inner -->
   <div class="carousel-inner py-4">
 <!--     Single item -->
@@ -407,6 +388,8 @@
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">
+                  Some quick example text to build on the card title and make up the bulk
+                  of the card's content.
                   Some quick example text to build on the card title and make up the bulk
                   of the card's content.
                 </p>
