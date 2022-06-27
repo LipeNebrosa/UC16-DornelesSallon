@@ -39,6 +39,7 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/sobre.css">
+        <link rel="stylesheet" href="css/estilo.css">
     </head>
     <body>
         <div id="principal">
@@ -59,7 +60,7 @@
                             <a class="nav-link" href="sobre.jsp">Sobre</a>
                         </li>                    
                         <li class="nav-item">
-                            <a class="nav-link" href="servicos.jsp">Serviços</a>
+                            <a class="nav-link" data-toggle="modal" data-target="#modalServicos">Serviços</a>
                         </li>
 
                     </ul>
@@ -266,6 +267,82 @@
                 </div>
             </div>
             <!--------------------------------------------------- FIM MODAL DO REGISTRO---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+           
+                   <!--------------------------------------------------- MODAL DO SERVIÇOS---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+            <div class="modal fade bd-example-modal-lg" id="modalServicos" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ModalTtlServicos">Serviços</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body servicos">
+                            <div class="row">
+                                <div class="col">CORTE DE CABELO</div>
+                                <div class="col">R$40</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">CORTE DE BARBA</div>
+                                <div class="col">R$35</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">BARBOTERAPIA</div>
+                                <div class="col">R$50</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">SOMBRANCELHA</div>
+                                <div class="col">R$15</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">ACABAMENTO DE CORTE</div>
+                                <div class="col">R$15</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">ACABAMENTO DE BARBA</div>
+                                <div class="col">R$15</div>
+                            </div>
+                            <div class="row" >
+                                <div class="col" >MÁSCARA BLACK (LIMPEZA DE PELE)</div>
+                                <div class="col">R$30</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">SELAGEM</div>
+                                <div class="col"> A PARTIR DE R$100</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">PINTURA DE CABELO</div>
+                                <div class="col">A PARTIR DE R$40</div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col">PINTURA DE BARBA</div>
+                                <div class="col">A PARTIR DE R$30</div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col">HIDRATAÇÃO</div>
+                                <div class="col">A PARTIR DE R$30</div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col">RELAXAMENTO</div>
+                                <div class="col">A PARTIR DE R$60</div>
+
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+
+                    </div>
+                </div>
+            </div>
+      
+        <!--------------------------------------------------- FIM MODAL DO SERVIÇOS---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+            
             <!--------------------------------------------------- INICIO DO SOBRE---------------------------------------------------------------------------------------------------------------------------------------------------------------->
             <div id="sobre-galeria">
 <!--                 Carousel wrapper -->
@@ -492,7 +569,7 @@
                     <div class="row">                                
 
                         <div class="col-sm-6">
-                            <h5>Contatos</h5>
+                            <h5 style="margin-left: 4%">Contatos</h5>
                             <ul>
                                 <li><a href="https://www.instagram.com/dornelles__salon/">Instagram</a></li>
                                 <li><a href="https://www.facebook.com/alievertonsouza">Facebook</a></li>
