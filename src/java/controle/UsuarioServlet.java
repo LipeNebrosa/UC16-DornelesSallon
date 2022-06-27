@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modelo.Horario;
 import modelo.Usuario;
 
 /**
@@ -51,8 +52,11 @@ public class UsuarioServlet extends HttpServlet {
             case "login":
                 logarUsuario(request, response);
                 break;
+            case "cadHorario":
+                cadastrarHorario(request, response);
+                break;
             default:
-                response.sendRedirect("home.jsp?msg=erro");
+                response.sendRedirect("home.jsp?msg=erro-parametro-servlet");
 
         }
     }
@@ -180,6 +184,26 @@ public class UsuarioServlet extends HttpServlet {
             String mensagem
                     = "<h1>EXCLUSÃO NÃO CONCLUIDA</h1>";
             response.getWriter().print(mensagem);
+        }
+
+    }
+
+    private void cadastrarHorario(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        Horario hora = new Horario();
+
+        hora.setData(request.getParameter("..."));
+        hora.setHorario(request.getParameter("..."));
+        hora.setIdCliente(Integer.parseInt(request.getParameter("...")));
+
+        long cadastrou = hora.CadastrarHorario();
+
+        if (cadastrou > 0) {
+
+            response.sendRedirect("home.jsp?msg=HORARIO-CADASTRADO");
+
+        } else {
+            response.sendRedirect("home.jsp?msg=ERRO-HORARIO-NAO-CADASTRADO");
         }
 
     }

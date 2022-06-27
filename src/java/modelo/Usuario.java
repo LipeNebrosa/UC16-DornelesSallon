@@ -111,6 +111,7 @@ public class Usuario {
         this.eh_adm = eh_adm;
     }
 
+    ///////////////////////////////////
     public boolean Login() {
         try {
             Connection conn = BancoDados.getConexao();
@@ -207,7 +208,7 @@ public class Usuario {
 
     public static boolean Excluir(long id) {
         try {
-            Connection conn = BancoDados.getConexao(); //conectar com o bando de dados e enviar os dados salvos da classe Usuario.
+            Connection conn = BancoDados.getConexao();
             String sql = "DELETE FROM usuario WHERE id = ?; ";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setLong(1, id);
@@ -288,8 +289,8 @@ public class Usuario {
             return false;
         }
     }
-    
-        public boolean BuscarPorCPF(String cpf) {
+
+    public boolean BuscarPorCPF(String cpf) {
 
         try {
 
@@ -304,6 +305,56 @@ public class Usuario {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return false;
+        }
+    }
+
+    public boolean TornarADM(String cpf, String eh_adm) {
+        try {
+            Connection conn = BancoDados.getConexao();
+            String sql = "UPDATE usuario SET eh_adm = ? WHERE cpf = ?;";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, eh_adm);
+            ps.setString(2, cpf);
+            int linhasafetadas = ps.executeUpdate();
+            if (linhasafetadas > 0) {
+                System.out.println("Adm registrado com sucesso!");
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro registro de adm: " + e.getMessage());
+            return false;
+        }
+
+    }
+
+    public List<Usuario> ListarADMs() {
+        try {
+
+            Connection conn = BancoDados.getConexao();
+            String sql = "SELECT * FROM usuario WHERE eh_adm = S; ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            List<Usuario> lista = new ArrayList();
+            final ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Usuario u = new Usuario();
+                u.setId(rs.getInt("id"));
+                u.setNome(rs.getString("nome"));
+                u.setCpf(rs.getString("cpf"));
+                u.setSexo(rs.getString("sexo"));
+                u.setTelefone(rs.getString("telefone"));
+                u.setDataNascimento(rs.getDate("dataNascimento"));
+                u.setEmail(rs.getString("email"));
+                u.setDataCadastro(rs.getDate("dtcadastro"));
+                lista.add(u);
+            }
+            return lista;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
         }
     }
 }

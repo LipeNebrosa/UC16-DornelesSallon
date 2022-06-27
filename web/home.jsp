@@ -19,7 +19,6 @@
             email = "",
             telefone = "";
 
-    //obs: tentar verificar o "null" no Usuario.
     if ((Boolean) session.getAttribute("statusLogin") != null) {
         if ((Boolean) session.getAttribute("statusLogin")) {
             Usuario userLogado = (Usuario) session.getAttribute("usuario");
