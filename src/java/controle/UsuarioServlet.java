@@ -192,9 +192,9 @@ public class UsuarioServlet extends HttpServlet {
 
         Horario hora = new Horario();
 
-        hora.setData(request.getParameter("..."));
-        hora.setHorario(request.getParameter("..."));
-        hora.setIdCliente(Integer.parseInt(request.getParameter("...")));
+        hora.setData(request.getParameter("dataAgendamento"));
+        hora.setHorario(request.getParameter("hora"));
+        hora.setIdCliente(Integer.parseInt(request.getParameter("idCliente")));
 
         long cadastrou = hora.CadastrarHorario();
 

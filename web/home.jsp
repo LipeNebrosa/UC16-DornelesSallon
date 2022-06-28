@@ -496,6 +496,7 @@
 
                         <form action="UsuarioServlet" id="formHorario" method="POST" autocomplete="off">
                             <input type="hidden" name="acao" value="cadHorario">
+                            <input type="hidden" name="idCliente" value="<%=id%>">
                             <div class="modal-body">
                                 <div class="container">
                                     <div class="row">
@@ -519,7 +520,7 @@
                                         <div class="col-sm">
                                             <label for="slHorario">Horario:  </label>
                                             &nbsp;
-                                            <select required class="form-control R" id="sltHora" name="hora">                                                <option value= ""></option>
+                                            <select required class="form-control R" id="sltHora" name="hora">
                                                 <option value="9:00" >9:00</option>
                                                 <option value="10:30" >10:00</option>
                                                 <option value="11:00" >11:00</option>
@@ -639,15 +640,15 @@
                                                     $('#datetimepicker13').datetimepicker({
                                                         format: 'L',
                                                         inline: true,
-                                                        daysOfWeekDisabled: [0, 1]
-
+                                                        daysOfWeekDisabled: [0, 1],
+                                                        minDate: moment()
                                                     });
                                                    // $(".picker-switch.accordion-toggle").html("");
 
                                                     $("#datetimepicker13").on("change.datetimepicker", function (e) {
                                                         let diaselecionado = $(".day.active").data("day");
                                                       //  console.log(diaselecionado);
-                                                        document.getElementById('dataAgendam').value = (e.date);
+                                                        document.getElementById('dataAgendam').value = diaselecionado;
                                                         console.log(document.getElementById('dataAgendam').value);
                                                     });
 
@@ -656,6 +657,7 @@
                                                 function validarSenha() {
                                                     NovaSenha = document.getElementById('txtSenha').value;
                                                     CNovaSenha = document.getElementById('txconfrimasenhat').value;
+                                                    
                                                     if (NovaSenha !== CNovaSenha) {
                                                         document.getElementById('txtSenha').style.borderColor = "red";
                                                         document.getElementById('txconfrimasenhat').style.borderColor = "red";
