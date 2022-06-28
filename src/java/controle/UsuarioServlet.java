@@ -192,7 +192,7 @@ public class UsuarioServlet extends HttpServlet {
 
         Horario hora = new Horario();
 
-        hora.setData(request.getParameter("dataAgendamento"));
+        hora.setData(Date.valueOf(request.getParameter("dataAgendamento")));
         hora.setHorario(request.getParameter("hora"));
         hora.setIdCliente(Integer.parseInt(request.getParameter("idCliente")));
 

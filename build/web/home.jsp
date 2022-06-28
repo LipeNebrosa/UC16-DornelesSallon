@@ -646,9 +646,9 @@
                                                    // $(".picker-switch.accordion-toggle").html("");
 
                                                     $("#datetimepicker13").on("change.datetimepicker", function (e) {
-                                                        let diaselecionado = $(".day.active").data("day");
-                                                      //  console.log(diaselecionado);
-                                                        document.getElementById('dataAgendam').value = diaselecionado;
+                                                       //let diaselecionado = $(".day.active").data("day");
+                                                       // console.log((e.date).format('YYYY-MM-DD'));
+                                                        document.getElementById('dataAgendam').value = (e.date).format('YYYY-MM-DD');
                                                         console.log(document.getElementById('dataAgendam').value);
                                                     });
 

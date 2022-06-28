@@ -1,6 +1,7 @@
 package modelo;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,7 +13,7 @@ import util.BancoDados;
 public class Horario {
 
     private int id;
-    private String data;
+    private Date data;
     private String horario;
     private int idFuncionario;
     private int idServico;
@@ -26,11 +27,11 @@ public class Horario {
         this.id = id;
     }
 
-    public String getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(Date data) {
         this.data = data;
     }
 
@@ -72,10 +73,10 @@ public class Horario {
         try {
 
             Connection conn = BancoDados.getConexao();
-            String sql = "INSERT INTO agenda ( data, horario, idcliente) VALUES (?,?,?);";
+            String sql = "INSERT INTO agenda ( dtagenda, horario, idcliente) VALUES (?,?,?);";
             PreparedStatement ps = conn.prepareStatement(sql,
                     Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, this.getData());
+            ps.setDate(1, this.getData());
             ps.setString(2, this.getHorario());
             ps.setInt(3, this.getIdCliente());
 
@@ -124,7 +125,7 @@ public class Horario {
         try {
 
             Connection conn = BancoDados.getConexao();
-            String sql = "SELECT * FROM agenda; ";
+            String sql = "SELECT *  FROM bdbarbearia.agenda ORDER BY dtagenda,horario ASC;";
             PreparedStatement ps = conn.prepareStatement(sql);
             List<Horario> lista = new ArrayList();
             final ResultSet rs = ps.executeQuery();
@@ -132,7 +133,7 @@ public class Horario {
 
                 Horario h = new Horario();
                 h.setId(rs.getInt("id"));
-                h.setData(rs.getString("data"));
+                h.setData(rs.getDate("data"));
                 h.setHorario(rs.getString("horario"));
                 h.setIdCliente(rs.getInt("idcliente"));
                 lista.add(h);
@@ -158,7 +159,7 @@ public class Horario {
 
                 Horario h = new Horario();
                 h.setId(rs.getInt("id"));
-                h.setData(rs.getString("data"));
+                h.setData(rs.getDate("data"));
                 h.setHorario(rs.getString("horario"));
                 h.setIdCliente(rs.getInt("idcliente"));
                 lista.add(h);
