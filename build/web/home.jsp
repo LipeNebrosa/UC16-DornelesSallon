@@ -39,8 +39,8 @@
                 redirectAdm = "<a class='dropdown-item' href='adm.jsp'>Administração</a>";
             }
         }
-    }else{//fazer codigo de msg com erro de login
-        }
+    } else {//fazer codigo de msg com erro de login
+    }
 
     if (request.getParameter("exit") != null) {
         session.invalidate();
@@ -59,8 +59,12 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.css">
-        <link rel="stylesheet" href="css/estilo.css">
 
+
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.css">
+        <link rel="stylesheet" type="text/css" href="css/tempusdominus-bootstrap-4.css">
+
+        <link rel="stylesheet" href="css/estilo.css">
     </head>
 
     <body>
@@ -463,12 +467,7 @@
                                 <div class="col">RELAXAMENTO</div>
                                 <div class="col">A PARTIR DE R$60</div>
 
-                            </div>
-                            <div class="row">
-                                <div class="col">PINTURA DE BARBA</div>
-                                <div class="col">A PARTIR DE R$30</div>
-
-                            </div>
+                            </div>                            
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -477,44 +476,185 @@
                     </div>
                 </div>
             </div>
-      
-        <!--------------------------------------------------- FIM MODAL DO SERVIÇOS---------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
-        <footer id="myFooter">
-            <div class="container-fluid">
-                <div class="row">                                
+            <!--------------------------------------------------- FIM MODAL DO SERVIÇOS---------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
-                    <div class="col-sm-6">
-                        <h5>Contatos</h5>
-                        <ul>
-                            <li><a href="https://www.instagram.com/dornelles__salon/">Instagram</a></li>
-                            <li><a href="https://www.facebook.com/alievertonsouza">Facebook</a></li>
-                            <li><a>Telefones</a></li>
-                        </ul>
-                    </div> 
-                    <div class="col-sm-6">
-                        <h5>Localização</h5>
 
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3744.552094930679!2d-40.2366429703511!3d-20.194366508466654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb81f220927caaf%3A0xc526b40c635f6dbd!2sDornelles%20Salon!5e0!3m2!1spt-BR!2sbr!4v1654266203171!5m2!1spt-BR!2sbr" 
-                                width="400" height="130" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+            <!----------------------------------------------------- INICIO MODAL AGENDAMENTO------------------------------------------------------------------------------>
+            <div class="modal fade" id="modal-agendamento" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Agendamento</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+
+                        <form action="UsuarioServlet" id="formHorario" method="POST" autocomplete="off">
+                            <input type="hidden" name="acao" value="cadHorario">
+                            <div class="modal-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <label >Data:  </label>
+                                            &nbsp;
+                                            <div style="overflow:hidden;">
+                                                <div class="form-group">
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-md-8">
+                                                            <div id="datetimepicker13"></div>
+                                                            <input type="hidden" id="dataAgendam" name="dataAgendamento" value=""/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <label for="slHorario">Horario:  </label>
+                                            &nbsp;
+                                            <select required class="form-control R" id="sltSexo" name="sexo">
+                                                <option value= "X"></option>
+                                                <option value="M" >17:00</option>
+                                                <option value="F" >17:30</option>
+                                                <option value="O" >18:00</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                    <button type="submit" class="btn btn-primary">Agendar</button>
+                                </div>
+
+                            </div>
+                        </form>
+
+            <footer id="myFooter">
+                <div class="container-fluid">
+                    <div class="row">                                
+
+                        <div class="col-sm-2">
+                            <h5 style="margin-left: 15%">Contatos</h5>
+                            <ul>
+                                <li><a href="https://www.instagram.com/dornelles__salon/"> <img style="width: 14%; margin-left: 0%" src="img/instagram midia.png"/></a>
+                                    <p style="margin-top:-12%; margin-left: 35%">@DornellesSalon</p></li>
+                                <!--<li><a href="https://www.instagram.com/dornelles__salon/">@DornellesSalon</a></li>-->
+                                <li><a href="https://www.facebook.com/alievertonsouza"> <img style="width: 14%; margin-left: 0%; margin-top: 6%" src="img/facebook quadrado.png"/></a>
+                                        <p style="margin-top:-12%; margin-left: 35%">@DornellesSalon</p></li>                                
+                                <!--<li><a href="https://www.facebook.com/alievertonsouza">@DornellesSalon</a></li>-->
+                                <li><img style="width: 14%; margin-left: 15%; margin-top: 6%" src="img/111025_phone_icon.png"/><p style="margin-top:-12%; margin-left: 35%">(27)3209-1647</p></li>
+                            </ul>
+                        </div> 
+                        <div class="col-sm-6">
+                            <h5 style="margin-left: 15%">Localização</h5>
+
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3744.552094930679!2d-40.2366429703511!3d-20.194366508466654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb81f220927caaf%3A0xc526b40c635f6dbd!2sDornelles%20Salon!5e0!3m2!1spt-BR!2sbr!4v1654266203171!5m2!1spt-BR!2sbr" 
+                                    width="700" height="130" style="border:0; margin-left: 15%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                            <br>                                
+                            <p style="margin-left: 50%; margin-top: 3%"> CopyRight &COPY;</p>
+
+                        </div>
+                        <div class="col-sm-4">
+                            <h5>Horários de atendimento</h5>
+
+                            <ul class="opening_times">
+                                <li>
+                                    <span class="day">Domingo</span>
+                                    <span style="margin-left: 13%" class="time">Fechado</span>
+                                </li>
+                                <li>
+                                    <span class="day">Segunda</span>
+                                    <span style="margin-left: 13%" class="time">Fechado</span>
+                                </li>
+                                <li>
+                                    <span class="day">Terça</span>
+                                    <span style="margin-left: 12%" class="time">09:00 - 20:00</span>
+                                </li>
+                                <li>
+                                    <span class="day">Quarta</span>
+                                    <span style="margin-left: 10.3%" class="time">09:00 - 20:00</span>
+                                </li>
+                                <li>
+                                    <span class="day">Quinta</span>
+                                    <span style="margin-left: 10.5%" class="time">09:00 - 20:00</span>
+                                </li>
+                                <li>
+                                    <span class="day">Sexta</span>
+                                    <span style="margin-left: 11.5%" class="time">09:00 - 20:00</span>
+                                </li>
+                                <li>
+                                    <span class="day">Sábado</span>
+                                    <span style="margin-left: 9.2%" class="time">09:00 - 20:00</span>
+                                </li>
+                            </ul>
+
+                        </div>
+
                     </div>
-                </div>
-            </div>        
-        </footer>
+
+
+            </div>
+            <!----------------------------------------------------- FIM MODAL AGENDAMENTO------------------------------------------------------------------------------>
+
+
+            <footer id="myFooter">
+                <div class="container-fluid">
+                    <div class="row">                                
+
+                        <div class="col-sm-6">
+                            <h5>Contatos</h5>
+                            <ul>
+                                <li><a href="https://www.instagram.com/dornelles__salon/">Instagram</a></li>
+                                <li><a href="https://www.facebook.com/alievertonsouza">Facebook</a></li>
+                                <li><a>Telefones</a></li>
+                            </ul>
+                        </div> 
+                        <div class="col-sm-6">
+                            <h5>Localização</h5>
+
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3744.552094930679!2d-40.2366429703511!3d-20.194366508466654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb81f220927caaf%3A0xc526b40c635f6dbd!2sDornelles%20Salon!5e0!3m2!1spt-BR!2sbr!4v1654266203171!5m2!1spt-BR!2sbr" 
+                                    width="400" height="130" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>        
+            </footer>
+
+
+
+        </div>
+
+        </div>        
+    </footer>
 
 
 
 
 
-    </div>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/jquery.mask.js"></script>
+        <script type="text/javascript" src="js/popper.js" ></script>
+        <script type="text/javascript" src="js/moment.js" ></script>
+        <script type="text/javascript" src="js/locale/pt-br.js" ></script>
+        <script type="text/javascript" src="js/tempusdominus-bootstrap-4.js" ></script>
+
+
+        <script type="text/javascript">
 
 
 
 
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
-    <script type="text/javascript" src="js/jquery.mask.js"></script>
-    <script type="text/javascript">
+
+
+
 
                                                 jQuery(document).ready(function ($) {
 
@@ -563,10 +703,25 @@
                                                     }
                                                 }
 
+                                                $(function () {
+                                                    $('#datetimepicker13').datetimepicker({
+                                                        
+                                                        sideBySide: false,
+                                                        inline: true,
+                                                        
+                                                        
+                                                    });
+                                                    $(".picker-switch.accordion-toggle").html("");
+                                                    $ document.getElementById("dataAgendam").value =  
+                                                });
 
-    </script>
 
-</body>
+        </script>
+
+
+
+
+    </body>
 
 
 </html>

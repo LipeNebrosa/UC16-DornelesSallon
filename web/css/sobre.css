@@ -96,6 +96,7 @@ body{
 #myFooter a {
     color: #d2d1d1;
     text-decoration: none;
+    margin-left: 4%;
 }
 
 #myFooter a:hover,
