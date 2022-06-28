@@ -535,6 +535,11 @@
 
                             </div>
                         </form>
+                    </div>
+
+                </div>        
+            </div>        
+<!----------------------------------------------------- FIM MODAL AGENDAMENTO------------------------------------------------------------------------------>
 
             <footer id="myFooter">
                 <div class="container-fluid">
@@ -547,7 +552,7 @@
                                     <p style="margin-top:-12%; margin-left: 35%">@DornellesSalon</p></li>
                                 <!--<li><a href="https://www.instagram.com/dornelles__salon/">@DornellesSalon</a></li>-->
                                 <li><a href="https://www.facebook.com/alievertonsouza"> <img style="width: 14%; margin-left: 0%; margin-top: 6%" src="img/facebook quadrado.png"/></a>
-                                        <p style="margin-top:-12%; margin-left: 35%">@DornellesSalon</p></li>                                
+                                    <p style="margin-top:-12%; margin-left: 35%">@DornellesSalon</p></li>                                
                                 <!--<li><a href="https://www.facebook.com/alievertonsouza">@DornellesSalon</a></li>-->
                                 <li><img style="width: 14%; margin-left: 15%; margin-top: 6%" src="img/111025_phone_icon.png"/><p style="margin-top:-12%; margin-left: 35%">(27)3209-1647</p></li>
                             </ul>
@@ -597,57 +602,23 @@
                             </ul>
 
                         </div>
-
                     </div>
-
-
-            </div>
-            <!----------------------------------------------------- FIM MODAL AGENDAMENTO------------------------------------------------------------------------------>
-
-
-            <footer id="myFooter">
-                <div class="container-fluid">
-                    <div class="row">                                
-
-                        <div class="col-sm-6">
-                            <h5>Contatos</h5>
-                            <ul>
-                                <li><a href="https://www.instagram.com/dornelles__salon/">Instagram</a></li>
-                                <li><a href="https://www.facebook.com/alievertonsouza">Facebook</a></li>
-                                <li><a>Telefones</a></li>
-                            </ul>
-                        </div> 
-                        <div class="col-sm-6">
-                            <h5>Localização</h5>
-
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3744.552094930679!2d-40.2366429703511!3d-20.194366508466654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb81f220927caaf%3A0xc526b40c635f6dbd!2sDornelles%20Salon!5e0!3m2!1spt-BR!2sbr!4v1654266203171!5m2!1spt-BR!2sbr" 
-                                    width="400" height="130" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                    </div>
-                </div>        
+                </div>
             </footer>
 
 
 
-        </div>
 
-        </div>        
-    </footer>
-
-
-
-
-
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/bootstrap.js"></script>
-        <script type="text/javascript" src="js/jquery.mask.js"></script>
-        <script type="text/javascript" src="js/popper.js" ></script>
-        <script type="text/javascript" src="js/moment.js" ></script>
-        <script type="text/javascript" src="js/locale/pt-br.js" ></script>
-        <script type="text/javascript" src="js/tempusdominus-bootstrap-4.js" ></script>
+            <script type="text/javascript" src="js/jquery.js"></script>
+            <script type="text/javascript" src="js/bootstrap.js"></script>
+            <script type="text/javascript" src="js/jquery.mask.js"></script>
+            <script type="text/javascript" src="js/popper.js" ></script>
+            <script type="text/javascript" src="js/moment.js" ></script>
+            <script type="text/javascript" src="js/locale/pt-br.js" ></script>
+            <script type="text/javascript" src="js/tempusdominus-bootstrap-4.js" ></script>
 
 
-        <script type="text/javascript">
+            <script type="text/javascript">
 
 
 
@@ -656,67 +627,66 @@
 
 
 
-                                                jQuery(document).ready(function ($) {
+                                            jQuery(document).ready(function ($) {
 
-                                                    $("#txtCPF").mask("000.000.000-00");
-                                                    $("#txtCPFatt").mask("000.000.000-00");
-                                                    $("#txtTelefone").mask("(00) 00000-0000");
-                                                    $("#txtTelefoneATT").mask("(00) 00000-0000");
+                                                $("#txtCPF").mask("000.000.000-00");
+                                                $("#txtCPFatt").mask("000.000.000-00");
+                                                $("#txtTelefone").mask("(00) 00000-0000");
+                                                $("#txtTelefoneATT").mask("(00) 00000-0000");
 
-                                                });
+                                            });
 
-                                                function validarSenha() {
-                                                    NovaSenha = document.getElementById('txtSenha').value;
-                                                    CNovaSenha = document.getElementById('txconfrimasenhat').value;
-                                                    if (NovaSenha !== CNovaSenha) {
-                                                        document.getElementById('txtSenha').style.borderColor = "red";
-                                                        document.getElementById('txconfrimasenhat').style.borderColor = "red";
-                                                        document.getElementById('btRegistrar').disabled = true;
+                                            function validarSenha() {
+                                                NovaSenha = document.getElementById('txtSenha').value;
+                                                CNovaSenha = document.getElementById('txconfrimasenhat').value;
+                                                if (NovaSenha !== CNovaSenha) {
+                                                    document.getElementById('txtSenha').style.borderColor = "red";
+                                                    document.getElementById('txconfrimasenhat').style.borderColor = "red";
+                                                    document.getElementById('btRegistrar').disabled = true;
 
-                                                    } else {
-                                                        document.getElementById('txtSenha').style.borderColor = "greenyellow";
-                                                        document.getElementById('txconfrimasenhat').style.borderColor = "greenyellow";
-                                                        document.getElementById('btRegistrar').disabled = false;
-                                                    }
+                                                } else {
+                                                    document.getElementById('txtSenha').style.borderColor = "greenyellow";
+                                                    document.getElementById('txconfrimasenhat').style.borderColor = "greenyellow";
+                                                    document.getElementById('btRegistrar').disabled = false;
                                                 }
-                                                function validarSenhaATT() {
-                                                    if (document.getElementById('txtSenhaAtual').value == "") {
-                                                        document.getElementById('btRegistrarATT').disabled = true;
-                                                    } else {
+                                            }
+                                            function validarSenhaATT() {
+                                                if (document.getElementById('txtSenhaAtual').value == "") {
+                                                    document.getElementById('btRegistrarATT').disabled = true;
+                                                } else {
+                                                    document.getElementById('btRegistrarATT').disabled = false;
+                                                }
+                                            }
+                                            function validarNovaSenhaATT() {
+                                                NovaSenha = document.getElementById('txtSenhaATT').value;
+                                                CNovaSenha = document.getElementById('txconfrimasenhatATT').value;
+                                                if (NovaSenha !== CNovaSenha) {
+                                                    document.getElementById('txtSenhaATT').style.borderColor = "red";
+                                                    document.getElementById('txconfrimasenhatATT').style.borderColor = "red";
+                                                    document.getElementById('btRegistrarATT').disabled = true;
+
+                                                } else {
+                                                    document.getElementById('txtSenhaATT').style.borderColor = "greenyellow";
+                                                    document.getElementById('txconfrimasenhatATT').style.borderColor = "greenyellow";
+                                                    if (document.getElementById('txtSenhaAtual').value !== "") {
                                                         document.getElementById('btRegistrarATT').disabled = false;
                                                     }
                                                 }
-                                                function validarNovaSenhaATT() {
-                                                    NovaSenha = document.getElementById('txtSenhaATT').value;
-                                                    CNovaSenha = document.getElementById('txconfrimasenhatATT').value;
-                                                    if (NovaSenha !== CNovaSenha) {
-                                                        document.getElementById('txtSenhaATT').style.borderColor = "red";
-                                                        document.getElementById('txconfrimasenhatATT').style.borderColor = "red";
-                                                        document.getElementById('btRegistrarATT').disabled = true;
+                                            }
 
-                                                    } else {
-                                                        document.getElementById('txtSenhaATT').style.borderColor = "greenyellow";
-                                                        document.getElementById('txconfrimasenhatATT').style.borderColor = "greenyellow";
-                                                        if (document.getElementById('txtSenhaAtual').value !== "") {
-                                                            document.getElementById('btRegistrarATT').disabled = false;
-                                                        }
-                                                    }
-                                                }
+                                            $(function () {
+                                                $('#datetimepicker13').datetimepicker({
 
-                                                $(function () {
-                                                    $('#datetimepicker13').datetimepicker({
-                                                        
-                                                        sideBySide: false,
-                                                        inline: true,
-                                                        
-                                                        
-                                                    });
-                                                    $(".picker-switch.accordion-toggle").html("");
-                                                    $ document.getElementById("dataAgendam").value =  
+                                                    sideBySide: false,
+                                                    inline: true,
+
                                                 });
+                                                $(".picker-switch.accordion-toggle").html("");
+                                                $ document.getElementById("dataAgendam").value =
+                                            });
 
 
-        </script>
+            </script>
 
 
 
