@@ -40,7 +40,7 @@
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/sobre.css">
         <link rel="stylesheet" href="css/estilo.css">
-        
+
     </head>
     <body>
         <div id="principal">
@@ -270,229 +270,344 @@
             <!--------------------------------------------------- FIM MODAL DO REGISTRO---------------------------------------------------------------------------------------------------------------------------------------------------------------->
             <!--------------------------------------------------- INICIO DO SOBRE---------------------------------------------------------------------------------------------------------------------------------------------------------------->
             <div id="sobre-galeria">
-<!--                 Carousel wrapper -->
-<div
-  id="carouselMultiItemExample"
-  class="carousel slide carousel-dark text-center"
-  data-mdb-ride="carousel"
->
-<!--   Inner -->
-  <div class="carousel-inner py-4">
-<!--     Single item -->
-    <div class="carousel-item active">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="card" style=" border: none">
-              <img
-                <img src="img/dornelles.jpg" 
-                class="card-img-top"
-                alt="Waterfall"
-              />
-              <div class="card-body badge-dark">
-                <h5 class="card-title">RAZÃO SOCIAL</h5>
-                <p class="card-text">
-                Espaço Dornelles Salon, salão de beleza Unissex e espaço de 
-                estética corporal e facial. Desde 13/02/2014 esbanjando 
-                profissionalismo visando sempre, a melhor experiencia já tida por qualquer cliente.
-                No mercado, a empresa está localizada na Avenida Copacabana, Nº 530 - Loja 07 
-                no bairro Morada De Laranjeiras em Serra - ES, CEP 29166-820.
-                A empresa Dornelles Salon está cadastrada na Receita Federal 
-                sob o CNAE 9602-5/01 com atividade fim de Cabeleireiros, Manicure 
-                E Pedicure. 
-                </p>
-              </div>
-            </div>
-          </div>
+                <!--                 Carousel wrapper -->
+                <div
+                    id="carouselMultiItemExample"
+                    class="carousel slide carousel-dark text-center"
+                    data-mdb-ride="carousel"
+                    >
+                    <!--   Inner -->
+                    <div class="carousel-inner py-4">
+                        <!--     Single item -->
+                        <div class="carousel-item active">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="card" style=" border: none">
+                                            <img
+                                                <img src="img/dornelles.jpg" 
+                                                class="card-img-top"
+                                                alt="Waterfall"
+                                                />
+                                            <div class="card-body badge-dark">
+                                                <h5 class="card-title">RAZÃO SOCIAL</h5>
+                                                <p class="card-text">
+                                                    Espaço Dornelles Salon, salão de beleza Unissex e espaço de 
+                                                    estética corporal e facial. Desde 13/02/2014 esbanjando 
+                                                    profissionalismo visando sempre, a melhor experiencia já tida por qualquer cliente.
+                                                    No mercado, a empresa está localizada na Avenida Copacabana, Nº 530 - Loja 07 
+                                                    no bairro Morada De Laranjeiras em Serra - ES, CEP 29166-820.
+                                                    A empresa Dornelles Salon está cadastrada na Receita Federal 
+                                                    sob o CNAE 9602-5/01 com atividade fim de Cabeleireiros, Manicure 
+                                                    E Pedicure. 
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
 
-          <div class="col-lg-4 d-none d-lg-block">
-            <div class="card" style=" border: none">
-              <img src="img/carrosel.jpg"
-                class="card-img-top"
-                alt="Sunset Over the Sea"
-              />
-              <div class="card-body badge-dark">
-                <h5 class="card-title">ATENDIMENTO INFANTIL</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk
-                  of the card's content.
-                </p>
-              </div>
-            </div>
-          </div>
+                                    <div class="col-lg-4 d-none d-lg-block">
+                                        <div class="card" style=" border: none">
+                                            <img src="img/carrosel.jpg"
+                                                 class="card-img-top"
+                                                 alt="Sunset Over the Sea"
+                                                 />
+                                            <div class="card-body badge-dark">
+                                                <h5 class="card-title">ATENDIMENTO INFANTIL</h5>
+                                                <p class="card-text">
+                                                    Some quick example text to build on the card title and make up the bulk
+                                                    of the card's content.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
 
-            <div class="col-lg-4 d-none d-lg-block" width: >
-              <div class="card" style=" border: none">
-              <img src="img/dorneles.jpg"
-                class="card-img-top"
-                alt="Sunset over the Sea"
-              />
-              <div class="card-body badge-dark ">
-                <h5 class="card-title">O NOSSO FOCO É A LEALDADE</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk
-                  of the card's content.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+                                    <div class="col-lg-4 d-none d-lg-block" width: >
+                                        <div class="card" style=" border: none">
+                                            <img src="img/dorneles.jpg"
+                                                 class="card-img-top"
+                                                 alt="Sunset over the Sea"
+                                                 />
+                                            <div class="card-body badge-dark ">
+                                                <h5 class="card-title">O NOSSO FOCO É A LEALDADE</h5>
+                                                <p class="card-text">
+                                                    Some quick example text to build on the card title and make up the bulk
+                                                    of the card's content.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-<!--     Single item -->
-    <div class="carousel-item">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 col-md-12">
-            <div class="card">
-              <img src="img/ftsobre.jpg"
-                class="card-img-top"
-                alt="Fissure in Sandstone"
-              />
-              <div class="card-body">
-                <h5 class="card-title">UM GRUPO COM CENTENAS DE QUALIDADES</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk
-                  of the card's content.
-                </p>
-              </div>
-            </div>
-          </div>
+                        <!--     Single item -->
+                        <div class="carousel-item">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-12">
+                                        <div class="card">
+                                            <img src="img/ftsobre.jpg"
+                                                 class="card-img-top"
+                                                 alt="Fissure in Sandstone"
+                                                 />
+                                            <div class="card-body">
+                                                <h5 class="card-title">UM GRUPO COM CENTENAS DE QUALIDADES</h5>
+                                                <p class="card-text">
+                                                    Some quick example text to build on the card title and make up the bulk
+                                                    of the card's content.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
 
-          <div class="col-lg-4 d-none d-lg-block">
-            <div class="card">
-              <img
-                  src="img/dorneles.jpg"
-                class="card-img-top"
-                alt="Storm Clouds"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk
-                  of the card's content.
-                </p>
-                <a href="#!" class="btn btn-primary">Button</a>
-              </div>
-            </div>
-          </div>
+                                    <div class="col-lg-4 d-none d-lg-block">
+                                        <div class="card">
+                                            <img
+                                                src="img/dorneles.jpg"
+                                                class="card-img-top"
+                                                alt="Storm Clouds"
+                                                />
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">
+                                                    Some quick example text to build on the card title and make up the bulk
+                                                    of the card's content.
+                                                </p>
+                                                <a href="#!" class="btn btn-primary">Button</a>
+                                            </div>
+                                        </div>
+                                    </div>
 
-          <div class="col-lg-4 d-none d-lg-block">
-            <div class="card">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/186.webp"
-                class="card-img-top"
-                alt="Hot Air Balloons"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk
-                  of the card's content.
-                  Some quick example text to build on the card title and make up the bulk
-                  of the card's content.
-                </p>
-                <a href="#!" class="btn btn-primary">Button</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+                                    <div class="col-lg-4 d-none d-lg-block">
+                                        <div class="card">
+                                            <img
+                                                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/186.webp"
+                                                class="card-img-top"
+                                                alt="Hot Air Balloons"
+                                                />
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">
+                                                    Some quick example text to build on the card title and make up the bulk
+                                                    of the card's content.
+                                                    Some quick example text to build on the card title and make up the bulk
+                                                    of the card's content.
+                                                </p>
+                                                <a href="#!" class="btn btn-primary">Button</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-     Single item 
-    <div class="carousel-item">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
-            <div class="card">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/187.webp"
-                class="card-img-top"
-                alt="Peaks Against the Starry Sky"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk
-                  of the card's content.
-                </p>
-                <a href="#!" class="btn btn-primary">Button</a>
-              </div>
-            </div>
-          </div>
+                        Single item 
+                        <div class="carousel-item">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+                                        <div class="card">
+                                            <img
+                                                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/187.webp"
+                                                class="card-img-top"
+                                                alt="Peaks Against the Starry Sky"
+                                                />
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">
+                                                    Some quick example text to build on the card title and make up the bulk
+                                                    of the card's content.
+                                                </p>
+                                                <a href="#!" class="btn btn-primary">Button</a>
+                                            </div>
+                                        </div>
+                                    </div>
 
-          <div class="col-lg-4 mb-4 mb-lg-0 d-none d-lg-block">
-            <div class="card">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/188.webp"
-                class="card-img-top"
-                alt="Bridge Over Water"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk
-                  of the card's content.
-                </p>
-                <a href="#!" class="btn btn-primary">Button</a>
-              </div>
-            </div>
-          </div>
+                                    <div class="col-lg-4 mb-4 mb-lg-0 d-none d-lg-block">
+                                        <div class="card">
+                                            <img
+                                                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/188.webp"
+                                                class="card-img-top"
+                                                alt="Bridge Over Water"
+                                                />
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">
+                                                    Some quick example text to build on the card title and make up the bulk
+                                                    of the card's content.
+                                                </p>
+                                                <a href="#!" class="btn btn-primary">Button</a>
+                                            </div>
+                                        </div>
+                                    </div>
 
-          <div class="col-lg-4 mb-4 mb-lg-0 d-none d-lg-block">
-            <div class="card">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/189.webp"
-                class="card-img-top"
-                alt="Purbeck Heritage Coast"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk
-                  of the card's content.
-                </p>
-                <a href="#!" class="btn btn-primary">Button</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-<!--   Inner -->
-</div>
- <!--Carousel wrapper--> 
-                
+                                    <div class="col-lg-4 mb-4 mb-lg-0 d-none d-lg-block">
+                                        <div class="card">
+                                            <img
+                                                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/189.webp"
+                                                class="card-img-top"
+                                                alt="Purbeck Heritage Coast"
+                                                />
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">
+                                                    Some quick example text to build on the card title and make up the bulk
+                                                    of the card's content.
+                                                </p>
+                                                <a href="#!" class="btn btn-primary">Button</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--   Inner -->
+                </div>
+                <!--Carousel wrapper--> 
 
 
+
             </div>
+
             <!--------------------------------------------------- FIM SOBRE---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+            
+            <!--------------------------------------------------- MODAL DO SERVIÇOS---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+         <div class="modal fade bd-example-modal-lg" id="modalServicos" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ModalTtlServicos">Serviços</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body servicos" style="margin-top:1%;">
+                            <div class="row">
+                                <div class="col">CORTE DE CABELO</div>
+                                <div class="col">R$40</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">CORTE DE BARBA</div>
+                                <div class="col">R$35</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">BARBOTERAPIA</div>
+                                <div class="col">R$50</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">SOMBRANCELHA</div>
+                                <div class="col">R$15</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">ACABAMENTO DE CORTE</div>
+                                <div class="col">R$15</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">ACABAMENTO DE BARBA</div>
+                                <div class="col">R$15</div>
+                            </div>
+                            <div class="row" >
+                                <div class="col" >MÁSCARA BLACK (LIMPEZA DE PELE)</div>
+                                <div class="col">R$30</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">SELAGEM</div>
+                                <div class="col"> A PARTIR DE R$100</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">PINTURA DE CABELO</div>
+                                <div class="col">A PARTIR DE R$40</div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col">HIDRATAÇÃO</div>
+                                <div class="col">A PARTIR DE R$30</div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col">RELAXAMENTO</div>
+                                <div class="col">A PARTIR DE R$60</div>
+
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+
+                    </div>
+                </div>
+            </div>
+
+            <!--------------------------------------------------- FIM MODAL DO SERVIÇOS---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+            
+            <!----------------------------------------------------- INICIO DO RODAPÉ------------------------------------------------------------------------------>
             <footer id="myFooter">
                 <div class="container-fluid">
                     <div class="row">                                
 
-                        <div class="col-sm-6">
-                            <h5>Contatos</h5>
+                        <div class="col-sm-2">
+                            <h5 style="margin-left: 43%">Contatos</h5>
                             <ul>
-                                <li><a href="https://www.instagram.com/dornelles__salon/">Instagram</a></li>
-                                <li><a href="https://www.facebook.com/alievertonsouza">Facebook</a></li>
-                                <li><a>Telefones</a></li>
+                                <li><a href="https://www.instagram.com/dornelles__salon/"> <img style="width: 14%; margin-left: 28%" src="img/instagram midia.png"/></a>
+                                    <p style="margin-top:-12%; margin-left: 60%">@DornellesSalon</p></li>
+                                <!--<li><a href="https://www.instagram.com/dornelles__salon/">@DornellesSalon</a></li>-->
+                                <li><a href="https://www.facebook.com/alievertonsouza"> <img style="width: 14%; margin-left: 28%; margin-top: 6%" src="img/facebook quadrado.png"/></a>
+                                    <p style="margin-top:-12%; margin-left: 60%">@DornellesSalon</p></li>                                
+                                <!--<li><a href="https://www.facebook.com/alievertonsouza">@DornellesSalon</a></li>-->
+                                <li><img style="width: 14%; margin-left: 43%; margin-top: 6%" src="img/111025_phone_icon.png"/><p style="margin-top:-12%; margin-left: 60%">(27)3209-1647</p></li>
                             </ul>
                         </div> 
                         <div class="col-sm-6">
-                            <h5>Localização</h5>
+                            <h5 style="margin-left: 25%">Localização</h5>
 
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3744.552094930679!2d-40.2366429703511!3d-20.194366508466654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb81f220927caaf%3A0xc526b40c635f6dbd!2sDornelles%20Salon!5e0!3m2!1spt-BR!2sbr!4v1654266203171!5m2!1spt-BR!2sbr" 
-                                    width="400" height="130" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    width="700" height="130" style="border:0; margin-left: 25%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                            <br>                                
+                            <p style="margin-left: 60%; margin-top: 3%"> CopyRight &COPY;</p>
+
+                        </div>
+                        <div class="col-sm-4" >
+                            <h5 style="margin-left: 30%;">Horários de atendimento</h5>
+
+                            <ul class="opening_times" style="margin-left: 30%;">
+                                <li>
+                                    <span class="day">Domingo</span>
+                                    <span style="margin-left: 19%" class="time">Fechado</span>
+                                </li>
+                                <li>
+                                    <span class="day">Segunda</span>
+                                    <span style="margin-left: 19%" class="time">Fechado</span>
+                                </li>
+                                <li>
+                                    <span class="day">Terça</span>
+                                    <span style="margin-left: 17%" class="time">09:00 - 20:00</span>
+                                </li>
+                                <li>
+                                    <span class="day">Quarta</span>
+                                    <span style="margin-left: 10.3%" class="time">09:00 - 20:00</span>
+                                </li>
+                                <li>
+                                    <span class="day">Quinta</span>
+                                    <span style="margin-left: 10.5%" class="time">09:00 - 20:00</span>
+                                </li>
+                                <li>
+                                    <span class="day">Sexta</span>
+                                    <span style="margin-left: 11.5%" class="time">09:00 - 20:00</span>
+                                </li>
+                                <li>
+                                    <span class="day">Sábado</span>
+                                    <span style="margin-left: 9.2%" class="time">09:00 - 20:00</span>
+                                </li>
+                            </ul>
+
                         </div>
                     </div>
-                </div>        
+                </div>
             </footer>
-
-        </div>
+            <!----------------------------------------------------- FIM DO RODAPÉ------------------------------------------------------------------------------>
+        
 
 
 

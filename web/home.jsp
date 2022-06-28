@@ -452,12 +452,7 @@
                                 <div class="col">PINTURA DE CABELO</div>
                                 <div class="col">A PARTIR DE R$40</div>
 
-                            </div>
-                            <div class="row">
-                                <div class="col">PINTURA DE BARBA</div>
-                                <div class="col">A PARTIR DE R$30</div>
-
-                            </div>
+                            </div>                            
                             <div class="row">
                                 <div class="col">HIDRATAÇÃO</div>
                                 <div class="col">A PARTIR DE R$30</div>
@@ -540,37 +535,38 @@
                 </div>        
             </div>        
 <!----------------------------------------------------- FIM MODAL AGENDAMENTO------------------------------------------------------------------------------>
+<!----------------------------------------------------- INICIO DO RODAPÉ----------------------------------------------------------------------------------->
 
             <footer id="myFooter">
                 <div class="container-fluid">
                     <div class="row">                                
 
                         <div class="col-sm-2">
-                            <h5 style="margin-left: 15%">Contatos</h5>
+                            <h5 style="margin-left: 43%">Contatos</h5>
                             <ul>
-                                <li><a href="https://www.instagram.com/dornelles__salon/"> <img style="width: 14%; margin-left: 0%" src="img/instagram midia.png"/></a>
-                                    <p style="margin-top:-12%; margin-left: 35%">@DornellesSalon</p></li>
+                                <li><a href="https://www.instagram.com/dornelles__salon/"> <img style="width: 14%; margin-left: 28%" src="img/instagram midia.png"/></a>
+                                    <p style="margin-top:-12%; margin-left: 60%">@DornellesSalon</p></li>
                                 <!--<li><a href="https://www.instagram.com/dornelles__salon/">@DornellesSalon</a></li>-->
-                                <li><a href="https://www.facebook.com/alievertonsouza"> <img style="width: 14%; margin-left: 0%; margin-top: 6%" src="img/facebook quadrado.png"/></a>
-                                    <p style="margin-top:-12%; margin-left: 35%">@DornellesSalon</p></li>                                
+                                <li><a href="https://www.facebook.com/alievertonsouza"> <img style="width: 14%; margin-left: 28%; margin-top: 6%" src="img/facebook quadrado.png"/></a>
+                                    <p style="margin-top:-12%; margin-left: 60%">@DornellesSalon</p></li>                                
                                 <!--<li><a href="https://www.facebook.com/alievertonsouza">@DornellesSalon</a></li>-->
-                                <li><img style="width: 14%; margin-left: 15%; margin-top: 6%" src="img/111025_phone_icon.png"/><p style="margin-top:-12%; margin-left: 35%">(27)3209-1647</p></li>
+                                <li><img style="width: 14%; margin-left: 43%; margin-top: 6%" src="img/111025_phone_icon.png"/><p style="margin-top:-12%; margin-left: 60%">(27)3209-1647</p></li>
                             </ul>
                         </div> 
                         <div class="col-sm-6">
-                            <h5 style="margin-left: 15%">Localização</h5>
+                            <h5 style="margin-left: 25%">Localização</h5>
 
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3744.552094930679!2d-40.2366429703511!3d-20.194366508466654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb81f220927caaf%3A0xc526b40c635f6dbd!2sDornelles%20Salon!5e0!3m2!1spt-BR!2sbr!4v1654266203171!5m2!1spt-BR!2sbr" 
-                                    width="700" height="130" style="border:0; margin-left: 15%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    width="700" height="130" style="border:0; margin-left: 25%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                             <br>                                
-                            <p style="margin-left: 50%; margin-top: 3%"> CopyRight &COPY;</p>
+                            <p style="margin-left: 60%; margin-top: 3%"> CopyRight &COPY;</p>
 
                         </div>
-                        <div class="col-sm-4">
-                            <h5>Horários de atendimento</h5>
+                        <div class="col-sm-4" >
+                            <h5 style="margin-left: 30%;">Horários de atendimento</h5>
 
-                            <ul class="opening_times">
+                            <ul class="opening_times" style="margin-left: 30%;">
                                 <li>
                                     <span class="day">Domingo</span>
                                     <span style="margin-left: 13%" class="time">Fechado</span>
@@ -606,7 +602,7 @@
                 </div>
             </footer>
 
-
+<!----------------------------------------------------- FIM DO RODAPÉ------------------------------------------------------------------------------>
 
 
             <script type="text/javascript" src="js/jquery.js"></script>
