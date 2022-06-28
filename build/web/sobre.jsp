@@ -568,23 +568,68 @@
                 <div class="container-fluid">
                     <div class="row">                                
 
-                        <div class="col-sm-6">
-                            <h5 style="margin-left: 4%">Contatos</h5>
+                        <div class="col-sm-2">
+                            <h5 style="margin-left: 15%">Contatos</h5>
                             <ul>
-                                <li><a href="https://www.instagram.com/dornelles__salon/">Instagram</a></li>
-                                <li><a href="https://www.facebook.com/alievertonsouza">Facebook</a></li>
-                                <li><a>Telefones</a></li>
+                                <li><a href="https://www.instagram.com/dornelles__salon/"> <img style="width: 14%; margin-left: 0%" src="img/instagram midia.png"/></a>
+                                    <p style="margin-top:-12%; margin-left: 35%">@DornellesSalon</p></li>
+                                <!--<li><a href="https://www.instagram.com/dornelles__salon/">@DornellesSalon</a></li>-->
+                                <li><a href="https://www.facebook.com/alievertonsouza"> <img style="width: 14%; margin-left: 0%; margin-top: 6%" src="img/facebook quadrado.png"/></a>
+                                        <p style="margin-top:-12%; margin-left: 35%">@DornellesSalon</p></li>                                
+                                <!--<li><a href="https://www.facebook.com/alievertonsouza">@DornellesSalon</a></li>-->
+                                <li><img style="width: 14%; margin-left: 15%; margin-top: 6%" src="img/111025_phone_icon.png"/><p style="margin-top:-12%; margin-left: 35%">(27)3209-1647</p></li>
                             </ul>
                         </div> 
                         <div class="col-sm-6">
-                            <h5>Localização</h5>
+                            <h5 style="margin-left: 15%">Localização</h5>
 
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3744.552094930679!2d-40.2366429703511!3d-20.194366508466654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb81f220927caaf%3A0xc526b40c635f6dbd!2sDornelles%20Salon!5e0!3m2!1spt-BR!2sbr!4v1654266203171!5m2!1spt-BR!2sbr" 
-                                    width="400" height="130" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    width="700" height="130" style="border:0; margin-left: 15%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                            <br>                                
+                            <p style="margin-left: 50%; margin-top: 3%"> CopyRight &COPY;</p>
+
+                        </div>
+                        <div class="col-sm-4">
+                            <h5>Horários de atendimento</h5>
+
+                            <ul class="opening_times">
+                                <li>
+                                    <span class="day">Domingo</span>
+                                    <span style="margin-left: 13%" class="time">Fechado</span>
+                                </li>
+                                <li>
+                                    <span class="day">Segunda</span>
+                                    <span style="margin-left: 13%" class="time">Fechado</span>
+                                </li>
+                                <li>
+                                    <span class="day">Terça</span>
+                                    <span style="margin-left: 12%" class="time">09:00 - 20:00</span>
+                                </li>
+                                <li>
+                                    <span class="day">Quarta</span>
+                                    <span style="margin-left: 10.3%" class="time">09:00 - 20:00</span>
+                                </li>
+                                <li>
+                                    <span class="day">Quinta</span>
+                                    <span style="margin-left: 10.5%" class="time">09:00 - 20:00</span>
+                                </li>
+                                <li>
+                                    <span class="day">Sexta</span>
+                                    <span style="margin-left: 11.5%" class="time">09:00 - 20:00</span>
+                                </li>
+                                <li>
+                                    <span class="day">Sábado</span>
+                                    <span style="margin-left: 9.2%" class="time">09:00 - 20:00</span>
+                                </li>
+                            </ul>
+
                         </div>
                     </div>
-                </div>        
-            </footer>
+
+                </div>
+        </div>        
+    </footer>
 
         </div>
 

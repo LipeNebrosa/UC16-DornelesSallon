@@ -495,7 +495,7 @@
                             <h5 style="margin-left: 15%">Localização</h5>
 
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3744.552094930679!2d-40.2366429703511!3d-20.194366508466654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb81f220927caaf%3A0xc526b40c635f6dbd!2sDornelles%20Salon!5e0!3m2!1spt-BR!2sbr!4v1654266203171!5m2!1spt-BR!2sbr" 
-                                    width="400" height="130" style="border:0; margin-left: 15%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    width="700" height="130" style="border:0; margin-left: 15%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                             <br>                                
                             <p style="margin-left: 50%; margin-top: 3%"> CopyRight &COPY;</p>
