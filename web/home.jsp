@@ -491,6 +491,7 @@
 
                         <form action="UsuarioServlet" id="formHorario" method="POST" autocomplete="off">
                             <input type="hidden" name="acao" value="cadHorario">
+                            <input type="hidden" name="idCliente" value="<%=id%>">
                             <div class="modal-body">
                                 <div class="container">
                                     <div class="row">
@@ -514,11 +515,18 @@
                                         <div class="col-sm">
                                             <label for="slHorario">Horario:  </label>
                                             &nbsp;
-                                            <select required class="form-control R" id="sltSexo" name="sexo">
-                                                <option value= "X"></option>
-                                                <option value="M" >17:00</option>
-                                                <option value="F" >17:30</option>
-                                                <option value="O" >18:00</option>
+                                            <select required class="form-control R" id="sltHora" name="hora">
+                                                <option value="9:00" >9:00</option>
+                                                <option value="10:30" >10:00</option>
+                                                <option value="11:00" >11:00</option>
+                                                <option value="12:00" >12:00</option>
+                                                <option value="13:00" >13:00</option>
+                                                <option value="14:00" >14:00</option>
+                                                <option value="15:00" >15:00</option>
+                                                <option value="16:00" >16:00</option>
+                                                <option value="17:00" >17:00</option>
+                                                <option value="18:00" >18:00</option>
+                                                <option value="19:00" >19:00</option>
                                             </select>
                                         </div>
                                     </div>
@@ -534,7 +542,9 @@
 
                 </div>        
             </div>        
+
 <!----------------------------------------------------- FIM MODAL AGENDAMENTO------------------------------------------------------------------------------>
+
 <!----------------------------------------------------- INICIO DO RODAPÉ----------------------------------------------------------------------------------->
 
             <footer id="myFooter">
@@ -617,69 +627,69 @@
             <script type="text/javascript">
 
 
+                                                jQuery(document).ready(function ($) {
+
+                                                    $("#txtCPF").mask("000.000.000-00");
+                                                    $("#txtCPFatt").mask("000.000.000-00");
+                                                    $("#txtTelefone").mask("(00) 00000-0000");
+                                                    $("#txtTelefoneATT").mask("(00) 00000-0000");
 
 
+                                                    $('#datetimepicker13').datetimepicker({
+                                                        format: 'L',
+                                                        inline: true,
+                                                        daysOfWeekDisabled: [0, 1],
+                                                        minDate: moment()
+                                                    });
+                                                   // $(".picker-switch.accordion-toggle").html("");
 
+                                                    $("#datetimepicker13").on("change.datetimepicker", function (e) {
+                                                       //let diaselecionado = $(".day.active").data("day");
+                                                       // console.log((e.date).format('YYYY-MM-DD'));
+                                                        document.getElementById('dataAgendam').value = (e.date).format('YYYY-MM-DD');
+                                                        console.log(document.getElementById('dataAgendam').value);
+                                                    });
 
+                                                });
 
+                                                function validarSenha() {
+                                                    NovaSenha = document.getElementById('txtSenha').value;
+                                                    CNovaSenha = document.getElementById('txconfrimasenhat').value;
+                                                    
+                                                    if (NovaSenha !== CNovaSenha) {
+                                                        document.getElementById('txtSenha').style.borderColor = "red";
+                                                        document.getElementById('txconfrimasenhat').style.borderColor = "red";
+                                                        document.getElementById('btRegistrar').disabled = true;
 
-                                            jQuery(document).ready(function ($) {
-
-                                                $("#txtCPF").mask("000.000.000-00");
-                                                $("#txtCPFatt").mask("000.000.000-00");
-                                                $("#txtTelefone").mask("(00) 00000-0000");
-                                                $("#txtTelefoneATT").mask("(00) 00000-0000");
-
-                                            });
-
-                                            function validarSenha() {
-                                                NovaSenha = document.getElementById('txtSenha').value;
-                                                CNovaSenha = document.getElementById('txconfrimasenhat').value;
-                                                if (NovaSenha !== CNovaSenha) {
-                                                    document.getElementById('txtSenha').style.borderColor = "red";
-                                                    document.getElementById('txconfrimasenhat').style.borderColor = "red";
-                                                    document.getElementById('btRegistrar').disabled = true;
-
-                                                } else {
-                                                    document.getElementById('txtSenha').style.borderColor = "greenyellow";
-                                                    document.getElementById('txconfrimasenhat').style.borderColor = "greenyellow";
-                                                    document.getElementById('btRegistrar').disabled = false;
+                                                    } else {
+                                                        document.getElementById('txtSenha').style.borderColor = "greenyellow";
+                                                        document.getElementById('txconfrimasenhat').style.borderColor = "greenyellow";
+                                                        document.getElementById('btRegistrar').disabled = false;
+                                                    }
                                                 }
-                                            }
-                                            function validarSenhaATT() {
-                                                if (document.getElementById('txtSenhaAtual').value == "") {
-                                                    document.getElementById('btRegistrarATT').disabled = true;
-                                                } else {
-                                                    document.getElementById('btRegistrarATT').disabled = false;
-                                                }
-                                            }
-                                            function validarNovaSenhaATT() {
-                                                NovaSenha = document.getElementById('txtSenhaATT').value;
-                                                CNovaSenha = document.getElementById('txconfrimasenhatATT').value;
-                                                if (NovaSenha !== CNovaSenha) {
-                                                    document.getElementById('txtSenhaATT').style.borderColor = "red";
-                                                    document.getElementById('txconfrimasenhatATT').style.borderColor = "red";
-                                                    document.getElementById('btRegistrarATT').disabled = true;
-
-                                                } else {
-                                                    document.getElementById('txtSenhaATT').style.borderColor = "greenyellow";
-                                                    document.getElementById('txconfrimasenhatATT').style.borderColor = "greenyellow";
-                                                    if (document.getElementById('txtSenhaAtual').value !== "") {
+                                                function validarSenhaATT() {
+                                                    if (document.getElementById('txtSenhaAtual').value == "") {
+                                                        document.getElementById('btRegistrarATT').disabled = true;
+                                                    } else {
                                                         document.getElementById('btRegistrarATT').disabled = false;
                                                     }
                                                 }
-                                            }
+                                                function validarNovaSenhaATT() {
+                                                    NovaSenha = document.getElementById('txtSenhaATT').value;
+                                                    CNovaSenha = document.getElementById('txconfrimasenhatATT').value;
+                                                    if (NovaSenha !== CNovaSenha) {
+                                                        document.getElementById('txtSenhaATT').style.borderColor = "red";
+                                                        document.getElementById('txconfrimasenhatATT').style.borderColor = "red";
+                                                        document.getElementById('btRegistrarATT').disabled = true;
 
-                                            $(function () {
-                                                $('#datetimepicker13').datetimepicker({
-
-                                                    sideBySide: false,
-                                                    inline: true,
-
-                                                });
-                                                $(".picker-switch.accordion-toggle").html("");
-                                                $ document.getElementById("dataAgendam").value =
-                                            });
+                                                    } else {
+                                                        document.getElementById('txtSenhaATT').style.borderColor = "greenyellow";
+                                                        document.getElementById('txconfrimasenhatATT').style.borderColor = "greenyellow";
+                                                        if (document.getElementById('txtSenhaAtual').value !== "") {
+                                                            document.getElementById('btRegistrarATT').disabled = false;
+                                                        }
+                                                    }
+                                                }
 
 
             </script>
