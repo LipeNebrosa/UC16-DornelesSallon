@@ -562,14 +562,16 @@
                         <div class="col-sm-2">
                             <h5 style="margin-left: 43%">Contatos</h5>
                             <ul>
-                                <li><a href="https://www.instagram.com/dornelles__salon/"> <img style="width: 14%; margin-left: 28%" src="img/instagram midia.png"/></a>
+                                <li><img style="width: 14%; margin-left: 43%" src="img/whatsapp.png"/>
+                                    <p style="margin-top:-12%; margin-left: 60%">(27)99934-6622</p></li>
+                                <li><a href="https://www.instagram.com/dornelles__salon/"> <img style="width: 14%; margin-left: 28%; margin-top: 6%" src="img/instagram midia.png"/></a>
                                     <p style="margin-top:-12%; margin-left: 60%">@DornellesSalon</p></li>
                                 <!--<li><a href="https://www.instagram.com/dornelles__salon/">@DornellesSalon</a></li>-->
                                 <li><a href="https://www.facebook.com/alievertonsouza"> <img style="width: 14%; margin-left: 28%; margin-top: 6%" src="img/facebook quadrado.png"/></a>
                                     <p style="margin-top:-12%; margin-left: 60%">@DornellesSalon</p></li>                                
                                 <!--<li><a href="https://www.facebook.com/alievertonsouza">@DornellesSalon</a></li>-->
-                                <li><img style="width: 14%; margin-left: 43%; margin-top: 6%" src="img/111025_phone_icon.png"/><p style="margin-top:-12%; margin-left: 60%">(27)3209-1647</p></li>
-                            </ul>
+                                <li><img style="width: 14%; margin-left: 43%; margin-top: 6%" src="img/111025_phone_icon.png"/>
+                                    <p style="margin-top:-12%; margin-left: 60%">(27)3209-1647</p></li></ul>
                         </div> 
                         <div class="col-sm-6">
                             <h5 style="margin-left: 25%">Localização</h5>
@@ -584,34 +586,34 @@
                         <div class="col-sm-4" >
                             <h5 style="margin-left: 30%;">Horários de atendimento</h5>
 
-                            <ul class="opening_times" style="margin-left: 30%;">
+                           <ul class="opening_times" style="margin-left: 30%;">
                                 <li>
                                     <span class="day">Domingo</span>
-                                    <span style="margin-left: 13%" class="time">Fechado</span>
+                                    <span style="margin-left: 18.9%" class="time">Fechado</span>
                                 </li>
                                 <li>
                                     <span class="day">Segunda</span>
-                                    <span style="margin-left: 13%" class="time">Fechado</span>
+                                    <span style="margin-left: 18.9%" class="time">Fechado</span>
                                 </li>
                                 <li>
                                     <span class="day">Terça</span>
-                                    <span style="margin-left: 12%" class="time">09:00 - 20:00</span>
+                                    <span style="margin-left: 16.9%" class="time">09:00 - 19:30</span>
                                 </li>
                                 <li>
                                     <span class="day">Quarta</span>
-                                    <span style="margin-left: 10.3%" class="time">09:00 - 20:00</span>
+                                    <span style="margin-left: 14.7%" class="time">09:00 - 19:30</span>
                                 </li>
                                 <li>
                                     <span class="day">Quinta</span>
-                                    <span style="margin-left: 10.5%" class="time">09:00 - 20:00</span>
+                                    <span style="margin-left: 15%" class="time">09:00 - 19:30</span>
                                 </li>
                                 <li>
                                     <span class="day">Sexta</span>
-                                    <span style="margin-left: 11.5%" class="time">09:00 - 20:00</span>
+                                    <span style="margin-left: 16.6%" class="time">09:00 - 19:30</span>
                                 </li>
                                 <li>
                                     <span class="day">Sábado</span>
-                                    <span style="margin-left: 9.2%" class="time">09:00 - 20:00</span>
+                                    <span style="margin-left: 13.2%" class="time">09:00 - 20:00</span>
                                 </li>
                             </ul>
 
