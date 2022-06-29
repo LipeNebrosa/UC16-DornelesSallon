@@ -83,7 +83,7 @@ public class UsuarioServlet extends HttpServlet {
             response.sendRedirect("home.jsp");
 
         } else {
-            //falta implementar tela na home.jsp indicando falha no login. Fazer com if/else lendo este atributo
+            
             response.sendRedirect("home.jsp?msg=erroLogin");
         }
     }
@@ -109,7 +109,7 @@ public class UsuarioServlet extends HttpServlet {
         boolean jaTemCadastro = user.BuscarPorCPF(cpf);
 
         if (jaTemCadastro) {
-            response.sendRedirect("home.jsp?msg=CPF-CADASTRADO");
+            response.sendRedirect("home.jsp?msg=CPF-JA-CADASTRADO");
         } else {
             long novoId = user.Cadastrar();
             if (novoId > 0) {
@@ -118,13 +118,12 @@ public class UsuarioServlet extends HttpServlet {
                 if (logou) {
                     HttpSession session = request.getSession();
                     session.setAttribute("usuario", user);
-
                     session.setAttribute("statusLogin", true);
-                    response.sendRedirect("home.jsp");
+                    response.sendRedirect("home.jsp?msg=CADASTRADO");
 
                 } else {
-                    //falta implementar tela na home.jsp indicando falha no login. Fazer com if/else lendo este atributo
-                    response.sendRedirect("home.jsp?msg=erroLogin");
+                   
+                    response.sendRedirect("home.jsp?msg=cadastrado-erro-Login");
                 }
 
             } else {
@@ -170,13 +169,11 @@ public class UsuarioServlet extends HttpServlet {
                 response.sendRedirect("home.jsp?msg=ATUALIZOU");
 
             } else {
-                String mensagem
-                        = "<h1>ATUALIZAÇÃO NÃO CONCLUIDA</h1>";
-                response.getWriter().print(mensagem);
+               response.sendRedirect("home.jsp?msg=ERRO-ATUALIZACAO");
 
             }
         } else {
-            response.sendRedirect("home.jsp?msg=ERRO_LOGIN_DA_ATUALIZAÇÃO");
+            response.sendRedirect("home.jsp?msg=ERRO_LOGIN_DA_ATUALIZACAO");
         }
     }
 
@@ -185,9 +182,7 @@ public class UsuarioServlet extends HttpServlet {
         if (apagou) {
             response.sendRedirect("adm-listar.jsp");
         } else {
-            String mensagem
-                    = "<h1>EXCLUSÃO NÃO CONCLUIDA</h1>";
-            response.getWriter().print(mensagem);
+            response.sendRedirect("adm-listar.jsp?msg=ERRO_EXCLUSAO_ADM");
         }
 
     }

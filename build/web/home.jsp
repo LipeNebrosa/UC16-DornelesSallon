@@ -11,6 +11,7 @@
             userMenu = "data-toggle='modal' data-target='#modal-login'",
             redirectAdm = "",
             btModal = "'#modal-login'",
+            msg = "",
             id = "",
             nome = "",
             cpf = "",
@@ -42,6 +43,10 @@
     } else {//fazer codigo de msg com erro de login
     }
 
+    if (request.getParameter("msg") != null) {
+        msg = request.getParameter("msg");
+    }
+
     if (request.getParameter("exit") != null) {
         session.invalidate();
         response.sendRedirect("home.jsp");
@@ -71,6 +76,7 @@
 
     <body>
         <div id="principal">
+            <input type="hidden" id="msg" value="<%=msg%>"
             <div>
 
                 <img class="logoleao" src="img/Logoo.png" width="47%" height="47%" alt="">
@@ -625,6 +631,7 @@
             <script type="text/javascript" src="js/locale/pt-br.js" ></script>
             <script type="text/javascript" src="js/tempusdominus-bootstrap-4.js"></script>
             <script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
+            <script type="text/javascript" src="js/alertasJs.js"></script>
 
 
 
@@ -632,7 +639,7 @@
 
 
                                                 jQuery(document).ready(function ($) {
-
+                                                 
                                                     $("#txtCPF").mask("000.000.000-00");
                                                     $("#txtCPFatt").mask("000.000.000-00");
                                                     $("#txtTelefone").mask("(00) 00000-0000");
@@ -685,7 +692,6 @@
                                                                         title: 'Oops...',
                                                                         text: msg
                                                                     });
-
                                                                 }
                                                                 console.error(resp);
                                                             },
