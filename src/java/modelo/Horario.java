@@ -15,6 +15,8 @@ public class Horario {
     private int id;
     private Date data;
     private String horario;
+    private String nomeCliente;
+    private String cpf;
     private int idFuncionario;
     private int idServico;
     private int idCliente;
@@ -25,6 +27,22 @@ public class Horario {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getNomeCliente() {
+        return nomeCliente;
+    }
+
+    public void setNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
     }
 
     public Date getData() {
@@ -125,7 +143,7 @@ public class Horario {
         try {
 
             Connection conn = BancoDados.getConexao();
-            String sql = "SELECT *  FROM bdbarbearia.agenda ORDER BY dtagenda,horario ASC;";
+            String sql = "SELECT usuario.nome,cpf , agenda.* FROM agenda INNER JOIN usuario ON agenda.idcliente = usuario.id ORDER BY dtagenda,horario ASC;";
             PreparedStatement ps = conn.prepareStatement(sql);
             List<Horario> lista = new ArrayList();
             final ResultSet rs = ps.executeQuery();
@@ -133,7 +151,9 @@ public class Horario {
 
                 Horario h = new Horario();
                 h.setId(rs.getInt("id"));
-                h.setData(rs.getDate("data"));
+                h.setData(rs.getDate("dtagenda"));
+                h.setNomeCliente(rs.getString("nome"));
+                h.setCpf(rs.getString("cpf"));
                 h.setHorario(rs.getString("horario"));
                 h.setIdCliente(rs.getInt("idcliente"));
                 lista.add(h);
@@ -150,7 +170,7 @@ public class Horario {
         try {
 
             Connection conn = BancoDados.getConexao();
-            String sql = "SELECT * FROM agenda WHERE idcliente = ?; ";
+            String sql = "SELECT * FROM agenda WHERE idcliente = ? ORDER BY dtagenda,horario ASC; ";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             List<Horario> lista = new ArrayList();

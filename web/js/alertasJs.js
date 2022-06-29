@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
 
-    //////////////////////////////// ALERT DE ERROS/////////////////////////////////////////////////////////////////////
+   
     let msg = $("#msg").val();
     console.log(msg + "teste");
     if (msg !== "") {
@@ -17,7 +17,7 @@ jQuery(document).ready(function ($) {
                 icone = "warning";
                 titulo = "CPF ja cadastrado";
                 amsg = "O CPF informado ja esta cadastrado no nosso sistema.\n\
-                                                                               Caso tenha esquecido a senha, entre em contato com o suporte.";
+                        Caso tenha esquecido a senha, entre em contato com o suporte.";
                 break;
             case "CADASTRADO":
                 icone = "success";
@@ -55,6 +55,11 @@ jQuery(document).ready(function ($) {
                 titulo = "Erro ao excluir";
                 amsg = "Tivemos um problema ao excluir o cadastro deste cliente.";
                 break;
+            case "ADM_NAO_PERMITIDO":
+                icone = "error";
+                titulo = "Acesso negado";
+                amsg = "Você não tem permissão para acessar o sistema!";
+                break;
         }
         Swal.fire({
             icon: icone,
@@ -63,5 +68,5 @@ jQuery(document).ready(function ($) {
         });
     }
     ;
-    //////////////////////////////// ALERT DE ERROS/////////////////////////////////////////////////////////////////////                                                 
+ 
 });
