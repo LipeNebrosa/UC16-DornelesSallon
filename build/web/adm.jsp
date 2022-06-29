@@ -3,19 +3,24 @@
     Created on : 08/06/2022, 11:17:10
     Author     : sala303b
 --%>
+<%@page import="modelo.Horario"%>
+<%@page import="java.util.List"%>
 <%@page import="modelo.Usuario"%>
 <%
     String nomeUser = "Usuario";
 
     Usuario userLogado = (Usuario) session.getAttribute("usuario");
-
-    if (userLogado.getEh_adm().equals("S")) {
-        String[] primNome = userLogado.getNome().split(" ");
-        nomeUser = primNome[0];
-    }else{
-        response.sendRedirect("home.jsp");
+    
+    if (userLogado != null) {
+        if (userLogado.getEh_adm().equals("S")) {
+            String[] primNome = userLogado.getNome().split(" ");
+            nomeUser = primNome[0];
+        } else {
+            response.sendRedirect("home.jsp?msg=ADM_NAO_PERMITIDO");
+        }
+    } else {
+        response.sendRedirect("home.jsp?msg=ADM_NAO_PERMITIDO");
     }
-
 
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -109,7 +114,76 @@
 
             <!-- INICIO CONTEUDO DA PAGINA-->
             <div class="conteudo-pag-adm">
-                <h1>abluebleubdzfgfxgcznfgnfxcfghmxghmgxchmgdxhmxgdhmgxhdchgchghm</h1>
+                <%List<Horario> agenda = new Horario().ListarHorarios();%>
+
+                <table class="table table-striped table-dark">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Data</th>
+                            <th>Hora</th>
+                            <th>Cliente</th>
+                            <th>CPF</th>               
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%
+
+                            for (Horario u : agenda) {
+
+                                String dtAgendamento = u.getData().toString();
+                                String dtAgend[] = dtAgendamento.split("-");
+                                String dtAgendBR = dtAgend[2] + "/" + dtAgend[1] + "/" + dtAgend[0];
+
+//                                String dtCadastro = u.getDataCadastro().toString();
+//                                String dtCad[] = dtCadastro.split("-");
+//                                String dtCadBR = dtCad[2] + "/" + dtCad[1] + "/" + dtCad[0];
+
+                                out.print("<tr>"
+                                        + "<th scope='row'>" + u.getId() + "</th>"
+                                        + "<td>" + dtAgendBR + "</td>"
+                                        + "<td>" + u.getHorario()+ "</td>"
+                                        + "<td>" + u.getNomeCliente()+ "</td>"
+                                        + "<td>" + u.getCpf() + "</td>"
+                                        + "<td>"
+                                        + "<div style='display:inline-block'>"
+                                        + "<form action='cadastro.jsp' method='POST'>"
+                                        + "<input name='acao' type='hidden' value='editar' />"
+                                        + "<input name='idPessoa' type='hidden' value='" + u.getId() + "' />"
+                                        + "<button type='submit' class='btn btn-info align-middle'>Editar</button>"
+                                        + "</form>"
+                                        + "</div>"
+                                        + "&nbsp;"
+                                        + "&nbsp;"
+                                        + "<div style='display:inline-block'>"
+                                        + "<button type='button' class='btn btn-danger align-middle' data-toggle='modal' data-target='#Modal" + u.getId() + "'>Excluir</button>"
+                                        + "<div class='modal fade' id='Modal" + u.getId() + "' role='dialog'>"
+                                        + "<div class='modal-dialog modal-md'>"
+                                        + "  <div class='modal-content'>"
+                                        + "  <div class='modal-header'>"
+                                        + "<h5 class='modal-title'>Atenção!</h5>"
+                                        + "  </div>"
+                                        + "  <div class='modal-body'>"
+                                        + "      <p> Deseja excluir TODOS os dados do(a) " + u.getNomeCliente() + "?</p>"
+                                        + "   </div>"
+                                        + "  <div class='modal-footer'>"
+                                        + "<form action='UsuarioServlet' method='POST'>"
+                                        + "<input name='acao' type='hidden' value='apagar' />"
+                                        + "<input name='id' type='hidden' value='" + u.getId() + "' />"
+                                        + "<button type='submit' class='btn btn-danger align-middle'>Deletar</button>"
+                                        + "       <button type='button' data-dismiss='modal' class='btn btn-default'>Cancelar</button>"
+                                        + " </div>"
+                                        + " </div>"
+                                        + " </div>"
+                                        + "</div>"
+                                        + "</form>"
+                                        + "</div>"
+                                        + "</td>"
+                                        + "</tr>");
+                            }
+                        %>
+                    </tbody>
+                </table>
             </div>
             <!-- FIM CONTEUDO DA PAGINA-->
         </div>

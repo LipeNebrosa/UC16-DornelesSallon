@@ -9,14 +9,17 @@
     String nomeUser = "Usuario";
 
     Usuario userLogado = (Usuario) session.getAttribute("usuario");
-
-    if (userLogado.getEh_adm().equals("S")) {
-        String[] primNome = userLogado.getNome().split(" ");
-        nomeUser = primNome[0];
+    
+    if (userLogado != null) {
+        if (userLogado.getEh_adm().equals("S")) {
+            String[] primNome = userLogado.getNome().split(" ");
+            nomeUser = primNome[0];
+        } else {
+            response.sendRedirect("home.jsp?msg=ADM_NAO_PERMITIDO");
+        }
     } else {
-        response.sendRedirect("home.jsp");
+        response.sendRedirect("home.jsp?msg=ADM_NAO_PERMITIDO");
     }
-
 
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -86,19 +89,18 @@
 
             <!------------------------------------------ INICIO HEADER----------------------------------------------------------------->
             <div class="header-pag-adm">
-
-                <h1 class="titulo-pagina text-light">Lista de Clientes</h1>
-
+                <div class="titulo">
+                    <h1 class="titulo-pagina text-light">Lista de Clientes</h1>
+                </div> 
                 <div class="icone-user">
                     <div class="dropdown">
-                        <img for="dropdownMenuButton" src="img/iconeUser.png" width="8%" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img for="dropdownMenuButton" src="img/iconeUser.png" width="8%" alt="" align="center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                         <a class="nav-link dropdown-toggle bt-menu-user" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
                             <%=nomeUser%>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Alguma ação</a>
-                            <a class="dropdown-item" href="#">Outra ação</a>
+                            <a class="dropdown-item" href="home.jsp">Inicio</a>
                             <a class="dropdown-item" href="home.jsp?exit=exit">Sair</a>
                         </div>
                     </div>

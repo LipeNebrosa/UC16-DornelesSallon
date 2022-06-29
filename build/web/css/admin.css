@@ -57,30 +57,33 @@ html, body{
 
 .conteudo-pag-adm{
     margin-left:14rem;
-	padding-top: 8rem;
-	padding-left: 1rem;
-	width: 100vh;
+    padding-top: 8rem;
+    padding-left: 1rem;
+    width: 100vh;
 }
 
 .header-pag-adm{
     background-color: #2F2F2F;
-	margin-left:14rem;
-	positgvion: fixed;
-        padding:2rem;
-        padding-right:5rem;
-	width: auto;
-	display: flex;
-	flex-direction:row;
-	align-content:flex-end;
-	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    margin-left:14rem;
+    positgvion: fixed;
+    padding:2rem;
+    padding-right:5rem;
+    width: auto;
+    display: flex;
+    flex-direction:row;
+    align-content:flex-end;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+}
+.titulo{
+    width: 28rem;
 }
 
 .icone-user{
-	text-align: center;
-	margin-left: 62%;
+    text-align: center;
+    margin-left: 62%;
 }
 .icone-user img{
-	margin-right: 1rem;
+   
 }
 .bt-menu-user{
     margin-left:34%;
@@ -93,16 +96,16 @@ html, body{
 }
 
 .conteudo-pag-adm{
-/*    corrigir responsiveidade no tamanho da div*/
+    /*    corrigir responsiveidade no tamanho da div*/
     width:88.2%;
     height:84.8vh;
     margin-left: 14rem;
     padding: 3rem;
 }
 
-    .modal{
-        color:#000000;
-       }
-       .table{
-           border-radius: 15px; 
-       }
+.modal{
+    color:#000000;
+}
+.table{
+    border-radius: 15px; 
+}
