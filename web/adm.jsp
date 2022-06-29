@@ -10,7 +10,7 @@
     String nomeUser = "Usuario";
 
     Usuario userLogado = (Usuario) session.getAttribute("usuario");
-    
+
     if (userLogado != null) {
         if (userLogado.getEh_adm().equals("S")) {
             String[] primNome = userLogado.getNome().split(" ");
@@ -96,8 +96,8 @@
 
                 <div class="icone-user">
                     <div class="dropdown">
-                    <img for="dropdownMenuButton" src="img/iconeUser.png" width="8%" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    
+                        <img for="dropdownMenuButton" src="img/iconeUser.png" width="8%" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
                         <a class="nav-link dropdown-toggle bt-menu-user" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
                             <%=nomeUser%>
                         </a>
@@ -138,12 +138,11 @@
 //                                String dtCadastro = u.getDataCadastro().toString();
 //                                String dtCad[] = dtCadastro.split("-");
 //                                String dtCadBR = dtCad[2] + "/" + dtCad[1] + "/" + dtCad[0];
-
                                 out.print("<tr>"
                                         + "<th scope='row'>" + u.getId() + "</th>"
                                         + "<td>" + dtAgendBR + "</td>"
-                                        + "<td>" + u.getHorario()+ "</td>"
-                                        + "<td>" + u.getNomeCliente()+ "</td>"
+                                        + "<td>" + u.getHorario() + "</td>"
+                                        + "<td>" + u.getNomeCliente() + "</td>"
                                         + "<td>" + u.getCpf() + "</td>"
                                         + "<td>"
                                         + "<div style='display:inline-block'>"
@@ -156,7 +155,7 @@
                                         + "&nbsp;"
                                         + "&nbsp;"
                                         + "<div style='display:inline-block'>"
-                                        + "<button type='button' class='btn btn-danger align-middle' data-toggle='modal' data-target='#Modal" + u.getId() + "'>Excluir</button>"
+                                        + "<button type='button' class='btn btn-danger align-middle btnButtonX' data-toggle='modal' data-id='" + u.getId() + "' data-target='#Modal" + u.getId() + "'>Excluir</button>"
                                         + "<div class='modal fade' id='Modal" + u.getId() + "' role='dialog'>"
                                         + "<div class='modal-dialog modal-md'>"
                                         + "  <div class='modal-content'>"
@@ -187,6 +186,32 @@
             </div>
             <!-- FIM CONTEUDO DA PAGINA-->
         </div>
+
+
+        <script type="text/javascript">
+
+
+            $(".btnButtonX").on("click", function (e) {
+                let idAgendamento = $(this).data("id");
+
+                Swal.fire({
+                    let idAgendamento = $()
+                    title: "Pergunta",
+                    icon: 'question',
+                    confirmButtonText: "<a href=''>Clicou Confirm</a>",
+                    cancelButtonText: "<a href=''>Não confirmou</a>",
+                    showCancelButton: true,
+                    showCloseButton: true
+                }).then(function (value) {
+
+                });
+
+
+            });
+
+
+
+        </script>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
