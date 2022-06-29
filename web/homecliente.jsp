@@ -41,8 +41,8 @@
 
         .navbar {
             z-index: 10;
-            height: 100px;
-            border-radius:25px;
+            height: 10%;
+            border-radius:25rem;
             margin-left: 1rem;
             margin-right: 1rem;
             margin-top: 3rem;
@@ -52,8 +52,8 @@
         body{
             font-family: "Arial";
             background-image: url("img/barbearia.jpg");
-            background-position: 0% 20%;
-            background-size: 100%;
+            background-position: 0% 70%;
+            background-size: 110%;
             background-repeat: no-repeat;
             color:white;
             margin-top: 0;
@@ -65,8 +65,10 @@
             position:absolute;
             z-index: 11;
             float:left;
-            left:50px;
-            margin-top: -2%;
+            left:1%;
+            width: 20%;
+            height: 35%;
+            margin-top: 1rem;
 
         }
         .navbar-collapse{
@@ -273,125 +275,127 @@
 
     <!--------------------------------------------------- INICIO DO RODAPÉ---------------------------------------------------------------------------------------------------------------------------------------------------------------->
     <footer id="myFooter">
-                <div class="container-fluid">
-                    <div class="row">                                
+        <div class="container-fluid">
+            <div class="row">                                
 
-                        <div class="col-sm-2">
-                            <h5 style="margin-left: 43%">Contatos</h5>
-                            <ul>
-                                <li><a href="https://www.instagram.com/dornelles__salon/"> <img style="width: 14%; margin-left: 28%" src="img/instagram midia.png"/></a>
-                                    <p style="margin-top:-12%; margin-left: 60%">@DornellesSalon</p></li>
-                                <!--<li><a href="https://www.instagram.com/dornelles__salon/">@DornellesSalon</a></li>-->
-                                <li><a href="https://www.facebook.com/alievertonsouza"> <img style="width: 14%; margin-left: 28%; margin-top: 6%" src="img/facebook quadrado.png"/></a>
-                                    <p style="margin-top:-12%; margin-left: 60%">@DornellesSalon</p></li>                                
-                                <!--<li><a href="https://www.facebook.com/alievertonsouza">@DornellesSalon</a></li>-->
-                                <li><img style="width: 14%; margin-left: 43%; margin-top: 6%" src="img/111025_phone_icon.png"/><p style="margin-top:-12%; margin-left: 60%">(27)3209-1647</p></li>
-                            </ul>
-                        </div> 
-                        <div class="col-sm-6">
-                            <h5 style="margin-left: 25%">Localização</h5>
+                <div class="col-sm-2">
+                    <h5 style="margin-left: 43%">Contatos</h5>
+                    <ul>
+                        <li><img style="width: 14%; margin-left: 43%" src="img/whatsapp.png"/>
+                            <p style="margin-top:-12%; margin-left: 60%">(27)99934-6622</p></li>
+                        <li><a href="https://www.instagram.com/dornelles__salon/"> <img style="width: 14%; margin-left: 28%; margin-top: 6%" src="img/instagram midia.png"/></a>
+                            <p style="margin-top:-12%; margin-left: 60%">@DornellesSalon</p></li>
+                        <!--<li><a href="https://www.instagram.com/dornelles__salon/">@DornellesSalon</a></li>-->
+                        <li><a href="https://www.facebook.com/alievertonsouza"> <img style="width: 14%; margin-left: 28%; margin-top: 6%" src="img/facebook quadrado.png"/></a>
+                            <p style="margin-top:-12%; margin-left: 60%">@DornellesSalon</p></li>                                
+                        <!--<li><a href="https://www.facebook.com/alievertonsouza">@DornellesSalon</a></li>-->
+                        <li><img style="width: 14%; margin-left: 43%; margin-top: 6%" src="img/111025_phone_icon.png"/>
+                            <p style="margin-top:-12%; margin-left: 60%">(27)3209-1647</p></li></ul>
+                </div> 
+                <div class="col-sm-6">
+                    <h5 style="margin-left: 25%">Localização</h5>
 
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3744.552094930679!2d-40.2366429703511!3d-20.194366508466654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb81f220927caaf%3A0xc526b40c635f6dbd!2sDornelles%20Salon!5e0!3m2!1spt-BR!2sbr!4v1654266203171!5m2!1spt-BR!2sbr" 
-                                    width="700" height="130" style="border:0; margin-left: 25%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3744.552094930679!2d-40.2366429703511!3d-20.194366508466654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb81f220927caaf%3A0xc526b40c635f6dbd!2sDornelles%20Salon!5e0!3m2!1spt-BR!2sbr!4v1654266203171!5m2!1spt-BR!2sbr" 
+                            width="700" height="130" style="border:0; margin-left: 25%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-                            <br>                                
-                            <p style="margin-left: 60%; margin-top: 3%"> CopyRight &COPY;</p>
+                    <br>                                
+                    <p style="margin-left: 60%; margin-top: 3%"> CopyRight &COPY;</p>
 
-                        </div>
-                        <div class="col-sm-4" >
-                            <h5 style="margin-left: 30%;">Horários de atendimento</h5>
+                </div>
+                <div class="col-sm-4" >
+                    <h5 style="margin-left: 30%;">Horários de atendimento</h5>
 
-                            <ul class="opening_times" style="margin-left: 30%;">
+                   <ul class="opening_times" style="margin-left: 30%;">
                                 <li>
                                     <span class="day">Domingo</span>
-                                    <span style="margin-left: 13%" class="time">Fechado</span>
+                                    <span style="margin-left: 18.9%" class="time">Fechado</span>
                                 </li>
                                 <li>
                                     <span class="day">Segunda</span>
-                                    <span style="margin-left: 13%" class="time">Fechado</span>
+                                    <span style="margin-left: 18.9%" class="time">Fechado</span>
                                 </li>
                                 <li>
                                     <span class="day">Terça</span>
-                                    <span style="margin-left: 12%" class="time">09:00 - 20:00</span>
+                                    <span style="margin-left: 16.9%" class="time">09:00 - 19:30</span>
                                 </li>
                                 <li>
                                     <span class="day">Quarta</span>
-                                    <span style="margin-left: 10.3%" class="time">09:00 - 20:00</span>
+                                    <span style="margin-left: 14.7%" class="time">09:00 - 19:30</span>
                                 </li>
                                 <li>
                                     <span class="day">Quinta</span>
-                                    <span style="margin-left: 10.5%" class="time">09:00 - 20:00</span>
+                                    <span style="margin-left: 15%" class="time">09:00 - 19:30</span>
                                 </li>
                                 <li>
                                     <span class="day">Sexta</span>
-                                    <span style="margin-left: 11.5%" class="time">09:00 - 20:00</span>
+                                    <span style="margin-left: 16.6%" class="time">09:00 - 19:30</span>
                                 </li>
                                 <li>
                                     <span class="day">Sábado</span>
-                                    <span style="margin-left: 9.2%" class="time">09:00 - 20:00</span>
+                                    <span style="margin-left: 13.2%" class="time">09:00 - 20:00</span>
                                 </li>
                             </ul>
 
-                        </div>
-                    </div>
                 </div>
-            </footer>
-
-<!--------------------------------------------------- FIM DO RODAPÉ---------------------------------------------------------------------------------------------------------------------------------------------------------------->
-
-<!--        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <form action="UsuarioServlet" method="POST">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel" style="color:black; ">Login</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-
-                            <input type="hidden" name="acao" value="login">
-                            <table class="form">
-
-                                <tr>
-                                    <td colspan="2">
-                                        <input   class="txtB" type="text" id="txtusername" name="username" placeholder="CPF ou Email">
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td colspan="2" >
-                                        <input  class="txtB" type="password" id="txtpassword" name="senha" placeholder="Password">
-                                    </td>
-                                </tr>                                            
-                                <tr>
-                                    <td colspan="2">
-                                        <label id="novoCliente" href="cadastro.jsp" style=" padding: 0;font-size: 12px; color: black; font-family:'Arial'; ">Ainda não nosso cliente?</label></br>
-                                        <a style="color:black;"href="cadastro.jsp"value="Registrar">Registrar</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input type="checkbox" name="remember" id="chkremember"/>
-                                        <label style=" color: black; font-size: 12px;"for="chkremember">Lembrar-se</label>
-                                    </td>
-                                    <td>
-                                        <label class="txtFP">Esqueceu a senha?</label>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
-                            <button type="submit" class="btn btn-primary btn-dark">Login</button>
-                        </div>
-                    </div>
-            </form> 
+            </div>
         </div>
-    </div>-->
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/bootstrap.js"></script>
-<script type="text/javascript" src="js/jquery.mask.js"></script>
+    </footer>
+
+    <!--------------------------------------------------- FIM DO RODAPÉ---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+    <!--        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <form action="UsuarioServlet" method="POST">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel" style="color:black; ">Login</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+    
+                                <input type="hidden" name="acao" value="login">
+                                <table class="form">
+    
+                                    <tr>
+                                        <td colspan="2">
+                                            <input   class="txtB" type="text" id="txtusername" name="username" placeholder="CPF ou Email">
+                                        </td>
+                                    </tr>
+    
+                                    <tr>
+                                        <td colspan="2" >
+                                            <input  class="txtB" type="password" id="txtpassword" name="senha" placeholder="Password">
+                                        </td>
+                                    </tr>                                            
+                                    <tr>
+                                        <td colspan="2">
+                                            <label id="novoCliente" href="cadastro.jsp" style=" padding: 0;font-size: 12px; color: black; font-family:'Arial'; ">Ainda não nosso cliente?</label></br>
+                                            <a style="color:black;"href="cadastro.jsp"value="Registrar">Registrar</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" name="remember" id="chkremember"/>
+                                            <label style=" color: black; font-size: 12px;"for="chkremember">Lembrar-se</label>
+                                        </td>
+                                        <td>
+                                            <label class="txtFP">Esqueceu a senha?</label>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
+                                <button type="submit" class="btn btn-primary btn-dark">Login</button>
+                            </div>
+                        </div>
+                </form> 
+            </div>
+        </div>-->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/jquery.mask.js"></script>
 </body>
 </html>

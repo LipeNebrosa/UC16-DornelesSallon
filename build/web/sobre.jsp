@@ -291,7 +291,7 @@
                                                 />
                                             <div class="card-body badge-dark">
                                                 <h5 class="card-title">RAZÃO SOCIAL</h5>
-                                                <p class="card-text">
+                                                <p class="card-text" style="font-size: 61%">
                                                     Espaço Dornelles Salon, salão de beleza Unissex e espaço de 
                                                     estética corporal e facial. Desde 13/02/2014 esbanjando 
                                                     profissionalismo visando sempre, a melhor experiencia já tida por qualquer cliente.
@@ -313,9 +313,12 @@
                                                  />
                                             <div class="card-body badge-dark">
                                                 <h5 class="card-title">ATENDIMENTO INFANTIL</h5>
-                                                <p class="card-text">
-                                                    Some quick example text to build on the card title and make up the bulk
-                                                    of the card's content.
+                                                <p class="card-text" style="font-size: 70%">
+                                                    Quem tem criança pequena em casa sabe a dificuldade 
+                                                    que é fazer ela ficar quietinha para o corte de cabelo.
+                                                    Além disso, hoje em dia, o público infantil está cada vez mais
+                                                    familiarizado com o ramo da beleza,corte de jogadores famosos… 
+                                                    Para atender tudo isso, temos profissionais capacitados.
                                                 </p>
                                             </div>
                                         </div>
@@ -329,9 +332,8 @@
                                                  />
                                             <div class="card-body badge-dark ">
                                                 <h5 class="card-title">O NOSSO FOCO É A LEALDADE</h5>
-                                                <p class="card-text">
-                                                    Some quick example text to build on the card title and make up the bulk
-                                                    of the card's content.
+                                                <p class="card-text" style="font-size: 80%">
+                                                    Estamos sempre prontos e entusiasmados para melhor atendê-lo. Você é um cliente valoroso. 
                                                 </p>
                                             </div>
                                         </div>
@@ -340,7 +342,7 @@
                             </div>
                         </div>
 
-                        <!--     Single item -->
+<!--                             Single item 
                         <div class="carousel-item">
                             <div class="container">
                                 <div class="row">
@@ -399,8 +401,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
+                        </div>-->
+<!--
                         Single item 
                         <div class="carousel-item">
                             <div class="container">
@@ -460,7 +462,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                     <!--   Inner -->
                 </div>
@@ -471,9 +473,9 @@
             </div>
 
             <!--------------------------------------------------- FIM SOBRE---------------------------------------------------------------------------------------------------------------------------------------------------------------->
-            
+
             <!--------------------------------------------------- MODAL DO SERVIÇOS---------------------------------------------------------------------------------------------------------------------------------------------------------------->
-         <div class="modal fade bd-example-modal-lg" id="modalServicos" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal fade bd-example-modal-lg" id="modalServicos" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -540,7 +542,7 @@
             </div>
 
             <!--------------------------------------------------- FIM MODAL DO SERVIÇOS---------------------------------------------------------------------------------------------------------------------------------------------------------------->
-            
+
             <!----------------------------------------------------- INICIO DO RODAPÉ------------------------------------------------------------------------------>
             <footer id="myFooter">
                 <div class="container-fluid">
@@ -549,13 +551,16 @@
                         <div class="col-sm-2">
                             <h5 style="margin-left: 43%">Contatos</h5>
                             <ul>
-                                <li><a href="https://www.instagram.com/dornelles__salon/"> <img style="width: 14%; margin-left: 28%" src="img/instagram midia.png"/></a>
+                                <li><img style="width: 14%; margin-left: 43%" src="img/whatsapp.png"/>
+                                    <p style="margin-top:-12%; margin-left: 60%">(27)99934-6622</p></li>
+                                <li><a href="https://www.instagram.com/dornelles__salon/"> <img style="width: 14%; margin-left: 28%; margin-top: 6%" src="img/instagram midia.png"/></a>
                                     <p style="margin-top:-12%; margin-left: 60%">@DornellesSalon</p></li>
                                 <!--<li><a href="https://www.instagram.com/dornelles__salon/">@DornellesSalon</a></li>-->
                                 <li><a href="https://www.facebook.com/alievertonsouza"> <img style="width: 14%; margin-left: 28%; margin-top: 6%" src="img/facebook quadrado.png"/></a>
                                     <p style="margin-top:-12%; margin-left: 60%">@DornellesSalon</p></li>                                
                                 <!--<li><a href="https://www.facebook.com/alievertonsouza">@DornellesSalon</a></li>-->
-                                <li><img style="width: 14%; margin-left: 43%; margin-top: 6%" src="img/111025_phone_icon.png"/><p style="margin-top:-12%; margin-left: 60%">(27)3209-1647</p></li>
+                                <li><img style="width: 14%; margin-left: 43%; margin-top: 6%" src="img/111025_phone_icon.png"/>
+                                    <p style="margin-top:-12%; margin-left: 60%">(27)3209-1647</p></li>
                             </ul>
                         </div> 
                         <div class="col-sm-6">
@@ -574,31 +579,31 @@
                             <ul class="opening_times" style="margin-left: 30%;">
                                 <li>
                                     <span class="day">Domingo</span>
-                                    <span style="margin-left: 19%" class="time">Fechado</span>
+                                    <span style="margin-left: 18.9%" class="time">Fechado</span>
                                 </li>
                                 <li>
                                     <span class="day">Segunda</span>
-                                    <span style="margin-left: 19%" class="time">Fechado</span>
+                                    <span style="margin-left: 18.9%" class="time">Fechado</span>
                                 </li>
                                 <li>
                                     <span class="day">Terça</span>
-                                    <span style="margin-left: 17%" class="time">09:00 - 20:00</span>
+                                    <span style="margin-left: 16.9%" class="time">09:00 - 19:30</span>
                                 </li>
                                 <li>
                                     <span class="day">Quarta</span>
-                                    <span style="margin-left: 10.3%" class="time">09:00 - 20:00</span>
+                                    <span style="margin-left: 14.7%" class="time">09:00 - 19:30</span>
                                 </li>
                                 <li>
                                     <span class="day">Quinta</span>
-                                    <span style="margin-left: 10.5%" class="time">09:00 - 20:00</span>
+                                    <span style="margin-left: 15%" class="time">09:00 - 19:30</span>
                                 </li>
                                 <li>
                                     <span class="day">Sexta</span>
-                                    <span style="margin-left: 11.5%" class="time">09:00 - 20:00</span>
+                                    <span style="margin-left: 16.6%" class="time">09:00 - 19:30</span>
                                 </li>
                                 <li>
                                     <span class="day">Sábado</span>
-                                    <span style="margin-left: 9.2%" class="time">09:00 - 20:00</span>
+                                    <span style="margin-left: 13.2%" class="time">09:00 - 20:00</span>
                                 </li>
                             </ul>
 
@@ -607,22 +612,22 @@
                 </div>
             </footer>
             <!----------------------------------------------------- FIM DO RODAPÉ------------------------------------------------------------------------------>
-        
 
 
 
 
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/bootstrap.js"></script>
-        <script type="text/javascript" src="js/jquery.mask.js"></script>
-        <script type="text/javascript">
 
-            jQuery(document).ready(function ($) {
+            <script type="text/javascript" src="js/jquery.js"></script>
+            <script type="text/javascript" src="js/bootstrap.js"></script>
+            <script type="text/javascript" src="js/jquery.mask.js"></script>
+            <script type="text/javascript">
 
-                $("#txtCPF").mask("000.000.000-00");
-                $("#txtTelefone").mask("(00) 00000-0000");
+                jQuery(document).ready(function ($) {
 
-            });
-        </script>
+                    $("#txtCPF").mask("000.000.000-00");
+                    $("#txtTelefone").mask("(00) 00000-0000");
+
+                });
+            </script>
     </body>
 </html>
