@@ -64,6 +64,8 @@
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.css">
         <link rel="stylesheet" type="text/css" href="css/tempusdominus-bootstrap-4.css">
 
+        <link rel="stylesheet" type="text/css" href="css/sweetalert2.css">
+
         <link rel="stylesheet" href="css/estilo.css">
     </head>
 
@@ -491,7 +493,7 @@
 
                         <form action="UsuarioServlet" id="formHorario" method="POST" autocomplete="off">
                             <input type="hidden" name="acao" value="cadHorario">
-                            <input type="hidden" name="idCliente" value="<%=id%>">
+                            <input type="hidden" name="idCliente" id="idCliente" value="<%=id%>">
                             <div class="modal-body">
                                 <div class="container">
                                     <div class="row">
@@ -515,7 +517,7 @@
                                         <div class="col-sm">
                                             <label for="slHorario">Horario:  </label>
                                             &nbsp;
-                                            <select required class="form-control R" id="sltHora" name="hora">
+                                            <select required class="form-control R" id="sltHoraAgendamento" name="hora">
                                                 <option value="9:00" >9:00</option>
                                                 <option value="10:30" >10:00</option>
                                                 <option value="11:00" >11:00</option>
@@ -533,7 +535,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                    <button type="submit" class="btn btn-primary">Agendar</button>
+                                    <button type="button" class="btn btn-primary" id="btnAgendarr">Agendar</button>
                                 </div>
 
                             </div>
@@ -543,9 +545,9 @@
                 </div>        
             </div>        
 
-<!----------------------------------------------------- FIM MODAL AGENDAMENTO------------------------------------------------------------------------------>
+            <!----------------------------------------------------- FIM MODAL AGENDAMENTO------------------------------------------------------------------------------>
 
-<!----------------------------------------------------- INICIO DO RODAPÉ----------------------------------------------------------------------------------->
+            <!----------------------------------------------------- INICIO DO RODAPÉ----------------------------------------------------------------------------------->
 
             <footer id="myFooter">
                 <div class="container-fluid">
@@ -612,7 +614,7 @@
                 </div>
             </footer>
 
-<!----------------------------------------------------- FIM DO RODAPÉ------------------------------------------------------------------------------>
+            <!----------------------------------------------------- FIM DO RODAPÉ------------------------------------------------------------------------------>
 
 
             <script type="text/javascript" src="js/jquery.js"></script>
@@ -621,7 +623,9 @@
             <script type="text/javascript" src="js/popper.js" ></script>
             <script type="text/javascript" src="js/moment.js" ></script>
             <script type="text/javascript" src="js/locale/pt-br.js" ></script>
-            <script type="text/javascript" src="js/tempusdominus-bootstrap-4.js" ></script>
+            <script type="text/javascript" src="js/tempusdominus-bootstrap-4.js"></script>
+            <script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
+
 
 
             <script type="text/javascript">
@@ -641,13 +645,57 @@
                                                         daysOfWeekDisabled: [0, 1],
                                                         minDate: moment()
                                                     });
-                                                   // $(".picker-switch.accordion-toggle").html("");
+                                                    // $(".picker-switch.accordion-toggle").html("");
 
                                                     $("#datetimepicker13").on("change.datetimepicker", function (e) {
-                                                       //let diaselecionado = $(".day.active").data("day");
-                                                       // console.log((e.date).format('YYYY-MM-DD'));
+                                                        //let diaselecionado = $(".day.active").data("day");
+                                                        // console.log((e.date).format('YYYY-MM-DD'));
                                                         document.getElementById('dataAgendam').value = (e.date).format('YYYY-MM-DD');
                                                         console.log(document.getElementById('dataAgendam').value);
+                                                    });
+
+                                                    $("#btnAgendarr").on("click", function (e) {
+                                                        const idClient = $("#idCliente").val();
+                                                        const dataAgenda = $("#dataAgendam").val();
+                                                        const horaAgenda = $("#sltHoraAgendamento").val();
+                                                        console.log("Script agendamento iniciado");
+                                                        $.ajax({
+                                                            url: "UsuarioServlet",
+                                                            method: "POST",
+                                                            data: {
+                                                                "acao": "cadHorario",
+                                                                "idCliente": idClient,
+                                                                "dataAgendamento": dataAgenda,
+                                                                "hora": horaAgenda
+                                                            },
+                                                            success: function (resp) {
+                                                                let error = resp.erro;
+                                                                let msg = resp.msg;
+                                                                let icone = resp.icone;
+
+                                                                if (error === "false") {
+                                                                    Swal.fire({
+                                                                        icon: icone,
+                                                                        title: 'Feito!',
+                                                                        text: msg
+                                                                    });
+                                                                } else {
+                                                                    Swal.fire({
+                                                                        icon: icone,
+                                                                        title: 'Oops...',
+                                                                        text: msg
+                                                                    });
+
+                                                                }
+                                                                console.error(resp);
+                                                            },
+                                                            error: function (err) {
+                                                                console.error(err);
+                                                            }
+
+
+                                                        });
+
                                                     });
 
                                                 });
@@ -655,7 +703,7 @@
                                                 function validarSenha() {
                                                     NovaSenha = document.getElementById('txtSenha').value;
                                                     CNovaSenha = document.getElementById('txconfrimasenhat').value;
-                                                    
+
                                                     if (NovaSenha !== CNovaSenha) {
                                                         document.getElementById('txtSenha').style.borderColor = "red";
                                                         document.getElementById('txconfrimasenhat').style.borderColor = "red";
@@ -668,7 +716,7 @@
                                                     }
                                                 }
                                                 function validarSenhaATT() {
-                                                    if (document.getElementById('txtSenhaAtual').value == "") {
+                                                    if (document.getElementById('txtSenhaAtual').value === "") {
                                                         document.getElementById('btRegistrarATT').disabled = true;
                                                     } else {
                                                         document.getElementById('btRegistrarATT').disabled = false;

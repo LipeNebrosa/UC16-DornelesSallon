@@ -5,10 +5,13 @@
  */
 package controle;
 
+import com.google.gson.Gson;
 import com.sun.xml.rpc.processor.modeler.j2ee.xml.homeType;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.util.HashMap;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -55,6 +58,7 @@ public class UsuarioServlet extends HttpServlet {
             case "cadHorario":
                 cadastrarHorario(request, response);
                 break;
+                
             default:
                 response.sendRedirect("home.jsp?msg=erro-parametro-servlet");
 
@@ -197,15 +201,24 @@ public class UsuarioServlet extends HttpServlet {
         hora.setIdCliente(Integer.parseInt(request.getParameter("idCliente")));
 
         long cadastrou = hora.CadastrarHorario();
+        HashMap<String, String> dicionario = new HashMap<>();
 
         if (cadastrou > 0) {
-
-            response.sendRedirect("home.jsp?msg=HORARIO-CADASTRADO");
-
+            dicionario.put("msg", "Agendado com sucesso!");
+            dicionario.put("erro", "false");
+            dicionario.put("icone", "success");
         } else {
-            response.sendRedirect("home.jsp?msg=ERRO-HORARIO-NAO-CADASTRADO");
+            dicionario.put("msg", "Erro no cadastro do horario :( ");
+            dicionario.put("erro", "true");
+            dicionario.put("icone", "error");
         }
-
+        response.setContentType("application/json");
+        response.setCharacterEncoding("utf-8");
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        PrintWriter out = response.getWriter();
+        String json = new Gson().toJson(dicionario);
+        // finally output the json string       
+        out.print(json);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
