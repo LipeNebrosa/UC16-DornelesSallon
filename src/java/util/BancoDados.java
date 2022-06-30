@@ -11,7 +11,7 @@ public class BancoDados {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdbarbearia"
                     + "?useTimezone=true&serverTimezone=America/Sao_Paulo&autoReconnect=true&useSSL=false",
-                    "root", "admin");
+                    "root", "123456");
             return conn;
         } catch (Exception e) {
             System.out.println(e.getMessage());

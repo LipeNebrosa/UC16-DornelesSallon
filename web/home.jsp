@@ -128,7 +128,6 @@
                                 <%=nomeUser%>
                             </a>    
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Meus agendamentos</a>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-atualizacao">Editar Perfil</a>
                                 <%=redirectAdm%>
                                 <a class="dropdown-item" href="home.jsp?exit=exit">Sair</a>

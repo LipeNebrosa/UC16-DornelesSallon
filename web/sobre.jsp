@@ -88,8 +88,7 @@
                                 <%=nomeUser%>
                             </a>    
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Meus agendamentos</a>
-                                <a class="dropdown-item" href="#">Histórico</a>
+                                <a class="dropdown-item" href="home.jsp">Meus agendamentos</a>
                                 <a class="dropdown-item" href="home.jsp?exitsession=true">Sair</a>
                             </div>
                         </li>
