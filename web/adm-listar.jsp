@@ -51,7 +51,7 @@
             <div class="navbar-vertical">
 
                 <div class="div-logo-adm">
-                    <img class="logo-adm" src="img/logo-s-tit.png">
+                    <img class="logo-adm" src="img/logo-s-titulo.png">
                 </div>
 
 
@@ -65,9 +65,7 @@
                         <a class="nav-link" href="adm.jsp">Agendamentos</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Configurar agenda</a>
-                    </li>
+                   
                 </ul><br>
 
                 <p class="categoria-navbar">Clientes</p>

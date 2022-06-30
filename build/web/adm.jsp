@@ -52,7 +52,7 @@
             <div class="navbar-vertical">
 
                 <div class="div-logo-adm">
-                    <img class="logo-adm" src="img/logo-s-tit.png">
+                    <img class="logo-adm" src="img/logo-s-titulo.png">
                 </div>
 
 
