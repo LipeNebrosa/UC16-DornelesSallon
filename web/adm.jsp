@@ -32,7 +32,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.css">
+        <link rel="stylesheet" type="text/css" href="css/tempusdominus-bootstrap-4.css">
+
+        <link rel="stylesheet" type="text/css" href="css/sweetalert2.css">
         <link href="css/admin.css" rel="stylesheet">
         <title>ADM - Dornelles</title>
     </head>
@@ -67,7 +71,7 @@
 
                 <ul class="nav flex-column mb-0">
                     <li class="nav-item">
-                        <a class="nav-link " href="adm-listar.jsp">Listar</a>
+                        <a class="nav-link " href="adm-listar.jsp">Lista</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " href="#">Cadastrar</a>
@@ -77,7 +81,7 @@
                 <p class="categoria-navbar">Administração</p>
                 <ul class="nav flex-column mb-0">
                     <li class="nav-item">
-                        <a class="nav-link " href="#">Cadastrar Funcionario</a>
+                        <a class="nav-link " href="adm-cadF.jsp">Cadastrar Funcionario</a>
                     </li>
                 </ul><br>
 
@@ -92,7 +96,7 @@
             <!-- INICIO HEADER-->
             <div class="header-pag-adm">
 
-                <h1 class="titulo-pagina text-light">Agendamentos</h1>
+                <h1 class="titulo-pagina text-light titulo" >Agendamentos</h1>
 
                 <div class="icone-user">
                     <div class="dropdown">
@@ -102,8 +106,7 @@
                             <%=nomeUser%>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Alguma ação</a>
-                            <a class="dropdown-item" href="#">Outra ação</a>
+                            <a class="dropdown-item" href="home.jsp">Inicio</a>
                             <a class="dropdown-item" href="home.jsp?exit=exit">Sair</a>
                         </div>
                     </div>
@@ -130,20 +133,25 @@
                         <%
 
                             for (Horario u : agenda) {
-
+                                //Formatando Data
                                 String dtAgendamento = u.getData().toString();
                                 String dtAgend[] = dtAgendamento.split("-");
                                 String dtAgendBR = dtAgend[2] + "/" + dtAgend[1] + "/" + dtAgend[0];
 
-//                                String dtCadastro = u.getDataCadastro().toString();
-//                                String dtCad[] = dtCadastro.split("-");
-//                                String dtCadBR = dtCad[2] + "/" + dtCad[1] + "/" + dtCad[0];
+                                //Formatando CPF
+                                String cpf = u.getCpf();
+                                String[] sCPF = {cpf.substring(0, 3), cpf.substring(3, 6), cpf.substring(6, 9), cpf.substring(9, 11)};
+                                String formatCPF = sCPF[0] + "." + sCPF[1] + "." + sCPF[2] + "-" + sCPF[3];
+
+                                 //Formatando hora 09:00:00
+                                 String hora = u.getHorario().substring(0,5);
+                                 
                                 out.print("<tr>"
                                         + "<th scope='row'>" + u.getId() + "</th>"
                                         + "<td>" + dtAgendBR + "</td>"
-                                        + "<td>" + u.getHorario() + "</td>"
+                                        + "<td>" + hora + "</td>"
                                         + "<td>" + u.getNomeCliente() + "</td>"
-                                        + "<td>" + u.getCpf() + "</td>"
+                                        + "<td id='txtCPF'>" + formatCPF + "</td>"
                                         + "<td>"
                                         + "<div style='display:inline-block'>"
                                         + "<form action='cadastro.jsp' method='POST'>"
@@ -188,33 +196,24 @@
         </div>
 
 
-        <script type="text/javascript">
+
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/jquery.mask.js"></script>
+        <script type="text/javascript" src="js/popper.js" ></script>
+        <script type="text/javascript" src="js/moment.js" ></script>
+        <script type="text/javascript" src="js/locale/pt-br.js" ></script>
+        <script type="text/javascript" src="js/tempusdominus-bootstrap-4.js"></script>
+        <script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
 
 
-            $(".btnButtonX").on("click", function (e) {
-                let idAgendamento = $(this).data("id");
-
-                Swal.fire({
-                    let idAgendamento = $()
-                    title: "Pergunta",
-                    icon: 'question',
-                    confirmButtonText: "<a href=''>Clicou Confirm</a>",
-                    cancelButtonText: "<a href=''>Não confirmou</a>",
-                    showCancelButton: true,
-                    showCloseButton: true
-                }).then(function (value) {
-
-                });
+        <script>
+            jQuery(document).ready(function ($) {
 
 
             });
 
-
-
         </script>
 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     </body>
 </html>

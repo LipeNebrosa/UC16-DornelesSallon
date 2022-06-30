@@ -65,7 +65,6 @@ html, body{
 .header-pag-adm{
     background-color: #2F2F2F;
     margin-left:14rem;
-    positgvion: fixed;
     padding:2rem;
     padding-right:5rem;
     width: auto;
@@ -75,7 +74,7 @@ html, body{
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
 }
 .titulo{
-    width: 28rem;
+    width: 35rem;
 }
 
 .icone-user{

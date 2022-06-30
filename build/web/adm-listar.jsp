@@ -9,7 +9,7 @@
     String nomeUser = "Usuario";
 
     Usuario userLogado = (Usuario) session.getAttribute("usuario");
-    
+
     if (userLogado != null) {
         if (userLogado.getEh_adm().equals("S")) {
             String[] primNome = userLogado.getNome().split(" ");
@@ -75,7 +75,7 @@
                 <p class="categoria-navbar">Administração</p>
                 <ul class="nav flex-column mb-0">
                     <li class="nav-item">
-                        <a class="nav-link " href="#">Cadastrar Funcionario</a>
+                        <a class="nav-link " href="adm-cadF.jsp">Cadastrar Funcionario</a>
                     </li>
                 </ul><br>
 
@@ -89,19 +89,24 @@
 
             <!------------------------------------------ INICIO HEADER----------------------------------------------------------------->
             <div class="header-pag-adm">
-                <div class="titulo">
-                    <h1 class="titulo-pagina text-light">Lista de Clientes</h1>
-                </div> 
-                <div class="icone-user">
-                    <div class="dropdown">
-                        <img for="dropdownMenuButton" src="img/iconeUser.png" width="8%" alt="" align="center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                        <a class="nav-link dropdown-toggle bt-menu-user" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
-                            <%=nomeUser%>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="home.jsp">Inicio</a>
-                            <a class="dropdown-item" href="home.jsp?exit=exit">Sair</a>
+                <div class="col-sm">
+                    <div class="titulo">
+                        <h1 class="titulo-pagina text-light titulo">Lista de Clientes</h1>
+                    </div> 
+                </div>
+                <div class="col-sm">
+                    <div class="icone-user">
+                        <div class="dropdown">
+                            <img for="dropdownMenuButton" src="img/iconeUser.png" width="8%" alt="" align="center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                            <a class="nav-link dropdown-toggle bt-menu-user" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                                <%=nomeUser%>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="home.jsp">Inicio</a>
+                                <a class="dropdown-item" href="home.jsp?exit=exit">Sair</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -139,11 +144,16 @@
                                 String dtCadastro = u.getDataCadastro().toString();
                                 String dtCad[] = dtCadastro.split("-");
                                 String dtCadBR = dtCad[2] + "/" + dtCad[1] + "/" + dtCad[0];
+                                
+                                 //Formatando CPF
+                                String cpf = u.getCpf();
+                                String[] sCPF = {cpf.substring(0, 3), cpf.substring(3, 6), cpf.substring(6, 9), cpf.substring(9, 11)};
+                                String formatCPF = sCPF[0] + "." + sCPF[1] + "." + sCPF[2] + "-" + sCPF[3];
 
                                 out.print("<tr>"
                                         + "<th scope='row'>" + u.getId() + "</th>"
                                         + "<td>" + u.getNome() + "</td>"
-                                        + "<td>" + u.getCpf() + "</td>"
+                                        + "<td>" + formatCPF + "</td>"
                                         + "<td>" + u.getSexo() + "</td>"
                                         + "<td>" + dtNascBR + "</td>"
                                         + "<td>" + u.getTelefone() + "</td>"
@@ -196,5 +206,37 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+
+
+            $(".btnButtonX").on("click", function (e) {
+                let idAgendamento = $(this).data("id");
+
+                Swal.fire({
+                    let idAgendamento = $()
+                            title: "Pergunta",
+                    icon: 'question',
+                    confirmButtonText: "<a href=''>Clicou Confirm</a>",
+                    cancelButtonText: "<a href=''>Não confirmou</a>",
+                    showCancelButton: true,
+                    showCloseButton: true
+                }).then(function (value) {
+
+                });
+
+
+            });
+            
+            jQuery(document).ready(function ($) {
+                
+                
+                
+            });
+
+
+
+        </script>
+
     </body>
 </html>

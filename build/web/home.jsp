@@ -40,7 +40,7 @@
                 redirectAdm = "<a class='dropdown-item' href='adm.jsp'>Administração</a>";
             }
         }
-    } else {//fazer codigo de msg com erro de login
+    } else {
     }
 
     if (request.getParameter("msg") != null) {
