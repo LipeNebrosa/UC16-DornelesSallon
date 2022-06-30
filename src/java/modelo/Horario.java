@@ -168,20 +168,20 @@ public class Horario {
         }
     }
 
-    public List<Horario> ListarHorariosCliente(int id) {
+    public  List<Horario> ListarHorariosCliente(String id) {
         try {
 
             Connection conn = BancoDados.getConexao();
-            String sql = "SELECT * FROM agenda WHERE idcliente = ? ORDER BY dtagenda,horario ASC; ";
+            String sql = "SELECT * FROM agenda WHERE idcliente = ? ORDER BY dtagenda,horario ASC;";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setString(1, id);
             List<Horario> lista = new ArrayList();
             final ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
                 Horario h = new Horario();
                 h.setId(rs.getInt("id"));
-                h.setData(rs.getDate("data"));
+                h.setData(rs.getDate("dtagenda"));
                 h.setHorario(rs.getString("horario"));
                 h.setIdCliente(rs.getInt("idcliente"));
                 lista.add(h);

@@ -4,6 +4,8 @@
     Author     : Felipe Ferreira, Gladson Rosa & William Roseno
 --%>
 
+<%@page import="modelo.Horario"%>
+<%@page import="java.util.List"%>
 <%@page import="modelo.Usuario"%>
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
@@ -19,7 +21,8 @@
             nascimento = "",
             sexo = "",
             email = "",
-            telefone = "";
+            telefone = "",
+            horariosAgendos = "";
 
     if ((Boolean) session.getAttribute("statusLogin") != null) {
         if ((Boolean) session.getAttribute("statusLogin")) {
@@ -40,6 +43,25 @@
             if (userLogado.getEh_adm().equals("S")) {
                 redirectAdm = "<a class='dropdown-item' href='adm.jsp'>Administração</a>";
             }
+
+            
+            Horario hr = new Horario();
+            List<Horario> agendas = hr.ListarHorariosCliente(id);
+
+            for (Horario h : agendas) {
+                String dtCad = h.getData().toString();
+                String dtCadd[] = dtCad.split("-");
+                String dtCadBR = dtCadd[2] + "/" + dtCadd[1] + "/" + dtCadd[0];
+
+                //Formatando hora 09:00:00
+                String hora = h.getHorario().substring(0, 5);
+
+                horariosAgendos += "<tr>"
+                        + "<th scope='row'>" + dtCadBR + "</th>"
+                        + "<td>" + hora + "</td>"
+                        + "</td>"
+                        + "</tr>";
+            }
         }
     } else {
     }
@@ -47,7 +69,7 @@
     if (request.getParameter("msg") != null) {
         msg = request.getParameter("msg");
     }
-    
+
     if (request.getParameter("show") != null) {
         show = request.getParameter("show");
     }
@@ -55,8 +77,10 @@
     if (request.getParameter("exit") != null) {
         session.invalidate();
         response.sendRedirect("home.jsp?msg=exit");
-        
+
     }
+
+
 %>
 <!DOCTYPE html>
 <html>
@@ -83,8 +107,8 @@
     <body>
         <div id="principal">
             <input type="hidden" id="msg" value="<%=msg%>">
-                   <input type="hidden" id="idshow" value="<%=show%>">
-                   <div>
+            <input type="hidden" id="idshow" value="<%=show%>">
+            <div>
 
                 <img class="logoleao" src="img/Logoo.png" width="47%" height="47%" alt="">
 
@@ -128,9 +152,11 @@
                                 <%=nomeUser%>
                             </a>    
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="home.jsp?show=agenda">Meus Agendamentos</a>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-atualizacao">Editar Perfil</a>
                                 <%=redirectAdm%>
                                 <a class="dropdown-item" href="home.jsp?exit=exit">Sair</a>
+
                             </div>
                         </li>
                     </ul>
@@ -630,6 +656,39 @@
 
             <!----------------------------------------------------- FIM DO RODAPÉ------------------------------------------------------------------------------>
 
+            <div class="modal fade" id="modal-minha-agenda" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Seus Agedamentos</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+
+                            <div class="row">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Data</th>
+                                            <th>Horario</th>      
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%=horariosAgendos%>                                       
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
             <script type="text/javascript" src="js/jquery.js"></script>
             <script type="text/javascript" src="js/bootstrap.js"></script>
@@ -652,11 +711,15 @@
                                                     $("#txtCPFatt").mask("000.000.000-00");
                                                     $("#txtTelefone").mask("(00) 00000-0000");
                                                     $("#txtTelefoneATT").mask("(00) 00000-0000");
-                                                    
+
                                                     let show = $("#idshow").val();
                                                     if (show !== null) {
                                                         if (show === "registrar") {
                                                             $('#modal-registro').modal('show');
+                                                        } else if (show === "editarR") {
+                                                            $('#modal-atualizacao').modal('show');
+                                                        } else if (show === "agenda") {
+                                                            $('#modal-minha-agenda').modal('show');
                                                         }
                                                     }
 
@@ -716,7 +779,7 @@
 
                                                     });
 
-                                                   
+
 
                                                 });
 
