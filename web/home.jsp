@@ -12,6 +12,7 @@
             redirectAdm = "",
             btModal = "'#modal-login'",
             msg = "",
+            show = "", //para abrir modal registro
             id = "",
             nome = "",
             cpf = "",
@@ -46,10 +47,15 @@
     if (request.getParameter("msg") != null) {
         msg = request.getParameter("msg");
     }
+    
+    if (request.getParameter("show") != null) {
+        show = request.getParameter("show");
+    }
 
     if (request.getParameter("exit") != null) {
         session.invalidate();
-        response.sendRedirect("home.jsp");
+        response.sendRedirect("home.jsp?msg=exit");
+        
     }
 %>
 <!DOCTYPE html>
@@ -76,8 +82,9 @@
 
     <body>
         <div id="principal">
-            <input type="hidden" id="msg" value="<%=msg%>"
-            <div>
+            <input type="hidden" id="msg" value="<%=msg%>">
+                   <input type="hidden" id="idshow" value="<%=show%>">
+                   <div>
 
                 <img class="logoleao" src="img/Logoo.png" width="47%" height="47%" alt="">
 
@@ -586,7 +593,7 @@
                         <div class="col-sm-4" >
                             <h5 style="margin-left: 30%;">Horários de atendimento</h5>
 
-                           <ul class="opening_times" style="margin-left: 30%;">
+                            <ul class="opening_times" style="margin-left: 30%;">
                                 <li>
                                     <span class="day">Domingo</span>
                                     <span style="margin-left: 18.9%" class="time">Fechado</span>
@@ -641,12 +648,18 @@
 
 
                                                 jQuery(document).ready(function ($) {
-                                                 
+
                                                     $("#txtCPF").mask("000.000.000-00");
                                                     $("#txtCPFatt").mask("000.000.000-00");
                                                     $("#txtTelefone").mask("(00) 00000-0000");
                                                     $("#txtTelefoneATT").mask("(00) 00000-0000");
-
+                                                    
+                                                    let show = $("#idshow").val();
+                                                    if (show !== null) {
+                                                        if (show === "registrar") {
+                                                            $('#modal-registro').modal('show');
+                                                        }
+                                                    }
 
                                                     $('#datetimepicker13').datetimepicker({
                                                         format: 'L',
@@ -654,11 +667,9 @@
                                                         daysOfWeekDisabled: [0, 1],
                                                         minDate: moment()
                                                     });
-                                                    // $(".picker-switch.accordion-toggle").html("");
+
 
                                                     $("#datetimepicker13").on("change.datetimepicker", function (e) {
-                                                        //let diaselecionado = $(".day.active").data("day");
-                                                        // console.log((e.date).format('YYYY-MM-DD'));
                                                         document.getElementById('dataAgendam').value = (e.date).format('YYYY-MM-DD');
                                                         console.log(document.getElementById('dataAgendam').value);
                                                     });
@@ -706,7 +717,11 @@
 
                                                     });
 
+                                                   
+
                                                 });
+
+
 
                                                 function validarSenha() {
                                                     NovaSenha = document.getElementById('txtSenha').value;

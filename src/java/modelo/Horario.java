@@ -17,6 +17,7 @@ public class Horario {
     private String horario;
     private String nomeCliente;
     private String cpf;
+    private String telefone;
     private int idFuncionario;
     private int idServico;
     private int idCliente;
@@ -120,7 +121,7 @@ public class Horario {
         }
     }
 
-    public boolean Excluir(long id) {
+    public static boolean Excluir(long id) {
         try {
             Connection conn = BancoDados.getConexao();
             String sql = "DELETE FROM agenda WHERE id = ?; ";
@@ -143,7 +144,7 @@ public class Horario {
         try {
 
             Connection conn = BancoDados.getConexao();
-            String sql = "SELECT usuario.nome,cpf , agenda.* FROM agenda INNER JOIN usuario ON agenda.idcliente = usuario.id ORDER BY dtagenda,horario ASC;";
+            String sql = "SELECT usuario.nome,cpf,telefone , agenda.* FROM agenda INNER JOIN usuario ON agenda.idcliente = usuario.id ORDER BY dtagenda,horario ASC;";
             PreparedStatement ps = conn.prepareStatement(sql);
             List<Horario> lista = new ArrayList();
             final ResultSet rs = ps.executeQuery();
@@ -154,6 +155,7 @@ public class Horario {
                 h.setData(rs.getDate("dtagenda"));
                 h.setNomeCliente(rs.getString("nome"));
                 h.setCpf(rs.getString("cpf"));
+                h.setTelefone(rs.getString("telefone"));
                 h.setHorario(rs.getString("horario"));
                 h.setIdCliente(rs.getInt("idcliente"));
                 lista.add(h);
@@ -190,6 +192,14 @@ public class Horario {
             System.out.println(e.getMessage());
             return null;
         }
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
 }

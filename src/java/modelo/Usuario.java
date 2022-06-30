@@ -300,33 +300,18 @@ public class Usuario {
             ps.setString(1, cpf);
             final ResultSet rs = ps.executeQuery();
 
-            return rs.next();
+            if (rs.next()) {
+                this.setId(rs.getLong("id"));
+                this.setCpf(cpf);
+                return true;
+            } else {
+                return false;
+            }
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return false;
         }
-    }
-
-    public boolean TornarADM(String cpf, String eh_adm) {
-        try {
-            Connection conn = BancoDados.getConexao();
-            String sql = "UPDATE usuario SET eh_adm = ? WHERE cpf = ?;";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, eh_adm);
-            ps.setString(2, cpf);
-            int linhasafetadas = ps.executeUpdate();
-            if (linhasafetadas > 0) {
-                System.out.println("Adm registrado com sucesso!");
-                return true;
-            } else {
-                return false;
-            }
-        } catch (SQLException e) {
-            System.out.println("Erro registro de adm: " + e.getMessage());
-            return false;
-        }
-
     }
 
     public List<Usuario> ListarADMs() {
@@ -357,4 +342,29 @@ public class Usuario {
             return null;
         }
     }
+
+    public static boolean TornarADM(String cpf, String eh_adm) {
+        try {
+            Connection conn = BancoDados.getConexao();
+            String sql = "UPDATE usuario SET eh_adm = ? WHERE cpf = ?;";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, eh_adm);
+            ps.setString(2, cpf);
+            int linhasafetadas = ps.executeUpdate();
+            if (linhasafetadas > 0) {
+                System.out.println("Adm registrado com sucesso!");
+
+                return true;
+
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro registro de adm: " + e.getMessage());
+            System.out.println(e.getMessage());
+            return false;
+        }
+
+    }
+
 }

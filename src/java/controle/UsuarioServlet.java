@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modelo.Funcionario;
 import modelo.Horario;
 import modelo.Usuario;
 
@@ -46,6 +47,9 @@ public class UsuarioServlet extends HttpServlet {
             case "editar":
                 editarUsuario(request, response);
                 break;
+            case "editarViaAdm":
+                editarUsuarioViaAdm(request, response);
+                break;
             case "apagar":
                 deletarUsuario(request, response);
                 break;
@@ -58,7 +62,13 @@ public class UsuarioServlet extends HttpServlet {
             case "cadHorario":
                 cadastrarHorario(request, response);
                 break;
-                
+            case "apagarAgendamento":
+                deletarAgendamento(request, response);
+                break;
+            case "cadFuncionario":
+                cadastrarFuncionario(request, response);
+                break;
+
             default:
                 response.sendRedirect("home.jsp?msg=erro-parametro-servlet");
 
@@ -83,7 +93,7 @@ public class UsuarioServlet extends HttpServlet {
             response.sendRedirect("home.jsp");
 
         } else {
-            
+
             response.sendRedirect("home.jsp?msg=erroLogin");
         }
     }
@@ -122,7 +132,7 @@ public class UsuarioServlet extends HttpServlet {
                     response.sendRedirect("home.jsp?msg=CADASTRADO");
 
                 } else {
-                   
+
                     response.sendRedirect("home.jsp?msg=cadastrado-erro-Login");
                 }
 
@@ -169,7 +179,7 @@ public class UsuarioServlet extends HttpServlet {
                 response.sendRedirect("home.jsp?msg=ATUALIZOU");
 
             } else {
-               response.sendRedirect("home.jsp?msg=ERRO-ATUALIZACAO");
+                response.sendRedirect("home.jsp?msg=ERRO-ATUALIZACAO");
 
             }
         } else {
@@ -177,12 +187,56 @@ public class UsuarioServlet extends HttpServlet {
         }
     }
 
+    private void editarUsuarioViaAdm(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        String novaSenha = request.getParameter("novasenha");
+        String cpf = request.getParameter("CPF").replace(".", "").replace("-", "").replace(" ", "");
+        Usuario user = new Usuario();
+        Usuario loginUser = new Usuario();
+
+        loginUser.setCpf(cpf);
+
+        user.setId(Long.parseLong(request.getParameter("id")));
+        user.setNome(request.getParameter("nome"));
+        user.setCpf(cpf);
+        user.setDataNascimento(Date.valueOf(request.getParameter("dataNascimento")));
+        user.setTelefone(request.getParameter("dddTelefone"));
+        user.setEmail(request.getParameter("email"));
+        user.setSexo(request.getParameter("sexo"));
+
+        if (novaSenha != null) {
+            user.setSenha(novaSenha);
+        }
+
+        boolean atualizou = user.Atualizar();
+
+        if (atualizou) {
+
+            response.sendRedirect("adm-listar.jsp?msg=ATUALIZOU");
+
+        } else {
+            response.sendRedirect("adm-listar.jsp?msg=ERRO-ATUALIZACAO");
+
+        }
+
+    }
+
     private void deletarUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException {
         boolean apagou = Usuario.Excluir(Long.parseLong(request.getParameter("id")));
         if (apagou) {
-            response.sendRedirect("adm-listar.jsp");
+            response.sendRedirect("adm-listar.jsp?msg=CLIENTE-DELETADO");
         } else {
             response.sendRedirect("adm-listar.jsp?msg=ERRO_EXCLUSAO_ADM");
+        }
+
+    }
+
+    private void deletarAgendamento(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        boolean apagou = Horario.Excluir(Long.parseLong(request.getParameter("id")));
+        if (apagou) {
+            response.sendRedirect("adm.jsp?msg=agd-deletado");
+        } else {
+            response.sendRedirect("adm.jsp?msg=ERRO_EXCLUSAO_AGENDAMENTO");
         }
 
     }
@@ -214,6 +268,34 @@ public class UsuarioServlet extends HttpServlet {
         String json = new Gson().toJson(dicionario);
         // finally output the json string       
         out.print(json);
+    }
+
+    private void cadastrarFuncionario(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        Funcionario funcionario = new Funcionario();
+        Usuario user = new Usuario();
+
+        String cpf = request.getParameter("CPF").replace(".", "").replace("-", "").replace(" ", ""),
+                apelido = request.getParameter("nome"),
+                cargo = request.getParameter("cargo");
+
+        if (request.getParameter("CPF") != null) {
+            boolean achouCpf = user.BuscarPorCPF(cpf);
+            if (achouCpf) {
+                String idUsuario = String.valueOf(user.getId());
+                if (Funcionario.TornarADM(apelido, cargo, cpf, idUsuario, "S")) {
+                    response.sendRedirect("adm-cadF.jsp?msg=FUNCIO-CAD");
+                }else{
+                     response.sendRedirect("adm-cadF.jsp?msg=ERRO-CAD-FUNCIO");
+                }
+            } else {
+                response.sendRedirect("adm-cadF.jsp?msg=CPF-NAO-CADASTRADO");
+            }
+
+        } else {
+            response.sendRedirect("adm-cadF.jsp?msg=CPF-NULL-FUNC");
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

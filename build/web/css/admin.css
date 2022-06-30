@@ -105,6 +105,8 @@ html, body{
 .modal{
     color:#000000;
 }
-.table{
-    border-radius: 15px; 
+
+.table-dark {
+border-radius: 15px; 
+    background-color: #212529;
 }

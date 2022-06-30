@@ -7,7 +7,7 @@
 <%@page import="java.util.List"%>
 <%@page import="modelo.Usuario"%>
 <%
-    String nomeUser = "Usuario";
+    String nomeUser = "Usuario", msg = "";
 
     Usuario userLogado = (Usuario) session.getAttribute("usuario");
 
@@ -20,6 +20,10 @@
         }
     } else {
         response.sendRedirect("home.jsp?msg=ADM_NAO_PERMITIDO");
+    }
+
+    if (request.getParameter("msg") != null) {
+        msg = request.getParameter("msg");
     }
 
 %>
@@ -43,6 +47,7 @@
     <body>
 
         <div class="principal-adm">
+            <input type="hidden" id="msg" value="<%=msg%>">
             <!--	INICIO NAVBAR-->
             <div class="navbar-vertical">
 
@@ -62,9 +67,7 @@
                             Agendamentos<span class="sr-only">(Página atual)</span></a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Configurar agenda</a>
-                    </li>
+
                 </ul><br>
 
                 <p class="categoria-navbar">Clientes</p>
@@ -74,7 +77,7 @@
                         <a class="nav-link " href="adm-listar.jsp">Lista</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="#">Cadastrar</a>
+                        <a class="nav-link " href="home.jsp?show=registrar">Cadastrar</a>
                     </li>
                 </ul><br>
 
@@ -127,6 +130,8 @@
                             <th>Hora</th>
                             <th>Cliente</th>
                             <th>CPF</th>               
+                            <th>Telefone</th>               
+                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -143,47 +148,22 @@
                                 String[] sCPF = {cpf.substring(0, 3), cpf.substring(3, 6), cpf.substring(6, 9), cpf.substring(9, 11)};
                                 String formatCPF = sCPF[0] + "." + sCPF[1] + "." + sCPF[2] + "-" + sCPF[3];
 
-                                 //Formatando hora 09:00:00
-                                 String hora = u.getHorario().substring(0,5);
-                                 
+                                //Formatando hora 09:00:00
+                                String hora = u.getHorario().substring(0, 5);
+
                                 out.print("<tr>"
                                         + "<th scope='row'>" + u.getId() + "</th>"
                                         + "<td>" + dtAgendBR + "</td>"
                                         + "<td>" + hora + "</td>"
                                         + "<td>" + u.getNomeCliente() + "</td>"
-                                        + "<td id='txtCPF'>" + formatCPF + "</td>"
+                                        + "<td >" + formatCPF + "</td>"
+                                        + "<td >" + u.getTelefone() + "</td>"
                                         + "<td>"
-                                        + "<div style='display:inline-block'>"
-                                        + "<form action='cadastro.jsp' method='POST'>"
-                                        + "<input name='acao' type='hidden' value='editar' />"
-                                        + "<input name='idPessoa' type='hidden' value='" + u.getId() + "' />"
-                                        + "<button type='submit' class='btn btn-info align-middle'>Editar</button>"
-                                        + "</form>"
-                                        + "</div>"
                                         + "&nbsp;"
                                         + "&nbsp;"
                                         + "<div style='display:inline-block'>"
-                                        + "<button type='button' class='btn btn-danger align-middle btnButtonX' data-toggle='modal' data-id='" + u.getId() + "' data-target='#Modal" + u.getId() + "'>Excluir</button>"
-                                        + "<div class='modal fade' id='Modal" + u.getId() + "' role='dialog'>"
-                                        + "<div class='modal-dialog modal-md'>"
-                                        + "  <div class='modal-content'>"
-                                        + "  <div class='modal-header'>"
-                                        + "<h5 class='modal-title'>Atenção!</h5>"
-                                        + "  </div>"
-                                        + "  <div class='modal-body'>"
-                                        + "      <p> Deseja excluir TODOS os dados do(a) " + u.getNomeCliente() + "?</p>"
-                                        + "   </div>"
-                                        + "  <div class='modal-footer'>"
-                                        + "<form action='UsuarioServlet' method='POST'>"
-                                        + "<input name='acao' type='hidden' value='apagar' />"
-                                        + "<input name='id' type='hidden' value='" + u.getId() + "' />"
-                                        + "<button type='submit' class='btn btn-danger align-middle'>Deletar</button>"
-                                        + "       <button type='button' data-dismiss='modal' class='btn btn-default'>Cancelar</button>"
-                                        + " </div>"
-                                        + " </div>"
-                                        + " </div>"
-                                        + "</div>"
-                                        + "</form>"
+                                        + "<button type='button' class='btn btn-danger align-middle btnButtonX' data-toggle='modal' data-id='" + u.getId() + "' "
+                                        + "data-nome='" + u.getNomeCliente() + "' data-dia='" + dtAgendBR + "' data-hora='" + hora + "' data-target='#Modal-delete'>Excluir</button>"
                                         + "</div>"
                                         + "</td>"
                                         + "</tr>");
@@ -193,8 +173,29 @@
                 </table>
             </div>
             <!-- FIM CONTEUDO DA PAGINA-->
+            <!-------------------------------- MODAL DE EXCLUSÃO------->
+            <div class='modal fade' id='Modal-delete' role='dialog'>
+                <div class='modal-dialog modal-md'>
+                    <div class='modal-content'>
+                        <div class='modal-header'>
+                            <h5 class='modal-title'>Atenção!</h5>
+                        </div>
+                        <div class='modal-body'>
+                            <p> </p>
+                        </div>
+                        <div class='modal-footer'>
+                            <form action='UsuarioServlet' method='POST'>
+                                <input name='acao' type='hidden' value='apagarAgendamento' />
+                                <input name='id' id="idid" type='hidden' value=""/>
+                                <button type='submit' class='btn btn-danger align-middle'>Deletar</button>
+                                <button type='button' data-dismiss='modal' class='btn btn-default'>Cancelar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-------------------------------- FIM MODAL DE EXCLUSÃO------->
         </div>
-
 
 
         <script type="text/javascript" src="js/jquery.js"></script>
@@ -205,12 +206,21 @@
         <script type="text/javascript" src="js/locale/pt-br.js" ></script>
         <script type="text/javascript" src="js/tempusdominus-bootstrap-4.js"></script>
         <script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
-
+        <script type="text/javascript" src="js/alertasJs.js"></script>
 
         <script>
             jQuery(document).ready(function ($) {
+                $('#Modal-delete').on('show.bs.modal', function (event) {
+                    var button = $(event.relatedTarget); // Botão que acionou o modal
+                    var id = button.data('id');
+                    var nome = button.data('nome');
+                    var dia = button.data('dia');
+                    var hora = button.data('hora');
 
-
+                    var modal = $(this);
+                    modal.find('.modal-body p').html("Deseja excluir o agendamento do(a) " + nome + ", dia " + dia + " as " + hora + "?");
+                    $("#idid").val(id);
+                });
             });
 
         </script>
