@@ -3,6 +3,7 @@
     Created on : 08/06/2022, 11:17:10
     Author     : sala303b
 --%>
+<%@page import="modelo.Funcionario"%>
 <%@page import="modelo.Horario"%>
 <%@page import="java.util.List"%>
 <%@page import="modelo.Usuario"%>
@@ -192,66 +193,43 @@
                     </div>
                 </div>
 
-                <%List<Horario> agenda = new Horario().ListarHorarios();%>
+                <%List<Funcionario> agenda = new Funcionario().ListarFuncionarios();%>
+
                 <div class="row">
                     <table class="table table-striped table-dark">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Data</th>
-                                <th>Hora</th>
-                                <th>Cliente</th>
-                                <th>CPF</th>               
+                                <th>Matricula</th>
+                                <th>Cargo</th>
+                                <th>Apelido</th>
+                                <th>Nome</th>
+                                <th>CPF</th>
+                                <th>Id Usuario</th>
+                                <th>Data Cadastro</th>               
                             </tr>
                         </thead>
                         <tbody>
                             <%
 
-                                for (Horario u : agenda) {
+                                for (Funcionario u : agenda) {
 
-                                    String dtAgendamento = u.getData().toString();
-                                    String dtAgend[] = dtAgendamento.split("-");
-                                    String dtAgendBR = dtAgend[2] + "/" + dtAgend[1] + "/" + dtAgend[0];
+                                    String dtCad = u.getDtcadastro().toString();
+                                    String dtCadd[] = dtCad.split("-");
+                                    String dtCadBR = dtCadd[2] + "/" + dtCadd[1] + "/" + dtCadd[0];
+
+                                    //Formatando CPF
+                                    String cpf = u.getCpf();
+                                    String[] sCPF = {cpf.substring(0, 3), cpf.substring(3, 6), cpf.substring(6, 9), cpf.substring(9, 11)};
+                                    String formatCPF = sCPF[0] + "." + sCPF[1] + "." + sCPF[2] + "-" + sCPF[3];
 
                                     out.print("<tr>"
-                                            + "<th scope='row'>" + u.getId() + "</th>"
-                                            + "<td>" + dtAgendBR + "</td>"
-                                            + "<td>" + u.getHorario() + "</td>"
-                                            + "<td>" + u.getNomeCliente() + "</td>"
-                                            + "<td>" + u.getCpf() + "</td>"
-                                            + "<td>"
-                                            + "<div style='display:inline-block'>"
-                                            + "<form action='cadastro.jsp' method='POST'>"
-                                            + "<input name='acao' type='hidden' value='editar' />"
-                                            + "<input name='idPessoa' type='hidden' value='" + u.getId() + "' />"
-                                            + "<button type='submit' class='btn btn-info align-middle'>Editar</button>"
-                                            + "</form>"
-                                            + "</div>"
-                                            + "&nbsp;"
-                                            + "&nbsp;"
-                                            + "<div style='display:inline-block'>"
-                                            + "<button type='button' class='btn btn-danger align-middle btnButtonX' data-toggle='modal' data-id='" + u.getId() + "' data-target='#Modal" + u.getId() + "'>Excluir</button>"
-                                            + "<div class='modal fade' id='Modal" + u.getId() + "' role='dialog'>"
-                                            + "<div class='modal-dialog modal-md'>"
-                                            + "  <div class='modal-content'>"
-                                            + "  <div class='modal-header'>"
-                                            + "<h5 class='modal-title'>Atenção!</h5>"
-                                            + "  </div>"
-                                            + "  <div class='modal-body'>"
-                                            + "      <p> Deseja excluir TODOS os dados do(a) " + u.getNomeCliente() + "?</p>"
-                                            + "   </div>"
-                                            + "  <div class='modal-footer'>"
-                                            + "<form action='UsuarioServlet' method='POST'>"
-                                            + "<input name='acao' type='hidden' value='apagar' />"
-                                            + "<input name='id' type='hidden' value='" + u.getId() + "' />"
-                                            + "<button type='submit' class='btn btn-danger align-middle'>Deletar</button>"
-                                            + "       <button type='button' data-dismiss='modal' class='btn btn-default'>Cancelar</button>"
-                                            + " </div>"
-                                            + " </div>"
-                                            + " </div>"
-                                            + "</div>"
-                                            + "</form>"
-                                            + "</div>"
+                                            + "<th scope='row'>" + u.getMatricula() + "</th>"
+                                            + "<td>" + u.getCargo() + "</td>"
+                                            + "<td>" + u.getApelido() + "</td>"
+                                            + "<td>" + u.getNome() + "</td>"
+                                            + "<td>" + formatCPF + "</td>"
+                                            + "<td>" + u.getIdUsuario() + "</td>"
+                                            + "<td>" + dtCadBR + "</td>"
                                             + "</td>"
                                             + "</tr>");
                                 }
@@ -275,9 +253,9 @@
             <script type="text/javascript" src="js/tempusdominus-bootstrap-4.js"></script>
             <script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
             <script type="text/javascript" src="js/alertasJs.js"></script>
-            
+
             <script>
-                 $("#txtCPFatt").mask("000.000.000-00");
+                $("#txtCPFatt").mask("000.000.000-00");
             </script>
     </body>
 </html>

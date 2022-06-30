@@ -1,8 +1,12 @@
 package modelo;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import util.BancoDados;
 
 /**
@@ -12,10 +16,10 @@ import util.BancoDados;
 public class Funcionario {
 
     private String matricula;
-    private String nome;
-    private String cargo;
-    private long idUsuario;
-
+    private String nome, apelido;
+    private String cargo, cpf;
+    private long idUsuario, id;
+    private Date dtcadastro;
     public String getMatricula() {
         return matricula;
     }
@@ -24,6 +28,7 @@ public class Funcionario {
         this.matricula = matricula;
     }
 
+    
     public String getNome() {
         return nome;
     }
@@ -73,5 +78,66 @@ public class Funcionario {
             return false;
         }
 
+    }
+    
+    public List<Funcionario> ListarFuncionarios() {
+        try {
+
+            Connection conn = BancoDados.getConexao();
+            String sql = "SELECT u.nome as nomeusuario, u.cpf , f.* FROM bdbarbearia.funcionario f JOIN bdbarbearia.usuario u ON f.idUsuario = u.id;";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            List<Funcionario> lista = new ArrayList();
+            final ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Funcionario h = new Funcionario();
+                h.setMatricula(rs.getString("matricula"));
+                h.setNome(rs.getString("nomeusuario"));
+                h.setApelido(rs.getString("nome"));
+                h.setCargo(rs.getString("cargo"));
+                h.setCpf(rs.getString("cpf"));
+                h.setDtcadastro(rs.getDate("dtcadastro"));
+                h.setIdUsuario(rs.getLong("idUsuario"));
+                
+                lista.add(h);
+            }
+            return lista;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    public String getApelido() {
+        return apelido;
+    }
+
+    public void setApelido(String apelido) {
+        this.apelido = apelido;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public Date getDtcadastro() {
+        return dtcadastro;
+    }
+
+    public void setDtcadastro(Date dtcadastro) {
+        this.dtcadastro = dtcadastro;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
